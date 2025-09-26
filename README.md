@@ -62,46 +62,33 @@ GDP-eval/
 ├── grading-system.py         # Automated grading system
 ├── khmer-utils.py           # Khmer language utilities
 ├── task-json-example.json   # Task configuration examples
-├── CLAUDE.md                # Claude Code configuration
-└── .claude/                 # Project-specific Claude settings
-    ├── settings.local.json  # Local configuration
-    ├── agent-tasks.json     # Sub-agent task definitions
-    └── commands.sh          # Quick command scripts
+└── DEVELOPMENT.md           # Development guidelines
 ```
 
-## Claude Code Integration
+## Development Features
 
-This project is optimized for Claude Code with:
+This project includes:
 
 - **Automated Formatting**: Black and Ruff integration
 - **Type Checking**: MyPy configuration
-- **Sub-Agents**: Specialized agents for data curation, Khmer NLP, and model evaluation
+- **Task Automation**: Specialized task runners for data curation, Khmer NLP, and model evaluation
 - **Parallel Execution**: Run multiple analyses concurrently
 
-### Available Commands
+### Quick Commands
 
 ```bash
+# Setup environment
+./setup.sh
+
+# Run demo
+python demo.py
+
 # Format code
-.claude/commands.sh format
+black . && ruff check --fix .
 
 # Run tests
-.claude/commands.sh test
-
-# Check code quality
-.claude/commands.sh check
-
-# Backup project
-.claude/commands.sh backup
+python -m pytest tests/ -v
 ```
-
-### Sub-Agent Tasks
-
-Launch specialized agents for complex tasks:
-
-- **data-curator-annotator**: Data preparation and validation
-- **khmer-nlp-specialist**: Khmer text processing
-- **model-evaluation-qa**: Model accuracy assessment
-- **llm-finetuning-engineer**: Model optimization
 
 ## Development
 
@@ -120,9 +107,14 @@ Run the test suite:
 python -m pytest tests/ -v
 ```
 
+## Author
+
+**Nicolas Delrieu** - AI Consultant
+Specializing in AI/ML solutions and multilingual NLP systems
+
 ## Contributing
 
-Please read CLAUDE.md for detailed development guidelines and coding standards.
+Please read the development guidelines for detailed coding standards and best practices.
 
 ## License
 

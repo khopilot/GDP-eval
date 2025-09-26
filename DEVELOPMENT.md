@@ -1,4 +1,4 @@
-# GDP Evaluation Framework - Claude Configuration
+# GDP Evaluation Framework - Development Configuration
 
 ## Project Overview
 GDP (Gross Domestic Product) evaluation framework with Khmer language support.

@@ -25,11 +25,8 @@ htmlcov/
 *.swo
 *~
 
-# Claude Code
-.claude/settings.local.json
-.claude/logs/
-.claude/cache/
-.claude/metrics.db
+# Claude Code / Development settings
+.claude/
 
 # Project specific
 *.log
