@@ -1,0 +1,361 @@
+{
+  "metadata": {
+    "version": "1.0.0",
+    "dataset": "gdpval-khmer",
+    "creation_date": "2025-09-26",
+    "task_count": 3
+  },
+  "tasks": [
+    {
+      "task_id": "FIN-KH-001",
+      "occupation": "Financial Analyst / អ្នកវិភាគហិរញ្ញវត្ថុ",
+      "category": "finance",
+      "industry": "Banking and Financial Services",
+      "gdp_contribution_percent": 8.5,
+      "onet_code": "13-2051.00",
+      "task_metadata": {
+        "language": "khmer",
+        "secondary_languages": ["english"],
+        "difficulty_level": 3,
+        "estimated_time_minutes": 45,
+        "wage_per_hour_usd": 25,
+        "wage_per_hour_khr": 102500,
+        "required_expertise": [
+          "financial_modeling",
+          "khmer_banking_regulations",
+          "excel_analysis",
+          "risk_assessment"
+        ],
+        "tools_required": ["spreadsheet", "calculator", "regulatory_database"],
+        "deliverable_type": "analytical_report"
+      },
+      "prompt": {
+        "instruction": "អ្នកត្រូវធ្វើការវិភាគរបាយការណ៍ហិរញ្ញវត្ថុត្រីមាសទី៣ របស់ក្រុមហ៊ុន មីក្រូហិរញ្ញវត្ថុ 'សុវណ្ណភូមិ' ដោយផ្តោតលើ៖\n\n១. វិភាគអត្រាការប្រាក់ និងការគ្រប់គ្រងហានិភ័យឥណទាន\n២. ប៉ាន់ស្មានការលូតលាស់សម្រាប់ត្រីមាសទី៤\n៣. ធ្វើការប្រៀបធៀបជាមួយគូប្រកួតក្នុងទីផ្សារ\n៤. ផ្តល់អនុសាសន៍សម្រាប់ការកែលម្អ\n\nសូមរៀបចំរបាយការណ៍ជាភាសាខ្មែរ ដោយប្រើពាក្យបច្ចេកទេសជាភាសាអង់គ្លេសនៅកន្លែងសមស្រប។",
+        "instruction_english": "Analyze Q3 financial report of 'Suvannaphum' microfinance institution focusing on: 1. Interest rates and credit risk management, 2. Q4 growth projections, 3. Market competitor comparison, 4. Improvement recommendations. Prepare report in Khmer with English technical terms where appropriate.",
+        "context": "អ្នកជាអ្នកវិភាគហិរញ្ញវត្ថុជាន់ខ្ពស់នៅធនាគារជាតិនៃកម្ពុជា។ របាយការណ៍នេះនឹងត្រូវបង្ហាញទៅគណៈកម្មាធិការត្រួតពិនិត្យ។",
+        "context_english": "You are a senior financial analyst at the National Bank of Cambodia. This report will be presented to the regulatory committee.",
+        "output_format": "structured_report",
+        "output_language": "khmer_primary_english_technical",
+        "expected_sections": [
+          "បទសង្ខេប / Executive Summary",
+          "ការវិភាគហិរញ្ញវត្ថុ / Financial Analysis",
+          "ការប្រៀបធៀបទីផ្សារ / Market Comparison",
+          "អនុសាសន៍ / Recommendations"
+        ]
+      },
+      "reference_files": [
+        {
+          "file_id": "ref_001",
+          "file_name": "suvannaphum_q3_2024_financial_statement.xlsx",
+          "file_type": "spreadsheet",
+          "file_size_mb": 2.3,
+          "description": "Q3 2024 Financial Statement with balance sheet, income statement, and cash flow",
+          "language": "khmer_english_mixed",
+          "key_contents": [
+            "Balance Sheet",
+            "Income Statement",
+            "Cash Flow Statement",
+            "Loan Portfolio Analysis",
+            "NPL Ratios"
+          ]
+        },
+        {
+          "file_id": "ref_002",
+          "file_name": "nbc_prakas_microfinance_2024.pdf",
+          "file_type": "pdf",
+          "file_size_mb": 5.1,
+          "description": "National Bank of Cambodia Prakas on Microfinance Institutions 2024",
+          "language": "khmer",
+          "page_count": 47,
+          "relevant_sections": ["Chapter 3", "Chapter 7", "Annex 2"]
+        },
+        {
+          "file_id": "ref_003",
+          "file_name": "market_competitor_analysis_q3.csv",
+          "file_type": "csv",
+          "file_size_kb": 145,
+          "description": "Q3 2024 competitor metrics for top 10 MFIs",
+          "language": "english",
+          "columns": [
+            "institution_name",
+            "total_assets_usd",
+            "loan_portfolio_usd",
+            "npl_ratio",
+            "interest_rate_avg",
+            "branch_count"
+          ]
+        },
+        {
+          "file_id": "ref_004",
+          "file_name": "economic_indicators_cambodia_2024.json",
+          "file_type": "json",
+          "file_size_kb": 23,
+          "description": "Cambodia economic indicators for 2024",
+          "language": "english"
+        }
+      ],
+      "grading_criteria": [
+        {
+          "criterion_id": "accuracy",
+          "criterion_name": "ភាពត្រឹមត្រូវនៃការគណនា / Calculation Accuracy",
+          "weight": 0.3,
+          "description": "Correctness of all financial calculations and ratios",
+          "evaluation_points": [
+            "NPL ratio calculation",
+            "Growth rate projections",
+            "Interest margin analysis",
+            "Risk-weighted assets computation"
+          ]
+        },
+        {
+          "criterion_id": "regulatory_compliance",
+          "criterion_name": "ការអនុលោមតាមបទប្បញ្ញត្តិ / Regulatory Compliance",
+          "weight": 0.25,
+          "description": "Adherence to NBC regulations and reporting standards",
+          "evaluation_points": [
+            "Proper citation of Prakas",
+            "Compliance check completeness",
+            "Risk assessment per NBC guidelines"
+          ]
+        },
+        {
+          "criterion_id": "language_quality",
+          "criterion_name": "គុណភាពភាសា / Language Quality",
+          "weight": 0.2,
+          "description": "Proper use of Khmer financial terminology and clear communication",
+          "evaluation_points": [
+            "Correct Khmer financial terms",
+            "Appropriate code-switching",
+            "Professional tone",
+            "Clear structure"
+          ]
+        },
+        {
+          "criterion_id": "insight_depth",
+          "criterion_name": "ជម្រៅនៃការវិភាគ / Analysis Depth",
+          "weight": 0.25,
+          "description": "Quality of insights and actionable recommendations",
+          "evaluation_points": [
+            "Market trend identification",
+            "Risk factor analysis",
+            "Competitive positioning insights",
+            "Practical recommendations"
+          ]
+        }
+      ],
+      "expert_solution": {
+        "solution_id": "sol_FIN-KH-001",
+        "file_path": "expert_solutions/FIN-KH-001_solution.pdf",
+        "completion_time_minutes": 38,
+        "expert_id": "expert_012",
+        "expert_profile": {
+          "name": "សុខ សោភា / Sok Sopheap",
+          "title": "Senior Financial Analyst",
+          "organization": "National Bank of Cambodia",
+          "years_experience": 15,
+          "education": "MBA Finance, Royal University of Phnom Penh"
+        },
+        "quality_score": 0.95,
+        "key_insights": [
+          "Identified 12% YoY growth opportunity",
+          "Risk mitigation through portfolio diversification",
+          "Regulatory compliance gaps in reporting"
+        ]
+      },
+      "evaluation_notes": {
+        "critical_elements": [
+          "Must calculate NPL ratio correctly (tolerance: ±0.5%)",
+          "Must reference at least 3 NBC Prakas articles",
+          "Must compare with minimum 5 competitors",
+          "Must provide concrete Q4 projections with assumptions"
+        ],
+        "common_errors": [
+          "Mixing USD and KHR without clear conversion",
+          "Ignoring seasonal factors in agriculture loans",
+          "Using outdated regulatory references"
+        ],
+        "bonus_points": [
+          "Include sensitivity analysis",
+          "Provide visual charts/graphs",
+          "Reference regional ASEAN trends"
+        ]
+      }
+    },
+    {
+      "task_id": "TECH-KH-002",
+      "occupation": "Software Developer / អ្នកអភិវឌ្ឍន៍កម្មវិធី",
+      "category": "technology",
+      "industry": "Information Technology",
+      "gdp_contribution_percent": 5.2,
+      "onet_code": "15-1252.00",
+      "task_metadata": {
+        "language": "khmer",
+        "secondary_languages": ["english", "chinese"],
+        "difficulty_level": 4,
+        "estimated_time_minutes": 60,
+        "wage_per_hour_usd": 30,
+        "wage_per_hour_khr": 123000,
+        "required_expertise": [
+          "api_development",
+          "database_design",
+          "khmer_unicode",
+          "payment_integration"
+        ]
+      },
+      "prompt": {
+        "instruction": "អ្នកត្រូវរចនា REST API សម្រាប់ប្រព័ន្ធគ្រប់គ្រងការកក់សណ្ឋាគារ ដែលរួមមាន៖\n\n១. Endpoint សម្រាប់ការកក់បន្ទប់ (Khmer/English/Chinese interface)\n២. ប្រព័ន្ធទូទាត់តាម Wing, ABA, និង Alipay\n៣. Database schema ដែលគាំទ្រ multi-language\n៤. Rate limiting និង security measures\n\nសូមផ្តល់ API documentation ជាភាសាខ្មែរ និង code examples ជា Python/FastAPI។",
+        "instruction_english": "Design REST API for hotel management system including: 1. Room booking endpoints (Khmer/English/Chinese), 2. Payment integration with Wing, ABA, Alipay, 3. Multi-language database schema, 4. Rate limiting and security. Provide API documentation in Khmer with Python/FastAPI examples.",
+        "context": "អ្នកជា Senior Developer នៅក្រុមហ៊ុន Tech startup មួយនៅភ្នំពេញ ដែលកំពុងបង្កើតប្រព័ន្ធសម្រាប់សណ្ឋាគារក្នុងស្រុក។",
+        "output_format": "api_documentation_with_code",
+        "output_language": "khmer_documentation_english_code"
+      },
+      "reference_files": [
+        {
+          "file_id": "ref_005",
+          "file_name": "hotel_requirements.pdf",
+          "file_type": "pdf",
+          "description": "Hotel system requirements and user stories",
+          "language": "khmer_english_mixed"
+        },
+        {
+          "file_id": "ref_006",
+          "file_name": "payment_gateway_apis.json",
+          "file_type": "json",
+          "description": "Payment gateway API specifications for Wing, ABA, Alipay",
+          "language": "english"
+        },
+        {
+          "file_id": "ref_007",
+          "file_name": "database_structure_current.sql",
+          "file_type": "code",
+          "description": "Current database structure to be migrated",
+          "language": "sql"
+        }
+      ],
+      "grading_criteria": [
+        {
+          "criterion_id": "api_design",
+          "criterion_name": "ការរចនា API / API Design Quality",
+          "weight": 0.35,
+          "description": "RESTful principles, endpoint structure, response formats"
+        },
+        {
+          "criterion_id": "localization",
+          "criterion_name": "ការប្រែភាសា / Localization Implementation",
+          "weight": 0.25,
+          "description": "Multi-language support, Khmer Unicode handling"
+        },
+        {
+          "criterion_id": "security",
+          "criterion_name": "សុវត្ថិភាព / Security Measures",
+          "weight": 0.2,
+          "description": "Authentication, authorization, rate limiting, input validation"
+        },
+        {
+          "criterion_id": "documentation",
+          "criterion_name": "ឯកសារ / Documentation Quality",
+          "weight": 0.2,
+          "description": "Clear Khmer documentation, code examples, API testing guides"
+        }
+      ]
+    },
+    {
+      "task_id": "AGRI-KH-003",
+      "occupation": "Agricultural Extension Officer / មន្ត្រីផ្សព្វផ្សាយកសិកម្ម",
+      "category": "agriculture",
+      "industry": "Agriculture",
+      "gdp_contribution_percent": 22.1,
+      "onet_code": "19-4012.00",
+      "task_metadata": {
+        "language": "khmer",
+        "secondary_languages": [],
+        "difficulty_level": 3,
+        "estimated_time_minutes": 30,
+        "wage_per_hour_usd": 15,
+        "wage_per_hour_khr": 61500,
+        "required_expertise": [
+          "rice_cultivation",
+          "pest_management",
+          "climate_adaptation",
+          "farmer_communication"
+        ]
+      },
+      "prompt": {
+        "instruction": "សូមរៀបចំឯកសារណែនាំសម្រាប់កសិករអំពីការដាំដុះស្រូវក្នុងរដូវវស្សាឆ្នាំ២០២៥ ដោយគិតពី៖\n\n១. ការជ្រើសរើសពូជស្រូវសមស្របតាមតំបន់ (Kampong Cham, Battambang, Takeo)\n២. វិធីការពារពីជំងឺ និងសត្វល្អិតចម្រៃ\n៣. ការប្រើប្រាស់ជីគីមី និងជីសរីរាង្គប្រកបដោយប្រសិទ្ធភាព\n៤. ការសន្សំទឹកក្នុងដំណាំ\n៥. ទីផ្សារ និងតម្លៃប៉ាន់ស្មាន\n\nសរសេរឱ្យងាយយល់សម្រាប់កសិករដែលមានការអប់រំកម្រិតបឋមសិក្សា។",
+        "instruction_english": "Prepare farmer guidance document for rice cultivation in 2025 rainy season covering: seed selection by region, pest management, fertilizer use, water conservation, market prices. Write for farmers with primary education.",
+        "context": "អ្នកជាមន្ត្រីផ្សព្វផ្សាយកសិកម្មនៅក្រសួងកសិកម្ម កំពុងរៀបចំសម្ភារៈសម្រាប់កម្មវិធីបណ្តុះបណ្តាលកសិករ។",
+        "output_format": "educational_guide",
+        "output_language": "simple_khmer"
+      },
+      "reference_files": [
+        {
+          "file_id": "ref_008",
+          "file_name": "rice_varieties_cambodia.csv",
+          "file_type": "csv",
+          "description": "Rice varieties data with yield, disease resistance, market price",
+          "language": "khmer"
+        },
+        {
+          "file_id": "ref_009",
+          "file_name": "weather_forecast_2025.json",
+          "file_type": "json",
+          "description": "2025 rainfall predictions by province",
+          "language": "english"
+        },
+        {
+          "file_id": "ref_010",
+          "file_name": "pest_management_guide.pdf",
+          "file_type": "pdf",
+          "description": "Integrated pest management for rice",
+          "language": "khmer"
+        }
+      ],
+      "grading_criteria": [
+        {
+          "criterion_id": "technical_accuracy",
+          "criterion_name": "ភាពត្រឹមត្រូវបច្ចេកទេស / Technical Accuracy",
+          "weight": 0.35,
+          "description": "Correct agricultural practices and recommendations"
+        },
+        {
+          "criterion_id": "accessibility",
+          "criterion_name": "ភាពងាយយល់ / Accessibility",
+          "weight": 0.3,
+          "description": "Simple language, clear explanations, practical examples"
+        },
+        {
+          "criterion_id": "localization",
+          "criterion_name": "ការសម្របតាមតំបន់ / Regional Adaptation",
+          "weight": 0.2,
+          "description": "Specific recommendations for different provinces"
+        },
+        {
+          "criterion_id": "completeness",
+          "criterion_name": "ភាពពេញលេញ / Completeness",
+          "weight": 0.15,
+          "description": "Coverage of all requested topics"
+        }
+      ]
+    }
+  ],
+  "evaluation_config": {
+    "grading_method": "pairwise_comparison",
+    "baseline_models": ["gpt-4", "claude-3", "seallm-7b"],
+    "human_expert_validation": true,
+    "automated_grader_config": {
+      "model": "gpt-4",
+      "temperature": 0.1,
+      "agreement_threshold": 0.7
+    },
+    "economic_analysis": {
+      "calculate_roi": true,
+      "include_sector_impact": true,
+      "currency": "USD_KHR"
+    },
+    "language_evaluation": {
+      "check_khmer_quality": true,
+      "check_code_switching": true,
+      "terminology_validation": true
+    }
+  }
+}

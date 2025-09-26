@@ -1,0 +1,144 @@
+{
+  "metadata": {
+    "version": "1.0.0",
+    "dataset": "gdpval-sample",
+    "creation_date": "2025-09-26",
+    "task_count": 3
+  },
+  "tasks": [
+    {
+      "task_id": "SAMPLE-FIN-001",
+      "occupation": "Financial Analyst / អ្នកវិភាគហិរញ្ញវត្ថុ",
+      "category": "finance",
+      "industry": "Banking",
+      "gdp_contribution_percent": 8.5,
+      "task_metadata": {
+        "language": "khmer",
+        "difficulty_level": 3,
+        "estimated_time_minutes": 30,
+        "wage_per_hour_usd": 25
+      },
+      "prompt": {
+        "instruction": "វិភាគផលប៉ះពាល់នៃការប្រើប្រាស់ប្រព័ន្ធទូទាត់ឌីជីថលលើសេដ្ឋកិច្ចកម្ពុជា។ សូមផ្តល់ទិន្នន័យជាក់ស្តែង និងការព្យាករណ៍សម្រាប់ឆ្នាំ 2025។",
+        "instruction_english": "Analyze the impact of digital payment systems on Cambodia's economy. Provide concrete data and projections for 2025.",
+        "context": "អ្នកជាអ្នកវិភាគហិរញ្ញវត្ថុនៅធនាគារជាតិនៃកម្ពុជា។",
+        "context_english": "You are a financial analyst at the National Bank of Cambodia.",
+        "output_format": "structured_report",
+        "expected_sections": [
+          "បទសង្ខេប / Executive Summary",
+          "ការវិភាគទិន្នន័យ / Data Analysis",
+          "ការព្យាករណ៍ / Projections",
+          "អនុសាសន៍ / Recommendations"
+        ]
+      },
+      "grading_criteria": [
+        {
+          "criterion_id": "accuracy",
+          "criterion_name": "ភាពត្រឹមត្រូវ / Accuracy",
+          "weight": 2.0,
+          "max_score": 10.0,
+          "expected_keywords": ["digital payment", "ប្រព័ន្ធទូទាត់", "GDP", "economic growth"]
+        },
+        {
+          "criterion_id": "completeness",
+          "criterion_name": "ភាពពេញលេញ / Completeness",
+          "weight": 1.5,
+          "max_score": 10.0,
+          "min_response_length": 500
+        },
+        {
+          "criterion_id": "language_quality",
+          "criterion_name": "គុណភាពភាសា / Language Quality",
+          "weight": 1.0,
+          "max_score": 10.0
+        }
+      ],
+      "reference_files": []
+    },
+    {
+      "task_id": "SAMPLE-TECH-001",
+      "occupation": "Software Developer / អ្នកអភិវឌ្ឍន៍កម្មវិធី",
+      "category": "technology",
+      "industry": "Information Technology",
+      "gdp_contribution_percent": 4.2,
+      "task_metadata": {
+        "language": "bilingual",
+        "difficulty_level": 4,
+        "estimated_time_minutes": 45,
+        "wage_per_hour_usd": 30
+      },
+      "prompt": {
+        "instruction": "Design a mobile application for Cambodian farmers to track crop prices and weather. Include database schema and API endpoints.",
+        "instruction_khmer": "រចនាកម្មវិធីទូរស័ព្ទសម្រាប់កសិករកម្ពុជាដើម្បីតាមដានតម្លៃដំណាំ និងអាកាសធាតុ។ រួមបញ្ចូលគ្រោងមូលដ្ឋានទិន្នន័យ និងចំណុច API។",
+        "context": "You are developing for rural areas with limited internet connectivity.",
+        "context_khmer": "អ្នកកំពុងអភិវឌ្ឍសម្រាប់តំបន់ជនបទដែលមានការតភ្ជាប់អ៊ីនធឺណិតមានកម្រិត។",
+        "output_format": "technical_specification",
+        "expected_sections": [
+          "System Architecture",
+          "Database Schema",
+          "API Endpoints",
+          "Offline Capabilities"
+        ]
+      },
+      "grading_criteria": [
+        {
+          "criterion_id": "technical_correctness",
+          "criterion_name": "Technical Correctness",
+          "weight": 2.0,
+          "max_score": 10.0,
+          "required_technical_terms": ["API", "database", "schema", "endpoint", "offline"]
+        },
+        {
+          "criterion_id": "completeness",
+          "criterion_name": "Completeness",
+          "weight": 1.5,
+          "max_score": 10.0,
+          "min_response_length": 600
+        }
+      ],
+      "reference_files": []
+    },
+    {
+      "task_id": "SAMPLE-AGRI-001",
+      "occupation": "Agricultural Extension Officer / មន្ត្រីផ្សព្វផ្សាយកសិកម្ម",
+      "category": "agriculture",
+      "industry": "Agriculture",
+      "gdp_contribution_percent": 22.0,
+      "task_metadata": {
+        "language": "khmer",
+        "difficulty_level": 2,
+        "estimated_time_minutes": 20,
+        "wage_per_hour_usd": 15
+      },
+      "prompt": {
+        "instruction": "ពន្យល់ពីវិធីសាស្ត្រកែលម្អទិន្នផលស្រូវដោយប្រើបច្ចេកទេសកសិកម្មទំនើប។ ផ្តោតលើការប្រើប្រាស់ជីគីមី និងប្រព័ន្ធស្រោចស្រព។",
+        "instruction_english": "Explain methods to improve rice yield using modern agricultural techniques. Focus on fertilizer use and irrigation systems.",
+        "context": "អ្នកកំពុងប្រឹក្សាជាមួយកសិករខ្នាតតូចនៅខេត្តបាត់ដំបង។",
+        "context_english": "You are consulting with small-scale farmers in Battambang province.",
+        "output_format": "educational_guide",
+        "expected_sections": [
+          "សេចក្តីផ្តើម / Introduction",
+          "បច្ចេកទេស / Techniques",
+          "ការអនុវត្ត / Implementation",
+          "លទ្ធផលរំពឹងទុក / Expected Results"
+        ]
+      },
+      "grading_criteria": [
+        {
+          "criterion_id": "accuracy",
+          "criterion_name": "ភាពត្រឹមត្រូវ / Accuracy",
+          "weight": 1.5,
+          "max_score": 10.0,
+          "expected_keywords": ["ជី", "ស្រោចស្រព", "ទិន្នផល", "ស្រូវ"]
+        },
+        {
+          "criterion_id": "language_quality",
+          "criterion_name": "គុណភាពភាសាខ្មែរ / Khmer Language Quality",
+          "weight": 2.0,
+          "max_score": 10.0
+        }
+      ],
+      "reference_files": []
+    }
+  ]
+}

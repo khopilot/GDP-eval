@@ -1,0 +1,527 @@
+# .github/workflows/gdpval-evaluation.yml
+name: GDPval Khmer Evaluation Pipeline
+
+on:
+  push:
+    branches: [ main, develop ]
+    paths:
+      - 'models/**'
+      - 'src/**'
+      - 'data/tasks/**'
+      - 'configs/**'
+  pull_request:
+    branches: [ main ]
+  schedule:
+    # Run weekly evaluation on Sunday at 00:00 UTC
+    - cron: '0 0 * * 0'
+  workflow_dispatch:
+    inputs:
+      model_path:
+        description: 'Model path to evaluate'
+        required: true
+        default: 'models/khmer_llm'
+      categories:
+        description: 'Task categories (space-separated)'
+        required: false
+        default: 'finance technology healthcare'
+      baseline_models:
+        description: 'Include baseline models'
+        required: false
+        default: 'true'
+
+env:
+  PYTHON_VERSION: '3.10'
+  CUDA_VERSION: '11.8'
+  CACHE_VERSION: 'v1'
+
+jobs:
+  # Job 1: Code Quality and Tests
+  quality-check:
+    name: Code Quality & Unit Tests
+    runs-on: ubuntu-latest
+    
+    steps:
+      - uses: actions/checkout@v4
+      
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: ${{ env.PYTHON_VERSION }}
+      
+      - name: Cache Python dependencies
+        uses: actions/cache@v3
+        with:
+          path: ~/.cache/pip
+          key: ${{ runner.os }}-pip-${{ env.CACHE_VERSION }}-${{ hashFiles('requirements.txt') }}
+          restore-keys: |
+            ${{ runner.os }}-pip-${{ env.CACHE_VERSION }}-
+      
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+          pip install flake8 black mypy pytest pytest-cov
+      
+      - name: Run Black formatter check
+        run: black --check src/ tests/ scripts/
+      
+      - name: Run Flake8 linter
+        run: flake8 src/ tests/ --max-line-length=120 --ignore=E203,W503
+      
+      - name: Run MyPy type checker
+        run: mypy src/ --ignore-missing-imports
+      
+      - name: Run unit tests with coverage
+        run: |
+          pytest tests/unit/ -v --cov=src --cov-report=xml --cov-report=html
+      
+      - name: Upload coverage reports
+        uses: codecov/codecov-action@v3
+        with:
+          file: ./coverage.xml
+          flags: unittests
+          name: codecov-umbrella
+      
+      - name: Archive test results
+        if: always()
+        uses: actions/upload-artifact@v3
+        with:
+          name: test-results
+          path: |
+            htmlcov/
+            coverage.xml
+
+  # Job 2: Validate Tasks and Data
+  validate-data:
+    name: Validate Tasks & Data
+    runs-on: ubuntu-latest
+    
+    steps:
+      - uses: actions/checkout@v4
+      
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: ${{ env.PYTHON_VERSION }}
+      
+      - name: Install validation dependencies
+        run: |
+          pip install jsonschema pyyaml pandas
+      
+      - name: Validate task JSON files
+        run: |
+          python scripts/validate_tasks.py --data-dir data/tasks/
+      
+      - name: Check Khmer text encoding
+        run: |
+          python -c "
+          import json
+          import glob
+          
+          for file in glob.glob('data/tasks/**/*.json', recursive=True):
+              with open(file, 'r', encoding='utf-8') as f:
+                  data = json.load(f)
+                  print(f'✓ {file} - Valid UTF-8 Khmer text')
+          "
+      
+      - name: Validate reference files exist
+        run: |
+          python scripts/check_reference_files.py
+      
+      - name: Generate task statistics
+        run: |
+          python scripts/task_statistics.py --output task_stats.json
+      
+      - name: Upload task statistics
+        uses: actions/upload-artifact@v3
+        with:
+          name: task-statistics
+          path: task_stats.json
+
+  # Job 3: Build and Test Docker Image
+  docker-build:
+    name: Build Docker Image
+    runs-on: ubuntu-latest
+    
+    steps:
+      - uses: actions/checkout@v4
+      
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v3
+      
+      - name: Log in to GitHub Container Registry
+        uses: docker/login-action@v3
+        with:
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+      
+      - name: Build and push Docker image
+        uses: docker/build-push-action@v5
+        with:
+          context: .
+          push: true
+          tags: |
+            ghcr.io/${{ github.repository }}/gdpval-khmer:latest
+            ghcr.io/${{ github.repository }}/gdpval-khmer:${{ github.sha }}
+          cache-from: type=gha
+          cache-to: type=gha,mode=max
+      
+      - name: Test Docker image
+        run: |
+          docker run --rm ghcr.io/${{ github.repository }}/gdpval-khmer:latest \
+            python scripts/run_evaluation.py --help
+
+  # Job 4: Small-scale Evaluation (PR check)
+  quick-evaluation:
+    name: Quick Evaluation (Sample Tasks)
+    runs-on: ubuntu-latest
+    needs: [quality-check, validate-data]
+    if: github.event_name == 'pull_request'
+    
+    steps:
+      - uses: actions/checkout@v4
+      
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: ${{ env.PYTHON_VERSION }}
+      
+      - name: Cache dependencies
+        uses: actions/cache@v3
+        with:
+          path: |
+            ~/.cache/pip
+            ~/.cache/huggingface
+          key: ${{ runner.os }}-eval-${{ env.CACHE_VERSION }}-${{ hashFiles('requirements.txt') }}
+      
+      - name: Install dependencies
+        run: |
+          pip install -r requirements.txt
+      
+      - name: Download sample model
+        run: |
+          # Download a small model for testing
+          python scripts/download_model.py --model-size small --output models/test_model
+      
+      - name: Run evaluation on sample tasks
+        env:
+          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+        run: |
+          python scripts/run_evaluation.py \
+            --model-path models/test_model \
+            --data-dir data/tasks/samples \
+            --output-dir results/pr_${{ github.event.pull_request.number }} \
+            --categories technology \
+            --no-economic \
+            --max-tasks 5
+      
+      - name: Generate PR comment
+        run: |
+          python scripts/generate_pr_report.py \
+            --results results/pr_${{ github.event.pull_request.number }} \
+            --output pr_comment.md
+      
+      - name: Comment PR with results
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const fs = require('fs');
+            const comment = fs.readFileSync('pr_comment.md', 'utf8');
+            github.rest.issues.createComment({
+              issue_number: context.issue.number,
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              body: comment
+            });
+
+  # Job 5: Full Evaluation (GPU)
+  full-evaluation:
+    name: Full Model Evaluation
+    runs-on: [self-hosted, gpu]  # Requires self-hosted runner with GPU
+    needs: [quality-check, validate-data]
+    if: |
+      github.event_name == 'push' && github.ref == 'refs/heads/main' ||
+      github.event_name == 'schedule' ||
+      github.event_name == 'workflow_dispatch'
+    
+    strategy:
+      matrix:
+        category: [finance, technology, healthcare, agriculture, tourism]
+    
+    steps:
+      - uses: actions/checkout@v4
+      
+      - name: Set up Python with CUDA
+        run: |
+          # Assuming conda is available on self-hosted runner
+          conda create -n gdpval python=${{ env.PYTHON_VERSION }} -y
+          conda activate gdpval
+          conda install pytorch torchvision torchaudio pytorch-cuda=${{ env.CUDA_VERSION }} -c pytorch -c nvidia -y
+      
+      - name: Install dependencies
+        run: |
+          conda activate gdpval
+          pip install -r requirements.txt
+      
+      - name: Download/Mount model
+        run: |
+          # Mount or download the full model
+          if [ -d "/mnt/models/khmer_llm" ]; then
+            ln -s /mnt/models/khmer_llm models/khmer_llm
+          else
+            python scripts/download_model.py --model-name khmer_llm --output models/
+          fi
+      
+      - name: Run evaluation for ${{ matrix.category }}
+        env:
+          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+          HF_TOKEN: ${{ secrets.HF_TOKEN }}
+        run: |
+          conda activate gdpval
+          
+          MODEL_PATH="${{ github.event.inputs.model_path || 'models/khmer_llm' }}"
+          
+          python scripts/run_evaluation.py \
+            --model-path $MODEL_PATH \
+            --data-dir data/tasks/gold_set \
+            --output-dir results/eval_${{ github.sha }}/${{ matrix.category }} \
+            --categories ${{ matrix.category }} \
+            --baseline-models gpt-4 claude-3 \
+            --parallel \
+            --verbose
+      
+      - name: Upload evaluation results
+        uses: actions/upload-artifact@v3
+        with:
+          name: evaluation-results-${{ matrix.category }}
+          path: results/eval_${{ github.sha }}/${{ matrix.category }}/
+          retention-days: 30
+
+  # Job 6: Aggregate Results and Analysis
+  aggregate-analysis:
+    name: Aggregate Results & Economic Analysis
+    runs-on: ubuntu-latest
+    needs: full-evaluation
+    if: success()
+    
+    steps:
+      - uses: actions/checkout@v4
+      
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: ${{ env.PYTHON_VERSION }}
+      
+      - name: Install analysis dependencies
+        run: |
+          pip install pandas numpy scipy matplotlib plotly dash
+      
+      - name: Download all evaluation results
+        uses: actions/download-artifact@v3
+        with:
+          path: results/
+      
+      - name: Aggregate results
+        run: |
+          python scripts/aggregate_results.py \
+            --input-dir results/ \
+            --output results/aggregated_results.json
+      
+      - name: Run economic impact analysis
+        run: |
+          python scripts/economic_analysis.py \
+            --results results/aggregated_results.json \
+            --output results/economic_impact.json
+      
+      - name: Generate visualizations
+        run: |
+          python scripts/generate_visualizations.py \
+            --results results/aggregated_results.json \
+            --economic results/economic_impact.json \
+            --output results/visualizations/
+      
+      - name: Generate comprehensive report
+        run: |
+          python scripts/generate_report.py \
+            --results results/aggregated_results.json \
+            --economic results/economic_impact.json \
+            --output results/evaluation_report.md \
+            --format markdown
+      
+      - name: Upload final report
+        uses: actions/upload-artifact@v3
+        with:
+          name: evaluation-report
+          path: |
+            results/evaluation_report.md
+            results/aggregated_results.json
+            results/economic_impact.json
+            results/visualizations/
+      
+      - name: Update leaderboard
+        if: github.ref == 'refs/heads/main'
+        run: |
+          python scripts/update_leaderboard.py \
+            --results results/aggregated_results.json \
+            --leaderboard docs/leaderboard.md
+      
+      - name: Commit leaderboard updates
+        if: github.ref == 'refs/heads/main'
+        run: |
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action"
+          git add docs/leaderboard.md
+          git diff --quiet && git diff --staged --quiet || \
+            git commit -m "Update leaderboard with evaluation results from ${{ github.sha }}"
+          git push
+
+  # Job 7: Deploy Dashboard
+  deploy-dashboard:
+    name: Deploy Results Dashboard
+    runs-on: ubuntu-latest
+    needs: aggregate-analysis
+    if: github.ref == 'refs/heads/main'
+    
+    steps:
+      - uses: actions/checkout@v4
+      
+      - name: Download results
+        uses: actions/download-artifact@v3
+        with:
+          name: evaluation-report
+          path: dashboard/data/
+      
+      - name: Build dashboard
+        run: |
+          cd dashboard
+          npm install
+          npm run build
+      
+      - name: Deploy to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./dashboard/dist
+      
+      - name: Deploy to Streamlit Cloud
+        env:
+          STREAMLIT_TOKEN: ${{ secrets.STREAMLIT_TOKEN }}
+        run: |
+          # Deploy Streamlit dashboard
+          streamlit deploy dashboard/app.py \
+            --server.port 8501 \
+            --server.headless true
+
+  # Job 8: Notification
+  notify:
+    name: Send Notifications
+    runs-on: ubuntu-latest
+    needs: [aggregate-analysis]
+    if: always()
+    
+    steps:
+      - name: Determine status
+        id: status
+        run: |
+          if [ "${{ needs.aggregate-analysis.result }}" == "success" ]; then
+            echo "status=success" >> $GITHUB_OUTPUT
+            echo "emoji=✅" >> $GITHUB_OUTPUT
+          else
+            echo "status=failure" >> $GITHUB_OUTPUT
+            echo "emoji=❌" >> $GITHUB_OUTPUT
+          fi
+      
+      - name: Send Slack notification
+        if: env.SLACK_WEBHOOK_URL != ''
+        env:
+          SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
+        run: |
+          curl -X POST $SLACK_WEBHOOK_URL \
+            -H 'Content-Type: application/json' \
+            -d '{
+              "text": "${{ steps.status.outputs.emoji }} GDPval Evaluation Complete",
+              "blocks": [
+                {
+                  "type": "section",
+                  "text": {
+                    "type": "mrkdwn",
+                    "text": "*GDPval Evaluation Results*\n*Status:* ${{ steps.status.outputs.status }}\n*Branch:* ${{ github.ref }}\n*Commit:* ${{ github.sha }}\n*Triggered by:* ${{ github.event_name }}"
+                  }
+                },
+                {
+                  "type": "actions",
+                  "elements": [
+                    {
+                      "type": "button",
+                      "text": {
+                        "type": "plain_text",
+                        "text": "View Results"
+                      },
+                      "url": "${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}"
+                    }
+                  ]
+                }
+              ]
+            }'
+      
+      - name: Create GitHub Release
+        if: github.event_name == 'push' && github.ref == 'refs/heads/main' && needs.aggregate-analysis.result == 'success'
+        uses: actions/create-release@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          tag_name: eval-${{ github.sha }}
+          release_name: Evaluation Results ${{ github.sha }}
+          body: |
+            ## Evaluation Results
+            
+            View the full evaluation report in the artifacts.
+            
+            **Commit:** ${{ github.sha }}
+            **Date:** ${{ github.event.head_commit.timestamp }}
+            **Author:** ${{ github.event.head_commit.author.name }}
+          draft: false
+          prerelease: false
+
+# Reusable workflow for model evaluation
+---
+# .github/workflows/evaluate-model.yml
+name: Evaluate Custom Model
+
+on:
+  workflow_call:
+    inputs:
+      model_path:
+        required: true
+        type: string
+      categories:
+        required: false
+        type: string
+        default: 'all'
+      use_baselines:
+        required: false
+        type: boolean
+        default: true
+    secrets:
+      OPENAI_API_KEY:
+        required: true
+      ANTHROPIC_API_KEY:
+        required: false
+
+jobs:
+  evaluate:
+    runs-on: [self-hosted, gpu]
+    steps:
+      - uses: actions/checkout@v4
+      
+      - name: Run evaluation
+        env:
+          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+        run: |
+          python scripts/run_evaluation.py \
+            --model-path ${{ inputs.model_path }} \
+            --categories ${{ inputs.categories }} \
+            ${{ inputs.use_baselines && '--baseline-models gpt-4 claude-3' || '' }}

@@ -1,0 +1,93 @@
+# Core Dependencies
+pandas>=2.0.0
+numpy>=1.24.0
+pyyaml>=6.0
+tqdm>=4.65.0
+python-dotenv>=1.0.0
+
+# Machine Learning & NLP
+torch>=2.0.0
+transformers>=4.30.0
+sentence-transformers>=2.2.0
+tokenizers>=0.13.0
+
+# API & Async
+aiohttp>=3.8.0
+aiofiles>=23.0
+requests>=2.31.0
+httpx>=0.24.0
+
+# LLM Providers (Free Options)
+huggingface-hub>=0.16.0
+google-generativeai>=0.3.0  # For Gemini
+ollama>=0.1.0  # For local models
+
+# Data Processing
+openpyxl>=3.1.0  # Excel support
+xlrd>=2.0.0  # Legacy Excel support
+python-dateutil>=2.8.0
+
+# Development Tools
+pytest>=7.0.0
+pytest-cov>=4.0.0
+pytest-asyncio>=0.21.0
+black>=23.0.0
+ruff>=0.0.280
+mypy>=1.0.0
+ipython>=8.0.0
+
+# Logging & Monitoring
+loguru>=0.7.0
+rich>=13.0.0  # Better terminal output
+
+# Optional: PDF Processing
+# PyPDF2>=3.0.0
+# pdfplumber>=0.9.0
+
+# Optional: Translation APIs
+# googletrans==3.1.0a0  # Free Google Translate
+# deep-translator>=1.11.0  # Multiple translation services
+
+# Optional: Economic Data APIs
+# pandas-datareader>=0.10.0  # Financial data
+# yfinance>=0.2.0  # Yahoo Finance data
+
+# Caching
+diskcache>=5.6.0  # Disk-based cache for API responses
+redis>=4.6.0  # Optional: Redis caching
+
+# Web Framework (for demo app)
+gradio>=3.40.0  # Easy UI for demos
+streamlit>=1.25.0  # Alternative UI framework
+
+# Database (for metrics storage)
+sqlalchemy>=2.0.0
+alembic>=1.11.0
+
+# Rate Limiting
+ratelimit>=2.2.1
+backoff>=2.2.1
+
+# Environment Management
+python-decouple>=3.8
+
+# JSON Schema Validation
+jsonschema>=4.19.0
+
+# HTTP Server (for API endpoints)
+fastapi>=0.100.0
+uvicorn>=0.23.0
+
+# Khmer Language Support
+pyicu>=2.11  # International Components for Unicode
+# khmer-nltk>=1.0  # If available
+
+# Monitoring & Telemetry
+prometheus-client>=0.17.0  # Metrics export
+opentelemetry-api>=1.19.0
+opentelemetry-sdk>=1.19.0
+
+# Optional: Cloud Provider SDKs
+# boto3>=1.28.0  # AWS
+# google-cloud-storage>=2.10.0  # GCP
+# azure-storage-blob>=12.17.0  # Azure

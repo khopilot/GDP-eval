@@ -1,0 +1,171 @@
+version: '3.8'
+
+services:
+  # Main GDP evaluation application
+  gdpval:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: gdpval-app
+    ports:
+      - "7860:7860"  # Gradio UI
+      - "8501:8501"  # Streamlit UI (alternative)
+      - "8000:8000"  # Metrics endpoint
+    environment:
+      - GRADIO_SERVER_NAME=0.0.0.0
+      - GRADIO_SERVER_PORT=7860
+      - LOG_LEVEL=INFO
+      - ENABLE_CACHE=true
+      - CACHE_DIR=/app/.cache
+      - OUTPUT_DIR=/app/outputs
+      - DATA_DIR=/app/data
+    env_file:
+      - .env
+    volumes:
+      - ./data:/app/data:ro
+      - ./outputs:/app/outputs
+      - ./logs:/app/logs
+      - gdpval-cache:/app/.cache
+    networks:
+      - gdpval-network
+    depends_on:
+      - redis
+      - ollama
+    restart: unless-stopped
+
+  # Ollama for local LLM execution
+  ollama:
+    image: ollama/ollama:latest
+    container_name: gdpval-ollama
+    ports:
+      - "11434:11434"
+    volumes:
+      - ollama-data:/root/.ollama
+    networks:
+      - gdpval-network
+    restart: unless-stopped
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: all
+              capabilities: [gpu]
+    # Pull models on startup
+    entrypoint: ["/bin/sh", "-c"]
+    command: |
+      "ollama serve &
+      sleep 5
+      ollama pull llama2
+      ollama pull mistral
+      tail -f /dev/null"
+
+  # LibreTranslate for translation services
+  libretranslate:
+    image: libretranslate/libretranslate:latest
+    container_name: gdpval-translator
+    ports:
+      - "5000:5000"
+    environment:
+      - LT_LOAD_ONLY=en,km  # Load only English and Khmer if available
+      - LT_DISABLE_WEB_UI=false
+      - LT_CHAR_LIMIT=5000
+      - LT_REQ_LIMIT=100
+      - LT_BATCH_LIMIT=5
+    networks:
+      - gdpval-network
+    restart: unless-stopped
+
+  # Redis for caching
+  redis:
+    image: redis:7-alpine
+    container_name: gdpval-redis
+    ports:
+      - "6379:6379"
+    volumes:
+      - redis-data:/data
+    networks:
+      - gdpval-network
+    restart: unless-stopped
+    command: redis-server --appendonly yes --maxmemory 256mb --maxmemory-policy allkeys-lru
+
+  # Optional: PostgreSQL for storing results
+  postgres:
+    image: postgres:15-alpine
+    container_name: gdpval-postgres
+    environment:
+      - POSTGRES_DB=gdpval
+      - POSTGRES_USER=gdpval
+      - POSTGRES_PASSWORD=gdpval_secure_password
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres-data:/var/lib/postgresql/data
+      - ./scripts/init.sql:/docker-entrypoint-initdb.d/init.sql:ro
+    networks:
+      - gdpval-network
+    restart: unless-stopped
+
+  # Optional: Prometheus for metrics
+  prometheus:
+    image: prom/prometheus:latest
+    container_name: gdpval-prometheus
+    ports:
+      - "9090:9090"
+    volumes:
+      - ./configs/prometheus.yml:/etc/prometheus/prometheus.yml:ro
+      - prometheus-data:/prometheus
+    command:
+      - '--config.file=/etc/prometheus/prometheus.yml'
+      - '--storage.tsdb.path=/prometheus'
+      - '--web.console.libraries=/usr/share/prometheus/console_libraries'
+      - '--web.console.templates=/usr/share/prometheus/consoles'
+    networks:
+      - gdpval-network
+    restart: unless-stopped
+
+  # Optional: Grafana for visualization
+  grafana:
+    image: grafana/grafana:latest
+    container_name: gdpval-grafana
+    ports:
+      - "3000:3000"
+    environment:
+      - GF_SECURITY_ADMIN_PASSWORD=admin
+      - GF_INSTALL_PLUGINS=redis-datasource
+    volumes:
+      - grafana-data:/var/lib/grafana
+      - ./configs/grafana:/etc/grafana/provisioning:ro
+    networks:
+      - gdpval-network
+    depends_on:
+      - prometheus
+    restart: unless-stopped
+
+  # Nginx reverse proxy (optional)
+  nginx:
+    image: nginx:alpine
+    container_name: gdpval-nginx
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - ./configs/nginx.conf:/etc/nginx/nginx.conf:ro
+      - ./configs/ssl:/etc/nginx/ssl:ro
+    networks:
+      - gdpval-network
+    depends_on:
+      - gdpval
+    restart: unless-stopped
+
+networks:
+  gdpval-network:
+    driver: bridge
+
+volumes:
+  gdpval-cache:
+  ollama-data:
+  redis-data:
+  postgres-data:
+  prometheus-data:
+  grafana-data:
