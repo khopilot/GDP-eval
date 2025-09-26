@@ -1,0 +1,176 @@
+# vLLM Configuration for Production Deployment
+# Optimized for Khmer language models and high throughput
+
+# Model Settings
+model:
+  # Path to your fine-tuned model (local or HuggingFace)
+  model_path: "models/khmer-llama-7b"  # Change to your model
+  model_name: "khmer-llama-7b"
+
+  # Model precision (auto, half, float16, bfloat16, float32)
+  dtype: "auto"
+
+  # Maximum model context length (tokens)
+  max_model_len: 4096
+
+  # Trust remote code (for custom models)
+  trust_remote_code: true
+
+  # Quantization method (null, awq, gptq, squeezellm)
+  quantization: null
+
+  # Download directory for models
+  download_dir: "models/cache"
+
+# GPU Configuration
+gpu:
+  # GPU memory utilization (0.0 to 1.0)
+  # Higher values allow larger batches but may cause OOM
+  gpu_memory_utilization: 0.9
+
+  # Number of GPUs for tensor parallelism
+  # Set to number of available GPUs for large models
+  tensor_parallel_size: 1
+
+  # CPU swap space in GB (for offloading)
+  swap_space: 4
+
+  # Disable CUDA graphs for debugging
+  enforce_eager: false
+
+# Inference Settings
+inference:
+  # Maximum batch size
+  max_batch_size: 256
+
+  # Maximum input length (tokens)
+  max_input_length: 2048
+
+  # Maximum total tokens (input + output)
+  max_total_tokens: 4096
+
+  # Default generation parameters
+  temperature: 0.7
+  top_p: 0.95
+  top_k: 50
+  repetition_penalty: 1.1
+
+  # Random seed for reproducibility
+  seed: 42
+
+# Khmer Language Settings
+khmer:
+  # Use custom Khmer tokenizer
+  use_khmer_tokenizer: false
+
+  # Path to custom Khmer tokenizer (if use_khmer_tokenizer is true)
+  khmer_tokenizer_path: null
+
+  # Handle mixed Khmer-English text
+  handle_mixed_language: true
+
+  # Special tokens for Khmer
+  special_tokens:
+    khmer_start: "<khmer>"
+    khmer_end: "</khmer>"
+    english_start: "<english>"
+    english_end: "</english>"
+
+# Server Settings (for API deployment)
+server:
+  # Host and port
+  host: "0.0.0.0"
+  port: 8000
+
+  # API key for authentication (optional)
+  api_key: null
+
+  # CORS settings
+  allow_credentials: false
+  allowed_origins: ["*"]
+  allowed_methods: ["*"]
+  allowed_headers: ["*"]
+
+  # Request limits
+  max_num_seqs: 256
+
+  # Logging
+  disable_log_requests: false
+
+  # Health check endpoint
+  health_check_enabled: true
+
+# Performance Optimization
+optimization:
+  # Use Flash Attention 2 (if available)
+  use_flash_attention: true
+
+  # Enable continuous batching
+  continuous_batching: true
+
+  # PagedAttention settings
+  block_size: 16
+  num_gpu_blocks_override: null
+
+  # Speculative decoding (experimental)
+  speculative_model: null
+  num_speculative_tokens: null
+
+# Monitoring
+monitoring:
+  # Enable Prometheus metrics
+  enable_metrics: true
+  metrics_port: 9090
+
+  # Log performance stats
+  log_stats_interval: 10  # seconds
+
+  # Track GPU utilization
+  track_gpu_metrics: true
+
+# Model Registry (for multiple models)
+model_registry:
+  models:
+    - name: "khmer-base"
+      path: "models/khmer-llama-7b"
+      dtype: "float16"
+      max_batch_size: 256
+
+    - name: "khmer-finance"
+      path: "models/khmer-finance-7b"
+      dtype: "float16"
+      max_batch_size: 128
+
+    - name: "khmer-medical"
+      path: "models/khmer-medical-7b"
+      dtype: "float16"
+      max_batch_size: 128
+
+  # Default model to load
+  default_model: "khmer-base"
+
+  # Allow model switching via API
+  allow_model_switching: true
+
+# Deployment Profiles
+profiles:
+  # Development profile (lower resource usage)
+  development:
+    gpu_memory_utilization: 0.5
+    max_batch_size: 32
+    tensor_parallel_size: 1
+
+  # Production profile (maximum performance)
+  production:
+    gpu_memory_utilization: 0.95
+    max_batch_size: 256
+    tensor_parallel_size: 4
+
+  # Testing profile (for benchmarking)
+  testing:
+    gpu_memory_utilization: 0.8
+    max_batch_size: 128
+    tensor_parallel_size: 2
+
+# Active profile
+active_profile: "development"

@@ -1,0 +1,221 @@
+# Model Registry Configuration
+# Central configuration for model management
+
+registry:
+  # Base path for registry storage
+  base_path: "models/registry"
+
+  # Database configuration
+  database:
+    path: "models/registry/registry.db"
+    backup_enabled: true
+    backup_interval_hours: 24
+
+  # Model storage paths
+  storage:
+    checkpoints: "models/store/checkpoints"
+    adapters: "models/store/adapters"
+    quantized: "models/store/quantized"
+    exports: "models/store/exports"
+    temp: "/tmp/gdpval_models"
+
+# Naming conventions
+naming:
+  # Model ID format: {prefix}-{task}-{version}
+  id_format: "{name}-v{version}"
+
+  # Version format
+  version_format: "semantic"  # semantic, date, sequential
+
+  # Prefixes by model type
+  prefixes:
+    base: "base"
+    finetuned: "ft"
+    adapter: "lora"
+    quantized: "quant"
+    merged: "merged"
+
+# Auto-discovery settings
+discovery:
+  enabled: true
+
+  # Paths to scan for models
+  scan_paths:
+    - "models/local"
+    - "models/checkpoints"
+    - "~/.cache/huggingface/hub"
+
+  # File patterns to identify models
+  patterns:
+    pytorch: ["pytorch_model*.bin", "model.safetensors"]
+    tensorflow: ["saved_model.pb"]
+    onnx: ["*.onnx"]
+    gguf: ["*.gguf"]
+    lora: ["adapter_model.bin", "adapter_config.json"]
+
+  # Scan interval (minutes)
+  scan_interval: 60
+
+# Metadata requirements
+metadata:
+  # Required fields for registration
+  required_fields:
+    - name
+    - version
+    - task
+    - framework
+
+  # Recommended fields
+  recommended_fields:
+    - description
+    - training_dataset
+    - base_model
+    - performance_metrics
+    - hardware_requirements
+
+  # Validation rules
+  validation:
+    min_description_length: 20
+    valid_tasks:
+      - text-generation
+      - text-classification
+      - translation
+      - summarization
+      - question-answering
+    valid_frameworks:
+      - pytorch
+      - tensorflow
+      - onnx
+      - gguf
+
+# Model categories
+categories:
+  # Khmer language models
+  khmer:
+    tags: ["khmer", "km", "cambodian"]
+    required_capabilities:
+      - supports_khmer
+      - khmer_tokenizer
+
+  # Financial models
+  finance:
+    tags: ["finance", "banking", "economic"]
+    domains: ["banking", "microfinance", "investment"]
+
+  # Medical models
+  medical:
+    tags: ["medical", "healthcare", "clinical"]
+    domains: ["diagnosis", "treatment", "pharmacy"]
+
+  # Educational models
+  education:
+    tags: ["education", "teaching", "learning"]
+    domains: ["curriculum", "assessment", "tutoring"]
+
+# Version control
+versioning:
+  # Auto-increment rules
+  auto_increment:
+    patch: true  # Auto-increment patch version
+    minor: false  # Require manual minor version bump
+    major: false  # Require manual major version bump
+
+  # Version comparison
+  comparison_metrics:
+    - accuracy
+    - khmer_bleu
+    - perplexity
+    - latency_ms_p50
+
+  # Promotion rules (dev -> staging -> production)
+  promotion:
+    staging_requirements:
+      min_accuracy: 0.7
+      min_khmer_bleu: 0.6
+      max_latency_ms: 1000
+
+    production_requirements:
+      min_accuracy: 0.8
+      min_khmer_bleu: 0.7
+      max_latency_ms: 500
+      min_test_samples: 1000
+
+# Storage management
+storage:
+  # Compression settings
+  compression:
+    enabled: true
+    format: "tar.gz"
+    level: 6  # 1-9, higher = better compression
+
+  # Retention policy
+  retention:
+    keep_versions: 5  # Keep last N versions
+    archive_old: true  # Archive old versions
+    delete_after_days: 90  # Delete archived after N days
+
+  # Size limits
+  limits:
+    max_model_size_gb: 50
+    max_total_storage_gb: 500
+    warning_threshold_percent: 80
+
+# Integration settings
+integrations:
+  # HuggingFace Hub
+  huggingface:
+    enabled: true
+    auto_import: true
+    organizations: ["khopilot"]
+
+  # MLflow
+  mlflow:
+    enabled: false
+    tracking_uri: "http://localhost:5000"
+
+  # Weights & Biases
+  wandb:
+    enabled: false
+    entity: "your-entity"
+    project: "gdpval-models"
+
+# Export settings
+export:
+  formats:
+    - json
+    - yaml
+    - csv
+    - markdown
+
+  # Model card generation
+  model_card:
+    template: "configs/model_card_template.md"
+    auto_generate: true
+    include_metrics: true
+    include_examples: true
+
+# Monitoring
+monitoring:
+  # Track model usage
+  track_usage: true
+
+  # Performance monitoring
+  track_performance: true
+
+  # Alert thresholds
+  alerts:
+    performance_degradation: 10  # percent
+    error_rate: 5  # percent
+    storage_full: 90  # percent
+
+# Security
+security:
+  # Model verification
+  verify_checksums: true
+
+  # Access control
+  require_authentication: false
+
+  # Audit logging
+  audit_log: true
+  audit_log_path: "models/registry/audit.log"

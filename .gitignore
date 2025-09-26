@@ -25,7 +25,7 @@ htmlcov/
 *.swo
 *~
 
-# Claude Code / Development settings
+# Development settings
 .claude/
 
 # Project specific
@@ -37,6 +37,28 @@ data/processed/
 backups/
 tmp/
 temp/
+
+# Model storage (large files)
+models/store/checkpoints/
+models/store/adapters/
+models/store/quantized/
+models/store/exports/
+*.gguf
+*.bin
+*.safetensors
+*.pt
+*.pth
+
+# Evaluation results
+results/
+evaluation_results/
+
+# Logs
+logs/
+*.log.*
+
+# Legacy code (archived)
+legacy/
 
 # OS
 .DS_Store

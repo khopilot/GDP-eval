@@ -91,3 +91,11 @@ opentelemetry-sdk>=1.19.0
 # boto3>=1.28.0  # AWS
 # google-cloud-storage>=2.10.0  # GCP
 # azure-storage-blob>=12.17.0  # Azure
+
+# High-Performance Model Serving
+vllm>=0.2.0  # High-performance LLM serving
+ray>=2.0.0  # Distributed computing for vLLM
+pynvml>=11.0.0  # NVIDIA GPU monitoring
+GPUtil>=1.4.0  # GPU utilization tracking
+psutil>=5.9.0  # System and process utilities
+tabulate>=0.9.0  # Pretty table formatting for CLI
