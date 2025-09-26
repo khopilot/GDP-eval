@@ -80,7 +80,15 @@ uvicorn>=0.23.0
 
 # Khmer Language Support
 pyicu>=2.11  # International Components for Unicode
+editdistance>=0.6.2  # Edit distance calculations for Khmer metrics
 # khmer-nltk>=1.0  # If available
+
+# Statistical Analysis
+scipy>=1.10.0  # Statistical functions
+statsmodels>=0.14.0  # Advanced statistical modeling
+scikit-learn>=1.3.0  # Machine learning utilities
+matplotlib>=3.7.0  # Plotting for power analysis
+seaborn>=0.12.0  # Statistical visualizations
 
 # Monitoring & Telemetry
 prometheus-client>=0.17.0  # Metrics export

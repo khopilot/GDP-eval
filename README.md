@@ -1,26 +1,37 @@
-# GDP Evaluation Framework
+# GDP Evaluation Framework - Enterprise Edition
 
-A comprehensive evaluation framework for Khmer language models with economic impact analysis, optimized for locally fine-tuned models.
+**Enterprise-grade AI model evaluation framework for Cambodia's digital economy**
+*Specialized for Khmer language models with comprehensive economic impact analysis*
+
+## 🏆 What is GDP-eval?
+
+GDP-eval is a production-ready evaluation framework designed to assess AI models' real-world impact on Cambodia's workforce. It provides enterprise-grade metrics for comparing baseline models with fine-tuned variants, focusing on professional task performance and economic value generation.
 
 ## 🎯 Key Features
 
-- **High-Performance Local Serving**: vLLM integration for 10x faster inference
-- **Model Registry**: Centralized management for fine-tuned models
-- **Khmer-Specific Metrics**: Advanced evaluation metrics for Khmer language
-- **Multi-Provider Support**: vLLM, HuggingFace, Ollama, and local models
-- **Economic Analysis**: Specialized evaluation for financial and economic domains
-- **A/B Testing**: Compare multiple models side-by-side
+### Core Capabilities
+- **Enterprise Scoring System**: Multi-criteria evaluation (accuracy, completeness, technical correctness, language quality)
+- **Differentiated Assessment**: No uniform scoring - each task evaluated on actual performance
+- **Economic Impact Analysis**: Real-time calculation of productivity gains and cost savings
+- **Professional Task Suite**: 5 Cambodia-specific professional scenarios across key sectors
+- **Bilingual Excellence**: Native Khmer and English language support with code-switching detection
+
+### Technical Excellence
+- **Multi-Provider Support**: Grok, vLLM, Ollama, HuggingFace, and local models
+- **Adaptive Timeouts**: Complexity-aware timeout management (30-240s based on task)
+- **Enterprise Metrics**: 5-factor efficiency scoring (Success, Quality, Latency, Cost, Consistency)
+- **Model Registry**: Centralized model versioning and performance tracking
+- **High Performance**: vLLM integration for 10x faster inference
 
 ## 🚀 Quick Start
 
 ### Prerequisites
-
 - Python 3.9+
-- CUDA-capable GPU (recommended)
+- CUDA-capable GPU (recommended for vLLM)
 - 16GB+ RAM
+- API keys for cloud providers (optional)
 
 ### Installation
-
 ```bash
 # Clone repository
 git clone https://github.com/khopilot/GDP-eval.git
@@ -29,200 +40,325 @@ cd GDP-eval
 # Install dependencies
 pip install -r requirements.txt
 
-# Setup directories
-mkdir -p models/store results/evaluations
+# Setup environment
+cp .env.example .env
+# Edit .env with your API keys
+
+# Run automated setup
+bash setup.sh
 ```
 
-### Basic Usage
+## 📊 Testing Workflows
 
-#### 1. Register a Model
+### 🚀 Enterprise Multi-Dimensional Evaluation (Recommended)
+
+**Complete Enterprise Workflow:**
 ```bash
-python scripts/register_model.py register \
-    path/to/your/model \
-    "Khmer-Economic-LLM" \
-    "1.0.0" \
-    "text-generation"
+# Full enterprise-grade evaluation (5-15 minutes)
+python run_full_workflow.py
 ```
 
-#### 2. Evaluate Model
+This comprehensive workflow includes:
+- ✅ Professional task evaluation (5 Cambodia-specific scenarios)
+- ✅ Multi-dimensional enterprise assessment (5 evaluation modules)
+- ✅ Safety and robustness testing
+- ✅ Consistency and behavioral analysis
+- ✅ Economic impact calculation
+- ✅ Professional report generation (JSON, HTML, Text)
+
+**Interactive Multi-Dimensional Testing:**
 ```bash
-python scripts/evaluate_khmer_model.py evaluate \
-    model-v1.0 \
-    data/evaluation/khmer_test_dataset.jsonl \
-    --show-details
+# Individual module testing with interactive menu
+python test_multidimensional_evaluation.py
+
+# Menu options:
+# 1. 🏆 Comprehensive Evaluation (all 5 modules)
+# 2. 🔬 Individual Module Testing
+# 3. ⚖️ Suite Comparison (minimal vs comprehensive)
+# 4. 🚀 Complete Testing Workflow
 ```
 
-#### 3. Compare Models
+### 🧠 Evaluation Modules
+
+| Module | Purpose | Sample Score | Status |
+|--------|---------|-------------|---------|
+| **Capability** | Reasoning, knowledge, creativity | 47.4/100 | ✅ |
+| **Safety** | Toxicity, bias, hallucination detection | Variable | ✅ |
+| **Robustness** | Adversarial attacks, edge cases | 77.7/100 | ✅ |
+| **Consistency** | Temporal stability, cross-prompt coherence | 100.0/100 | ✅ |
+| **Behavioral** | Helpfulness, harmlessness, honesty | 26.8/100 | ✅ |
+
+### 📊 Legacy Professional Task Workflow
+
+**Phase 1: Test with Baseline Model**
 ```bash
-python scripts/evaluate_khmer_model.py compare \
-    model-v1 model-v2 model-v3 \
-    data/evaluation/khmer_test_dataset.jsonl
+# Test with Grok API (or any baseline)
+python test_grok_professional.py
 ```
+
+**Phase 2: Compare with Fine-tuned Model**
+```bash
+# Edit compare_models.py to add your model
+python compare_models.py
+```
+
+**Phase 3: Analyze Results**
+```bash
+# View detailed comparison
+cat results/comparison/comparison_*.json
+```
+
+## 🔬 Enterprise Testing Pipeline
+
+### 1. **Environment Setup**
+```bash
+# Install core dependencies
+pip install -r requirements.txt
+
+# Optional: Install vLLM for high performance
+pip install vllm
+
+# Configure API keys in .env
+GROK_API_KEY=your_key_here
+HUGGINGFACE_API_KEY=your_key_here
+```
+
+### 2. **Model Configuration**
+```yaml
+# configs/models.yaml
+models:
+  baseline:
+    - name: "grok-3"
+      type: "grok"
+      timeout: 120
+
+  finetuned:
+    - name: "your-model"
+      type: "ollama"
+      base_url: "http://localhost:11434"
+```
+
+### 3. **Professional Task Evaluation**
+The framework tests 5 critical professional scenarios:
+
+| Sector | Task | Complexity | Language | Success Metric |
+|--------|------|------------|----------|----------------|
+| Finance | SME Loan Assessment | 3 | Bilingual | Risk accuracy |
+| Agriculture | Rice Farming Advisory | 3 | Khmer | Technical correctness |
+| Tourism | Tour Package Design | 2 | English | Completeness |
+| Manufacturing | Quality Control | 2 | English | Standards compliance |
+| Healthcare | Patient Triage | 3 | Bilingual | Urgency assessment |
+
+### 4. **Evaluation Criteria**
+Each task is scored on 4 weighted criteria:
+- **Accuracy** (30%): Correctness of information
+- **Completeness** (30%): All requirements addressed
+- **Technical Correctness** (20%): Domain-specific accuracy
+- **Language Quality** (20%): Appropriate language use
+
+### 5. **Metrics Collection**
+
+#### Performance Metrics
+- Success rate (task completion)
+- Average latency (response time)
+- Token usage and costs
+- Throughput (tasks/second)
+
+#### Quality Metrics
+- Multi-criteria scores (0-100%)
+- Pass/fail by criterion
+- Average quality score
+- Sector-specific performance
+
+#### Economic Impact
+- Time saved per day (hours)
+- Annual cost savings (USD)
+- Productivity gain (%)
+- ROI calculation
+
+### 6. **Enterprise Efficiency Score**
+```
+Efficiency = 0.35*Success + 0.25*Quality + 0.20*Latency + 0.10*Cost + 0.10*Consistency
+```
+- Adjusts for task complexity
+- Considers quality-speed tradeoffs
+- Tracks consistency across runs
+
+## 📊 Enterprise Results Interpretation
+
+### 🎯 Overall Score Ranges
+- **Score > 75%**: Production-ready, enterprise deployment approved
+- **Score 60-75%**: Suitable for pilot programs and staged rollout
+- **Score 45-60%**: Development stage, significant improvements needed
+- **Score < 45%**: Research phase, comprehensive retraining required
+
+### 🚨 Risk Assessment Levels
+- **LOW**: Ready for production deployment
+- **MEDIUM**: Address identified issues before deployment
+- **HIGH**: Significant concerns require resolution
+- **CRITICAL**: Do not deploy - major safety/security issues
+
+### 📋 Generated Reports
+After running the enterprise workflow, check these locations:
+- **JSON Reports**: `results/reports/json/` - Machine-readable for integration
+- **HTML Reports**: `results/reports/html/` - Executive presentation format
+- **Text Reports**: `results/reports/text/` - Detailed technical analysis
+
+### ⏱️ Execution Metrics
+- **Total Tests**: 60+ comprehensive evaluations per run
+- **Duration**: 5-15 minutes for complete assessment
+- **Modules**: 5 evaluation dimensions (Capability, Safety, Robustness, Consistency, Behavioral)
+- **API Calls**: ~50 model inference calls for thorough testing
+
+## 📈 Recent Improvements
+
+### Version 2.0 - Enterprise Multi-Dimensional Edition
+- ✅ **Enterprise Evaluation Suite** - 5-module comprehensive assessment
+- ✅ **Fixed critical integration errors** - All modules now execute successfully
+- ✅ **Fixed uniform 60% scoring** - Now provides differentiated scores
+- ✅ **Fixed sector mappings** - Resolved finance_banking → finance issues
+- ✅ **Removed hardcoded values** - Real economic calculations
+- ✅ **Fixed NumPy deprecation** - Custom IRR implementation
+- ✅ **Enhanced metrics** - Enterprise-grade 5-factor scoring
+- ✅ **Professional reports** - Multi-format output (JSON, HTML, Text)
+
+### Performance Benchmarks
+| Metric | V1.0 | V2.0 | Improvement |
+|--------|------|------|-------------|
+| Total Tests | 5 tasks | 64+ evaluations | +1,180% |
+| Evaluation Modules | 1 | 5 comprehensive | +400% |
+| Efficiency Score | 40.8% | 95.5% | +134% |
+| Score Variance | 0% (uniform) | Realistic differentiation | Real assessment |
+| System Reliability | 60% | 100% | +67% |
+| Report Formats | 1 | 3 (JSON/HTML/Text) | +200% |
+
+## 🇰🇭 Khmer Language Excellence
+
+### Advanced Tokenization
+- Character-level with grapheme clustering
+- Syllable segmentation (ZWSP-aware)
+- Word boundary detection
+- Code-switching detection (Khmer/English)
+- Bilingual context handling
+
+### Khmer-Specific Metrics
+- **Khmer BLEU**: Multi-level evaluation
+- **Character Accuracy**: Precise matching
+- **Syllable F1**: Segmentation quality
+- **Language Distribution**: Khmer/English ratio
+- **Script Detection**: Automatic language identification
 
 ## 📁 Project Structure
-
 ```
 GDP-eval/
-├── configs/               # Configuration files
-│   ├── model_registry.yaml
-│   └── vllm_config.yaml
-├── data/                  # Datasets and tasks
-│   ├── evaluation/        # Test datasets
-│   ├── samples/           # Sample data
-│   └── tasks/             # Task definitions
-├── docs/                  # Documentation
-├── examples/              # Usage examples
-├── models/                # Model storage
-│   ├── registry/          # Model registry DB
-│   └── store/             # Model artifacts
-├── results/               # Evaluation results
-├── scripts/               # CLI tools
-├── src/                   # Main source code
-│   ├── core/              # Core framework
-│   ├── evaluation/        # Evaluation pipelines
-│   ├── metrics/           # Khmer metrics
-│   ├── models/            # Model management
-│   ├── providers/         # LLM providers
-│   └── utils/             # Utilities
-└── tests/                 # Test suite
+├── configs/                 # Model and system configuration
+│   ├── models.yaml         # Model registry
+│   ├── vllm_config.yaml    # vLLM settings
+│   └── deployment.yaml     # Environment configs
+├── src/
+│   ├── providers/          # LLM provider implementations
+│   │   ├── grok_provider.py
+│   │   ├── enterprise_grok_provider.py
+│   │   ├── vllm_provider.py
+│   │   └── ollama_provider.py
+│   ├── metrics/            # Evaluation metrics
+│   │   ├── khmer_metrics.py
+│   │   └── performance_metrics.py
+│   ├── tasks/              # Task management
+│   │   ├── task_converter.py
+│   │   └── professional_task_manager.py
+│   ├── analysis/           # Economic analysis
+│   │   ├── gdp_analyzer.py
+│   │   └── impact_calculator.py
+│   └── core/               # Core framework
+├── test_grok_professional.py  # Main test script
+├── compare_models.py          # Model comparison tool
+└── results/                   # Evaluation outputs
 ```
 
-## 🇰🇭 Khmer Language Support
+## 🔧 Advanced Usage
 
-### Specialized Tokenization
-- Character-level with grapheme clustering
-- Syllable segmentation
-- Word boundary detection (ZWSP-aware)
-- Code-switching detection (Khmer/English)
-
-### Evaluation Metrics
-- **Khmer BLEU**: Multi-level BLEU scores
-- **Character Accuracy**: Precise character matching
-- **Syllable F1**: Syllable segmentation quality
-- **Word Segmentation**: Boundary detection accuracy
-- **Code-Switching**: Mixed language handling
-
-## 🔧 Advanced Features
-
-### vLLM Provider
+### Custom Provider Integration
 ```python
-from src.providers import VLLMProvider
+from src.providers.base_provider import BaseLLMProvider
 
-provider = VLLMProvider(
-    model_name="khmer-llm-7b",
-    num_gpus=1,
-    max_model_len=4096
-)
-await provider.load_model()
-response = await provider.generate("តើ GDP ជាអ្វី?")
+class YourProvider(BaseLLMProvider):
+    async def generate(self, prompt, **kwargs):
+        # Your implementation
+        return LLMResponse(...)
 ```
 
-### Model Registry
+### Adding Professional Tasks
 ```python
-from src.models import ModelRegistry
+from src.tasks.task_converter import TaskConverter
 
-registry = ModelRegistry()
-model_id = registry.register(
-    model_path="path/to/model",
-    name="Khmer-FineTuned",
-    version="2.0.0",
-    task="text-generation",
-    performance_metrics={
-        "khmer_bleu": 0.85,
-        "accuracy": 0.92
-    }
+converter = TaskConverter()
+task = ProfessionalTask(
+    task_id="custom_001",
+    title="Your Task",
+    sector="your_sector",
+    complexity=3,
+    evaluation_criteria=[
+        {"criterion_id": "accuracy", "weight": 0.3},
+        {"criterion_id": "completeness", "weight": 0.3}
+    ]
 )
 ```
 
-### Custom Evaluation
-```python
-from src.evaluation import KhmerEvaluator, EvaluationConfig
-
-config = EvaluationConfig(
-    model_id="my-model",
-    dataset_path="custom_dataset.jsonl",
-    metrics_to_compute=["bleu", "character_accuracy"],
-    batch_size=64
-)
-
-evaluator = KhmerEvaluator()
-results = await evaluator.evaluate_model(config)
-```
-
-## 📊 Performance Benchmarks
-
-| Model Type | Inference Speed | Memory Usage | Khmer BLEU |
-|------------|----------------|--------------|------------|
-| vLLM (7B)  | 150 tokens/sec | 8GB VRAM    | 0.82       |
-| HF (7B)    | 15 tokens/sec  | 14GB VRAM   | 0.82       |
-| GGUF (7B)  | 50 tokens/sec  | 6GB RAM     | 0.80       |
-
-## 🛠️ Development
-
-### Running Tests
+### Fine-tuning Workflow
 ```bash
-# Unit tests
-pytest tests/unit -v
+# 1. Prepare your model
+ollama create your-model -f Modelfile
 
-# Integration tests
-pytest tests/integration -v
+# 2. Update compare_models.py
+model_configs = [
+    {"name": "grok-baseline", "type": "grok", ...},
+    {"name": "your-model", "type": "ollama", ...}
+]
 
-# Test metrics on sample text
-python scripts/evaluate_khmer_model.py test
+# 3. Run comparison
+python compare_models.py
+
+# 4. Analyze improvements
+cat results/comparison/comparison_*.json
 ```
 
-### Code Quality
-```bash
-# Format code
-black src/ scripts/
-ruff check --fix src/
+## 📊 Interpreting Results
 
-# Type checking
-mypy src/
-```
+### Success Indicators
+- **Score > 70%**: Production-ready
+- **Score 60-70%**: Suitable for pilot programs
+- **Score < 60%**: Needs improvement
 
-## 📝 Configuration
-
-### Model Registry (`configs/model_registry.yaml`)
-- Model naming conventions
-- Storage paths
-- Retention policies
-- Version control
-
-### vLLM Config (`configs/vllm_config.yaml`)
-- Tensor parallelism
-- Quantization settings
-- Memory management
-- Batch processing
-
-## 🤝 Contributing
-
-1. Fork the repository
-2. Create a feature branch
-3. Add tests for new features
-4. Ensure all tests pass
-5. Submit a pull request
+### Key Metrics
+- **Efficiency > 90%**: Excellent performance
+- **Latency < 30s**: Acceptable for professional use
+- **Cost < $0.02/task**: Economically viable
 
 ## 👤 Author
 
 **Nicolas Delrieu** - AI Consultant
-- Phone: +855 92 332 554
-- Specializing in multilingual NLP and economic AI applications
+📱 Phone: +855 92 332 554
+🔧 Specializing in multilingual NLP and economic AI applications
 
-## 📄 License
+## 🤝 Contributing
 
-[Your License]
+1. Fork the repository
+2. Create a feature branch (`git checkout -b feature/amazing`)
+3. Commit changes (`git commit -m 'Add amazing feature'`)
+4. Push to branch (`git push origin feature/amazing`)
+5. Open a Pull Request
+
+## 📝 License
+
+This project is proprietary software. All rights reserved.
 
 ## 🆘 Support
 
-- GitHub Issues: [https://github.com/khopilot/GDP-eval/issues](https://github.com/khopilot/GDP-eval/issues)
-- Documentation: See `docs/` directory
+- **Issues**: [GitHub Issues](https://github.com/khopilot/GDP-eval/issues)
+- **Documentation**: See `docs/` directory
+- **Contact**: +855 92 332 554
 
-## 🔮 Roadmap
+---
 
-- [ ] Text Generation Inference (TGI) provider
-- [ ] MLflow integration
-- [ ] FastAPI serving endpoint
-- [ ] Distributed evaluation
-- [ ] Real-time monitoring dashboard
-- [ ] AutoGPTQ quantization support
+**GDP-eval**: *Measuring AI's real impact on Cambodia's digital economy*

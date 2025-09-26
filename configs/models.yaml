@@ -1,0 +1,79 @@
+# Model Configuration for GDP Evaluation
+# Add your models here for easy comparison
+
+models:
+  # Baseline models for comparison
+  baseline:
+    - name: "grok-3"
+      type: "grok"
+      provider: "xai"
+      api_key: "${GROK_API_KEY}"
+      timeout: 120
+      description: "Baseline Grok model for comparison"
+
+  # Your fine-tuned models (examples)
+  finetuned:
+    - name: "khmer-llama-7b-v1"
+      type: "ollama"
+      provider: "local"
+      base_url: "http://localhost:11434"
+      description: "First iteration of Khmer fine-tuned model"
+
+    - name: "khmer-llama-7b-v2"
+      type: "vllm"
+      provider: "local"
+      model_path: "/models/khmer-llama-7b-v2"
+      tensor_parallel_size: 1
+      description: "Improved version with more training"
+
+    - name: "khmer-mistral-7b"
+      type: "huggingface"
+      provider: "local"
+      model_name: "khopilot/khmer-mistral-7b"
+      device: "cuda"
+      description: "Mistral-based Khmer model"
+
+# Evaluation settings
+evaluation:
+  # Tasks to use for comparison
+  task_categories:
+    - finance_banking
+    - agriculture
+    - tourism_hospitality
+    - manufacturing
+    - healthcare
+
+  # Consistent parameters for fair comparison
+  generation_params:
+    max_tokens: 1024
+    temperature: 0.7
+    top_p: 0.9
+
+  # Timeout settings by complexity
+  timeouts:
+    simple: 60
+    moderate: 120
+    complex: 180
+
+  # Success criteria for model readiness
+  success_criteria:
+    min_success_rate: 0.8  # 80% tasks must complete
+    max_avg_latency_ms: 30000  # 30 seconds average
+    min_efficiency_score: 60  # 60% efficiency
+
+# Comparison metrics to track
+metrics:
+  primary:
+    - success_rate
+    - average_latency
+    - total_cost
+
+  secondary:
+    - tokens_per_second
+    - khmer_content_ratio
+    - professional_relevance
+
+  economic:
+    - time_saved_hours
+    - cost_savings_usd
+    - productivity_gain_percent

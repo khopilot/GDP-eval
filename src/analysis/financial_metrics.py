@@ -4,6 +4,10 @@ Calculates financial KPIs and metrics for AI investment decisions
 """
 
 import numpy as np
+try:
+    import numpy_financial as npf
+except ImportError:
+    npf = None
 from typing import Dict, List, Optional, Tuple
 from dataclasses import dataclass
 from datetime import datetime, timedelta
@@ -119,10 +123,30 @@ class FinancialCalculator:
         all_cash_flows = [-initial_investment] + cash_flows
 
         try:
-            irr = np.irr(all_cash_flows)
-            return irr
-        except:
-            # If IRR cannot be calculated, return 0
+            if npf is not None:
+                # Use numpy_financial if available
+                irr = npf.irr(all_cash_flows)
+            else:
+                # Fallback to custom IRR calculation using Newton's method
+                # IRR is the discount rate where NPV = 0
+                def npv_func(rate):
+                    return sum([cf / (1 + rate) ** i for i, cf in enumerate(all_cash_flows)])
+
+                # Newton's method to find root
+                rate = 0.1  # Initial guess
+                for _ in range(100):  # Max iterations
+                    npv = npv_func(rate)
+                    if abs(npv) < 0.01:  # Close enough to zero
+                        break
+                    # Derivative approximation
+                    dnpv = (npv_func(rate + 0.0001) - npv) / 0.0001
+                    if abs(dnpv) < 0.0001:  # Avoid division by zero
+                        break
+                    rate = rate - npv / dnpv
+                irr = rate
+            return irr if not np.isnan(irr) else 0.0
+        except Exception as e:
+            logger.warning(f"IRR calculation failed: {e}")
             return 0.0
 
     def calculate_payback_period(

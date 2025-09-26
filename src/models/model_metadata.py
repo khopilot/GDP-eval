@@ -180,15 +180,17 @@ class KhmerCapabilities:
 @dataclass
 class ModelMetadata:
     """Complete metadata for a model"""
-    # Basic info
+    # Basic info (required fields first)
     model_id: str
     name: str
     version: str
+    task: ModelTask
+
+    # Optional fields with defaults
     created_at: datetime = field(default_factory=datetime.now)
     updated_at: datetime = field(default_factory=datetime.now)
 
     # Model details
-    task: ModelTask
     framework: ModelFramework = ModelFramework.PYTORCH
     model_size_gb: Optional[float] = None
     num_parameters: Optional[int] = None

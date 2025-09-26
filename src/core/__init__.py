@@ -2,8 +2,20 @@
 Core evaluation framework components
 """
 
-from .evaluator import Evaluator
-from .grader import Grader
-from .task_loader import TaskLoader
+from .provider_evaluator import Evaluator, EvaluationResult
+from .grader import AutomatedGrader, BilingualGrader, GradingResult
+from .task_loader import KhmerTaskLoader, EvaluationTask
+from .evaluator import BaseEvaluator, KhmerModelEvaluator, BaselineEvaluator
 
-__all__ = ['Evaluator', 'Grader', 'TaskLoader']
+__all__ = [
+    'Evaluator',
+    'EvaluationResult',
+    'AutomatedGrader',
+    'BilingualGrader',
+    'GradingResult',
+    'KhmerTaskLoader',
+    'EvaluationTask',
+    'BaseEvaluator',
+    'KhmerModelEvaluator',
+    'BaselineEvaluator'
+]
