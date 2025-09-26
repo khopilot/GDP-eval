@@ -1,0 +1,161 @@
+# Deployment Configuration
+# Settings for model deployment and serving
+
+environments:
+  development:
+    name: "Development"
+    gpu_enabled: false
+    max_models: 2
+    max_memory_gb: 8
+    endpoints:
+      base_url: "http://localhost:8000"
+      health_check: "/health"
+      metrics: "/metrics"
+    features:
+      monitoring: true
+      logging: debug
+      caching: false
+
+  staging:
+    name: "Staging"
+    gpu_enabled: true
+    max_models: 5
+    max_memory_gb: 32
+    endpoints:
+      base_url: "https://staging-api.gdpval.ai"
+      health_check: "/health"
+      metrics: "/metrics"
+    features:
+      monitoring: true
+      logging: info
+      caching: true
+
+  production:
+    name: "Production"
+    gpu_enabled: true
+    max_models: 10
+    max_memory_gb: 64
+    endpoints:
+      base_url: "https://api.gdpval.ai"
+      health_check: "/health"
+      metrics: "/metrics"
+    features:
+      monitoring: true
+      logging: warning
+      caching: true
+
+model_serving:
+  # vLLM configuration
+  vllm:
+    tensor_parallel_size: 1
+    pipeline_parallel_size: 1
+    max_num_batched_tokens: 4096
+    max_num_sequences: 256
+    max_model_len: 4096
+    gpu_memory_utilization: 0.9
+    swap_space: 4
+    enforce_eager: false
+    trust_remote_code: false
+
+  # TGI configuration
+  tgi:
+    max_concurrent_requests: 128
+    max_input_length: 1024
+    max_total_tokens: 2048
+    max_batch_prefill_tokens: 4096
+    max_batch_total_tokens: 16384
+    quantize: false
+
+  # Ollama configuration
+  ollama:
+    host: "localhost"
+    port: 11434
+    timeout: 300
+    max_retries: 3
+
+  # HuggingFace configuration
+  huggingface:
+    use_auth_token: false
+    cache_dir: "~/.cache/huggingface"
+    device_map: "auto"
+    load_in_8bit: false
+    load_in_4bit: false
+
+inference_settings:
+  default_temperature: 0.7
+  default_top_p: 0.9
+  default_top_k: 50
+  default_max_tokens: 256
+  default_repetition_penalty: 1.1
+  timeout_seconds: 60
+
+monitoring:
+  prometheus:
+    enabled: true
+    port: 9090
+    scrape_interval: 15
+
+  grafana:
+    enabled: false
+    port: 3000
+    dashboard_uid: "gdpval-metrics"
+
+  alerts:
+    high_latency_threshold_ms: 1000
+    error_rate_threshold_percent: 5
+    gpu_memory_threshold_percent: 90
+    cpu_usage_threshold_percent: 80
+
+scaling:
+  auto_scaling:
+    enabled: true
+    min_replicas: 1
+    max_replicas: 10
+    target_cpu_percent: 70
+    target_memory_percent: 80
+    scale_down_delay_seconds: 300
+
+  load_balancing:
+    strategy: "round_robin"  # round_robin, least_connections, ip_hash
+    health_check_interval: 30
+    unhealthy_threshold: 3
+
+security:
+  api_key_required: true
+  rate_limiting:
+    enabled: true
+    requests_per_minute: 100
+    burst_size: 20
+
+  cors:
+    enabled: true
+    allowed_origins:
+      - "http://localhost:3000"
+      - "https://app.gdpval.ai"
+    allowed_methods:
+      - "GET"
+      - "POST"
+      - "OPTIONS"
+
+  tls:
+    enabled: true
+    cert_path: "/etc/ssl/certs/gdpval.crt"
+    key_path: "/etc/ssl/private/gdpval.key"
+
+storage:
+  model_cache_dir: "/var/cache/gdpval/models"
+  result_storage_dir: "/var/lib/gdpval/results"
+  log_dir: "/var/log/gdpval"
+  temp_dir: "/tmp/gdpval"
+
+  retention:
+    results_days: 90
+    logs_days: 30
+    cache_days: 7
+
+deployment_strategy:
+  strategy: "rolling"  # rolling, blue_green, canary
+  rollback_on_failure: true
+  health_check_grace_period: 60
+  max_surge: 1
+  max_unavailable: 0

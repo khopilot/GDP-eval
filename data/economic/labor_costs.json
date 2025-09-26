@@ -1,0 +1,94 @@
+{
+  "country": "Cambodia",
+  "year": 2024,
+  "currency": "USD",
+  "minimum_wage": {
+    "garment_sector": 204,
+    "general": 200,
+    "effective_date": "2024-01-01"
+  },
+  "average_wages_by_sector": {
+    "agriculture": {
+      "monthly": 150,
+      "hourly": 0.94,
+      "annual_growth": 3.5
+    },
+    "manufacturing": {
+      "monthly": 250,
+      "hourly": 1.56,
+      "annual_growth": 5.2,
+      "subsectors": {
+        "garments": 220,
+        "footwear": 210,
+        "electronics": 350,
+        "food_processing": 200
+      }
+    },
+    "construction": {
+      "monthly": 300,
+      "hourly": 1.88,
+      "annual_growth": 6.1
+    },
+    "services": {
+      "monthly": 350,
+      "hourly": 2.19,
+      "annual_growth": 7.5,
+      "subsectors": {
+        "hospitality": 280,
+        "retail": 250,
+        "finance": 800,
+        "technology": 1200,
+        "healthcare": 400,
+        "education": 300
+      }
+    },
+    "public_sector": {
+      "monthly": 400,
+      "hourly": 2.50,
+      "annual_growth": 4.0
+    }
+  },
+  "skilled_labor_costs": {
+    "entry_level": {
+      "developer": 600,
+      "accountant": 400,
+      "engineer": 500,
+      "teacher": 300,
+      "nurse": 350
+    },
+    "mid_level": {
+      "developer": 1200,
+      "accountant": 700,
+      "engineer": 900,
+      "manager": 1000,
+      "doctor": 1500
+    },
+    "senior_level": {
+      "developer": 2000,
+      "accountant": 1200,
+      "engineer": 1500,
+      "director": 2500,
+      "specialist_doctor": 3000
+    }
+  },
+  "employment_costs": {
+    "social_security_rate": 2.6,
+    "health_insurance": 50,
+    "training_budget_avg": 200,
+    "recruitment_cost_avg": 500,
+    "turnover_rate_annual": 8.5
+  },
+  "productivity_metrics": {
+    "output_per_worker_usd": 3500,
+    "hours_worked_per_week": 48,
+    "days_worked_per_year": 260,
+    "productivity_growth_rate": 3.2
+  },
+  "labor_market": {
+    "total_workforce_millions": 9.5,
+    "participation_rate": 82.3,
+    "unemployment_rate": 0.3,
+    "underemployment_rate": 5.2,
+    "youth_unemployment": 1.8
+  }
+}

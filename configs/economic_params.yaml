@@ -1,0 +1,107 @@
+# Economic Parameters Configuration
+# Parameters for economic impact calculations
+
+exchange_rates:
+  USD_to_KHR: 4100
+  update_frequency: daily
+  source: "National Bank of Cambodia"
+
+gdp_parameters:
+  total_gdp_millions_usd: 32000
+  base_year: 2024
+  growth_rate_forecast: 5.3
+
+sector_weights:
+  agriculture: 0.22
+  manufacturing: 0.18
+  services: 0.30
+  tourism: 0.12
+  construction: 0.08
+  finance: 0.06
+  technology: 0.02
+  healthcare: 0.01
+  education: 0.01
+
+productivity_multipliers:
+  # How much AI/ML can improve productivity by sector
+  agriculture: 1.15
+  manufacturing: 1.35
+  services: 1.45
+  tourism: 1.25
+  construction: 1.20
+  finance: 1.60
+  technology: 1.80
+  healthcare: 1.30
+  education: 1.40
+
+labor_parameters:
+  avg_work_hours_per_day: 8
+  work_days_per_year: 260
+  avg_hourly_wage_usd: 2.5
+  minimum_wage_usd: 200
+  productivity_baseline: 0.6
+
+financial_parameters:
+  discount_rate: 0.10
+  inflation_rate: 0.03
+  corporate_tax_rate: 0.20
+  interest_rate_lending: 0.115
+  interest_rate_deposit: 0.055
+
+cost_factors:
+  electricity_per_kwh_usd: 0.15
+  internet_monthly_usd: 100
+  office_rent_per_sqm_usd: 15
+  cloud_compute_per_hour: 0.50
+  gpu_hour_cost: 2.50
+
+ai_adoption_rates:
+  # Current adoption rates by sector
+  current:
+    agriculture: 0.05
+    manufacturing: 0.15
+    services: 0.25
+    finance: 0.35
+    healthcare: 0.10
+    education: 0.08
+
+  # Target rates for 2025
+  target_2025:
+    agriculture: 0.15
+    manufacturing: 0.30
+    services: 0.45
+    finance: 0.55
+    healthcare: 0.25
+    education: 0.20
+
+impact_thresholds:
+  # Minimum thresholds for considering implementation
+  min_roi_percent: 50
+  max_payback_months: 24
+  min_productivity_gain_percent: 15
+  min_cost_reduction_percent: 10
+
+regional_distribution:
+  # GDP distribution by region
+  phnom_penh: 0.35
+  siem_reap: 0.12
+  battambang: 0.08
+  kampong_cham: 0.06
+  kandal: 0.05
+  preah_sihanouk: 0.04
+  other_provinces: 0.30
+
+risk_factors:
+  # Risk adjustments for calculations
+  technology_risk: 0.15
+  implementation_risk: 0.20
+  market_risk: 0.10
+  regulatory_risk: 0.05
+
+evaluation_metrics:
+  # Weights for composite scoring
+  productivity_weight: 0.30
+  cost_reduction_weight: 0.25
+  quality_improvement_weight: 0.20
+  customer_satisfaction_weight: 0.15
+  innovation_weight: 0.10

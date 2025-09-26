@@ -1,0 +1,143 @@
+{
+  "benchmarks_by_sector": {
+    "agriculture": {
+      "current_productivity_index": 100,
+      "regional_average": 125,
+      "global_average": 180,
+      "automation_potential": 0.35,
+      "digitalization_level": 0.15,
+      "key_metrics": {
+        "output_per_hectare_kg": 3500,
+        "labor_hours_per_ton": 45,
+        "mechanization_rate": 0.25,
+        "precision_farming_adoption": 0.05
+      },
+      "improvement_opportunities": {
+        "irrigation_systems": 0.20,
+        "crop_monitoring_ai": 0.15,
+        "market_price_prediction": 0.12,
+        "supply_chain_optimization": 0.18
+      }
+    },
+    "manufacturing": {
+      "current_productivity_index": 100,
+      "regional_average": 115,
+      "global_average": 160,
+      "automation_potential": 0.65,
+      "digitalization_level": 0.35,
+      "key_metrics": {
+        "units_per_worker_day": 85,
+        "defect_rate_percent": 3.2,
+        "oee_score": 0.62,
+        "setup_time_minutes": 45
+      },
+      "improvement_opportunities": {
+        "quality_control_ai": 0.25,
+        "predictive_maintenance": 0.20,
+        "production_planning": 0.15,
+        "inventory_optimization": 0.18
+      }
+    },
+    "services": {
+      "current_productivity_index": 100,
+      "regional_average": 110,
+      "global_average": 145,
+      "automation_potential": 0.55,
+      "digitalization_level": 0.45,
+      "key_metrics": {
+        "transactions_per_hour": 12,
+        "customer_satisfaction": 0.75,
+        "first_call_resolution": 0.65,
+        "service_time_minutes": 15
+      },
+      "improvement_opportunities": {
+        "customer_service_ai": 0.30,
+        "process_automation": 0.25,
+        "self_service_portals": 0.20,
+        "workforce_scheduling": 0.15
+      }
+    },
+    "finance": {
+      "current_productivity_index": 100,
+      "regional_average": 120,
+      "global_average": 170,
+      "automation_potential": 0.75,
+      "digitalization_level": 0.65,
+      "key_metrics": {
+        "transactions_per_employee": 450,
+        "processing_time_hours": 2.5,
+        "error_rate_percent": 1.8,
+        "compliance_score": 0.82
+      },
+      "improvement_opportunities": {
+        "risk_assessment_ai": 0.35,
+        "fraud_detection": 0.30,
+        "document_processing": 0.25,
+        "regulatory_reporting": 0.20
+      }
+    }
+  },
+  "ai_impact_projections": {
+    "year_1": {
+      "productivity_gain_percent": 8,
+      "cost_reduction_percent": 12,
+      "quality_improvement_percent": 15,
+      "time_savings_percent": 20
+    },
+    "year_3": {
+      "productivity_gain_percent": 18,
+      "cost_reduction_percent": 25,
+      "quality_improvement_percent": 30,
+      "time_savings_percent": 35
+    },
+    "year_5": {
+      "productivity_gain_percent": 30,
+      "cost_reduction_percent": 40,
+      "quality_improvement_percent": 45,
+      "time_savings_percent": 50
+    }
+  },
+  "technology_adoption_rates": {
+    "current": {
+      "basic_digitalization": 0.35,
+      "cloud_computing": 0.20,
+      "data_analytics": 0.15,
+      "ai_ml": 0.05,
+      "iot": 0.03
+    },
+    "target_2025": {
+      "basic_digitalization": 0.60,
+      "cloud_computing": 0.40,
+      "data_analytics": 0.30,
+      "ai_ml": 0.15,
+      "iot": 0.10
+    },
+    "target_2030": {
+      "basic_digitalization": 0.85,
+      "cloud_computing": 0.65,
+      "data_analytics": 0.50,
+      "ai_ml": 0.35,
+      "iot": 0.25
+    }
+  },
+  "roi_benchmarks": {
+    "small_business": {
+      "investment_range_usd": "10000-50000",
+      "typical_roi_percent": 150,
+      "payback_months": 12,
+      "success_rate": 0.75
+    },
+    "medium_business": {
+      "investment_range_usd": "50000-500000",
+      "typical_roi_percent": 120,
+      "payback_months": 18,
+      "success_rate": 0.80
+    },
+    "large_enterprise": {
+      "investment_range_usd": "500000+",
+      "typical_roi_percent": 85,
+      "payback_months": 24,
+      "success_rate": 0.85
+    }
+  }
+}

@@ -1,0 +1,100 @@
+{
+  "cambodia_economy": {
+    "gdp": {
+      "total_usd_millions": 32000,
+      "per_capita_usd": 1947,
+      "growth_rate_percent": 5.3,
+      "year": 2024
+    },
+    "sectors": {
+      "agriculture": {
+        "gdp_percent": 22,
+        "employment_percent": 31,
+        "growth_rate": 1.8,
+        "exports_usd_millions": 2500
+      },
+      "manufacturing": {
+        "gdp_percent": 18,
+        "employment_percent": 16,
+        "growth_rate": 7.1,
+        "exports_usd_millions": 8500
+      },
+      "services": {
+        "gdp_percent": 30,
+        "employment_percent": 35,
+        "growth_rate": 6.5,
+        "exports_usd_millions": 3200
+      },
+      "tourism": {
+        "gdp_percent": 12,
+        "employment_percent": 8,
+        "growth_rate": 5.5,
+        "visitors_millions": 6.6
+      }
+    },
+    "trade": {
+      "exports_usd_millions": 22500,
+      "imports_usd_millions": 27800,
+      "trade_deficit_usd_millions": -5300,
+      "main_export_partners": ["USA", "EU", "Japan", "China"],
+      "main_import_partners": ["China", "Thailand", "Vietnam", "Singapore"]
+    },
+    "financial": {
+      "exchange_rate_usd_khr": 4100,
+      "inflation_rate_percent": 3.1,
+      "interest_rate_percent": 11.5,
+      "foreign_reserves_usd_millions": 21300
+    },
+    "labor": {
+      "population_millions": 16.9,
+      "labor_force_millions": 9.5,
+      "unemployment_rate_percent": 0.3,
+      "minimum_wage_usd_monthly": 200,
+      "average_wage_usd_monthly": 350
+    }
+  },
+  "test_scenarios": {
+    "productivity_improvement": {
+      "baseline_productivity": 0.6,
+      "ai_enhanced_productivity": 0.85,
+      "implementation_cost_usd": 500000,
+      "affected_workers": 1000,
+      "time_horizon_years": 3
+    },
+    "cost_reduction": {
+      "current_operational_cost_usd": 2000000,
+      "projected_savings_percent": 25,
+      "automation_level": 0.4,
+      "payback_period_target_months": 18
+    },
+    "quality_improvement": {
+      "current_error_rate": 0.08,
+      "target_error_rate": 0.02,
+      "cost_per_error_usd": 150,
+      "daily_transactions": 10000
+    }
+  },
+  "investment_scenarios": [
+    {
+      "name": "Small Enterprise AI",
+      "investment_usd": 50000,
+      "expected_roi_percent": 150,
+      "implementation_months": 6,
+      "risk_level": "medium"
+    },
+    {
+      "name": "Banking Sector Automation",
+      "investment_usd": 2000000,
+      "expected_roi_percent": 85,
+      "implementation_months": 12,
+      "risk_level": "low"
+    },
+    {
+      "name": "Agricultural Tech Platform",
+      "investment_usd": 300000,
+      "expected_roi_percent": 120,
+      "implementation_months": 9,
+      "risk_level": "medium-high"
+    }
+  ]
+}

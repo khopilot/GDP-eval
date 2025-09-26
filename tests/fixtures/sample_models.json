@@ -1,0 +1,62 @@
+{
+  "models": [
+    {
+      "model_id": "khmer-llm-base-v1",
+      "name": "Khmer LLM Base",
+      "version": "1.0.0",
+      "task": "text-generation",
+      "framework": "pytorch",
+      "model_size_gb": 7.5,
+      "parameters": "7B",
+      "base_model": "llama-2-7b",
+      "fine_tuned": true,
+      "training_data": "khmer-corpus-v2",
+      "performance": {
+        "khmer_bleu": 0.72,
+        "character_accuracy": 0.85,
+        "perplexity": 12.5
+      }
+    },
+    {
+      "model_id": "khmer-finance-v2",
+      "name": "Khmer Finance Model",
+      "version": "2.0.0",
+      "task": "text-generation",
+      "framework": "pytorch",
+      "model_size_gb": 13.2,
+      "parameters": "13B",
+      "base_model": "llama-2-13b",
+      "fine_tuned": true,
+      "training_data": "finance-corpus-kh",
+      "performance": {
+        "khmer_bleu": 0.78,
+        "character_accuracy": 0.89,
+        "perplexity": 9.8
+      }
+    },
+    {
+      "model_id": "khmer-translate-v1",
+      "name": "Khmer Translation Model",
+      "version": "1.0.0",
+      "task": "translation",
+      "framework": "pytorch",
+      "model_size_gb": 3.5,
+      "parameters": "3B",
+      "base_model": "mbart-large",
+      "fine_tuned": true,
+      "training_data": "parallel-corpus-enkh",
+      "performance": {
+        "bleu_score": 45.2,
+        "chrF": 0.68,
+        "ter": 0.42
+      }
+    }
+  ],
+  "test_configurations": {
+    "batch_sizes": [1, 8, 16, 32],
+    "max_tokens": [128, 256, 512],
+    "temperature_values": [0.1, 0.5, 0.7, 1.0],
+    "top_p_values": [0.9, 0.95, 1.0],
+    "devices": ["cpu", "cuda", "mps"]
+  }
+}

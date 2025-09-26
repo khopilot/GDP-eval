@@ -1,0 +1,80 @@
+{
+  "test_texts": {
+    "simple": [
+      "សួស្តី",
+      "អរគុណ",
+      "ជំរាបសួរ"
+    ],
+    "sentences": [
+      "ធនាគារជាតិនៃកម្ពុជាមានតួនាទីសំខាន់។",
+      "សេដ្ឋកិច្ចកម្ពុជាកំពុងរីកចម្រើន។",
+      "ការវិនិយោគបរទេសកើនឡើងជារៀងរាល់ឆ្នាំ។"
+    ],
+    "mixed_language": [
+      "GDP របស់កម្ពុជាគឺ $32 billion",
+      "Exchange rate: 1 USD = 4,100 រៀល",
+      "Banking sector មានការរីកចម្រើនយ៉ាងខ្លាំង"
+    ],
+    "with_zwsp": [
+      "ធនាគារ​ជាតិ​នៃ​កម្ពុជា",
+      "សេដ្ឋកិច្ច​និង​ហិរញ្ញវត្ថុ",
+      "ការ​វិនិយោគ​បរទេស"
+    ],
+    "numbers": [
+      "ឆ្នាំ ២០២៤",
+      "ចំនួន ១២៣៤៥៦៧៨៩០",
+      "លេខ ០១២-៣៤៥-៦៧៨"
+    ]
+  },
+  "test_pairs": [
+    {
+      "source": "What is GDP?",
+      "target": "តើ GDP ជាអ្វី?",
+      "domain": "economics"
+    },
+    {
+      "source": "The bank provides loans",
+      "target": "ធនាគារផ្តល់ប្រាក់កម្ចី",
+      "domain": "finance"
+    },
+    {
+      "source": "Agriculture is important",
+      "target": "កសិកម្មគឺសំខាន់",
+      "domain": "agriculture"
+    }
+  ],
+  "evaluation_samples": [
+    {
+      "prompt": "តើអត្រាប្តូរប្រាក់ដុល្លារអាមេរិកនិងរៀលគឺប៉ុន្មាន?",
+      "reference": "អត្រាប្តូរប្រាក់គឺ ១ ដុល្លារ = ៤,១០០ រៀល",
+      "keywords": ["អត្រាប្តូរប្រាក់", "ដុល្លារ", "រៀល", "4100"]
+    },
+    {
+      "prompt": "Explain microfinance in Cambodia",
+      "reference": "Microfinance institutions provide small loans to rural communities",
+      "keywords": ["microfinance", "loans", "rural", "communities"]
+    }
+  ],
+  "tokenization_tests": {
+    "characters": {
+      "input": "កម្ពុជា",
+      "expected": ["ក", "ម្ព", "ុ", "ជា"]
+    },
+    "syllables": {
+      "input": "ធនាគារជាតិ",
+      "expected": ["ធ", "នា", "គារ", "ជា", "តិ"]
+    },
+    "words": {
+      "input": "ធនាគារ​ជាតិ​នៃ​កម្ពុជា",
+      "expected": ["ធនាគារ", "ជាតិ", "នៃ", "កម្ពុជា"]
+    }
+  },
+  "special_cases": {
+    "subscripts": "ក្រុម",
+    "vowel_signs": "កើត",
+    "diacritics": "កំពុង",
+    "numerals": "០១២៣៤៥៦៧៨៩",
+    "punctuation": "។៕",
+    "mixed_script": "GDP ផលិតផលក្នុងស្រុកសរុប"
+  }
+}

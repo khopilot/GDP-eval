@@ -1,0 +1,98 @@
+{
+  "country": "Cambodia",
+  "year": 2024,
+  "currency": "USD",
+  "gdp_total": {
+    "value_millions": 32000,
+    "growth_rate_percent": 5.3,
+    "per_capita": 1947
+  },
+  "gdp_by_sector": {
+    "agriculture": {
+      "value_millions": 7040,
+      "percent_of_gdp": 22.0,
+      "growth_rate": 1.8,
+      "subsectors": {
+        "crops": 3520,
+        "livestock": 1760,
+        "fisheries": 1056,
+        "forestry": 704
+      }
+    },
+    "industry": {
+      "value_millions": 9600,
+      "percent_of_gdp": 30.0,
+      "growth_rate": 7.5,
+      "subsectors": {
+        "manufacturing": 5760,
+        "construction": 2560,
+        "mining": 640,
+        "utilities": 640
+      }
+    },
+    "services": {
+      "value_millions": 15360,
+      "percent_of_gdp": 48.0,
+      "growth_rate": 6.2,
+      "subsectors": {
+        "tourism": 3840,
+        "finance": 1920,
+        "retail": 3072,
+        "transport": 1536,
+        "telecommunications": 960,
+        "real_estate": 2304,
+        "public_admin": 1728
+      }
+    }
+  },
+  "gdp_by_expenditure": {
+    "consumption": {
+      "private": 22400,
+      "government": 3200
+    },
+    "investment": {
+      "fixed_capital": 7680,
+      "inventory_change": 320
+    },
+    "net_exports": {
+      "exports": 22500,
+      "imports": 27800,
+      "balance": -5300
+    }
+  },
+  "gdp_by_province": {
+    "Phnom_Penh": 11200,
+    "Siem_Reap": 3840,
+    "Battambang": 2560,
+    "Kampong_Cham": 1920,
+    "Kandal": 1600,
+    "Preah_Sihanouk": 1280,
+    "Kampong_Speu": 960,
+    "Takeo": 800,
+    "Kampot": 640,
+    "Others": 8200
+  },
+  "economic_indicators": {
+    "inflation_rate": 3.1,
+    "unemployment_rate": 0.3,
+    "poverty_rate": 13.5,
+    "gini_coefficient": 0.37,
+    "hdi_score": 0.593,
+    "ease_of_doing_business_rank": 144,
+    "competitiveness_rank": 106
+  },
+  "forecast": {
+    "2025": {
+      "gdp_growth": 5.8,
+      "inflation": 3.3
+    },
+    "2026": {
+      "gdp_growth": 6.2,
+      "inflation": 3.5
+    },
+    "2027": {
+      "gdp_growth": 6.5,
+      "inflation": 3.4
+    }
+  }
+}

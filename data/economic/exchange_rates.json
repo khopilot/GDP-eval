@@ -1,0 +1,68 @@
+{
+  "base_currency": "USD",
+  "date": "2024-01-15",
+  "rates": {
+    "KHR": {
+      "code": "KHR",
+      "name": "Cambodian Riel",
+      "rate": 4100,
+      "volatility_30d": 0.02,
+      "trend": "stable"
+    },
+    "THB": {
+      "code": "THB",
+      "name": "Thai Baht",
+      "rate": 35.2,
+      "volatility_30d": 0.04,
+      "trend": "strengthening"
+    },
+    "VND": {
+      "code": "VND",
+      "name": "Vietnamese Dong",
+      "rate": 24350,
+      "volatility_30d": 0.03,
+      "trend": "weakening"
+    },
+    "CNY": {
+      "code": "CNY",
+      "name": "Chinese Yuan",
+      "rate": 7.15,
+      "volatility_30d": 0.05,
+      "trend": "stable"
+    },
+    "EUR": {
+      "code": "EUR",
+      "name": "Euro",
+      "rate": 0.92,
+      "volatility_30d": 0.06,
+      "trend": "strengthening"
+    },
+    "JPY": {
+      "code": "JPY",
+      "name": "Japanese Yen",
+      "rate": 148.5,
+      "volatility_30d": 0.08,
+      "trend": "weakening"
+    }
+  },
+  "historical": {
+    "KHR": {
+      "2023": 4090,
+      "2022": 4080,
+      "2021": 4075,
+      "2020": 4085,
+      "2019": 4050
+    }
+  },
+  "cross_rates": {
+    "KHR_THB": 116.48,
+    "KHR_VND": 0.168,
+    "THB_VND": 691.76
+  },
+  "market_hours": {
+    "forex_open": "00:00",
+    "forex_close": "23:59",
+    "local_banking": "08:00-15:30",
+    "time_zone": "ICT"
+  }
+}
