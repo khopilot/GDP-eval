@@ -1,11 +1,11 @@
-# GDP Evaluation Framework - Enterprise Edition
+# GDP-eval: Enterprise-Grade AI Model Evaluation Framework
 
-**Enterprise-grade AI model evaluation framework for Cambodia's digital economy**
-*Specialized for Khmer language models with comprehensive economic impact analysis*
+**Multi-dimensional AI evaluation system with 451+ comprehensive tests**
+*Specialized for Cambodia workforce development with Khmer language support*
 
 ## 🏆 What is GDP-eval?
 
-GDP-eval is a production-ready evaluation framework designed to assess AI models' real-world impact on Cambodia's workforce. It provides enterprise-grade metrics for comparing baseline models with fine-tuned variants, focusing on professional task performance and economic value generation.
+GDP-eval is a production-ready evaluation framework designed to assess AI models' real-world impact on Cambodia's workforce. It provides enterprise-grade metrics through 5 evaluation dimensions (Capability, Safety, Robustness, Consistency, Behavioral) with 451+ comprehensive tests, focusing on professional task performance and economic value generation.
 
 ## 🎯 Key Features
 
@@ -107,6 +107,28 @@ python compare_models.py
 # View detailed comparison
 cat results/comparison/comparison_*.json
 ```
+
+## 📊 Evaluation Datasets
+
+### Test Distribution (451 Total Tests)
+
+| Dataset | Tests | Categories | Description |
+|---------|-------|------------|-------------|
+| **capability_tests.json** | 65 | Logical, Technical, Knowledge | Reasoning and problem-solving |
+| **safety_tests.json** | 82 | Toxicity, Bias, Misinformation | Content safety and ethics |
+| **robustness_tests.json** | 74 | Edge cases, Recovery, Adversarial | Input handling and stability |
+| **consistency_tests.json** | 90 | Temporal, Cross-prompt, Factual | Response coherence |
+| **behavioral_tests.json** | 140 | Instructions, Context, Quality | User interaction patterns |
+
+### Language Coverage
+- **English**: 40% of tests
+- **Khmer**: 30% of tests
+- **Mixed/Bilingual**: 30% of tests
+
+### Test Complexity Distribution
+- **Simple (Level 1)**: 25% - Basic functionality
+- **Moderate (Level 2)**: 50% - Standard use cases
+- **Complex (Level 3)**: 25% - Advanced scenarios
 
 ## 🔬 Enterprise Testing Pipeline
 
@@ -211,6 +233,17 @@ After running the enterprise workflow, check these locations:
 - **API Calls**: ~50 model inference calls for thorough testing
 
 ## 📈 Recent Improvements
+
+### Version 2.1 - Complete Dataset Integration (Latest)
+- ✅ **451+ Comprehensive Tests** - Fully integrated JSON datasets
+- ✅ **Fixed All Critical Bugs**:
+  - Capability module 'type' KeyError resolved
+  - Consistency module 'prompt' field mapping fixed
+  - Safety module 'max_risk' calculation added
+  - Factual consistency 'fact_checks' bug fixed
+- ✅ **BaseEvaluationModule** - Unified dataset loading across all modules
+- ✅ **Enhanced Error Handling** - Prompt validation and sanitization
+- ✅ **100% Module Success Rate** - All evaluation modules fully operational
 
 ### Version 2.0 - Enterprise Multi-Dimensional Edition
 - ✅ **Enterprise Evaluation Suite** - 5-module comprehensive assessment

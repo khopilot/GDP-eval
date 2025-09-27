@@ -1,0 +1,915 @@
+{
+  "metadata": {
+    "version": "1.0.0",
+    "test_suite": "GDP-eval Khmer Language Evaluation Suite",
+    "description": "Comprehensive Khmer language understanding and cultural context evaluation",
+    "author": "Nicolas Delrieu",
+    "contact": "+855 92 332 554",
+    "created": "2025-01-26",
+    "test_count": 100,
+    "test_categories": {
+      "language_understanding": 30,
+      "code_switching": 25,
+      "cultural_context": 25,
+      "technical_translation": 20
+    },
+    "script_support": {
+      "khmer_unicode": true,
+      "zawgyi_compatibility": false,
+      "font_requirements": ["Khmer OS", "Khmer OS Battambang", "Noto Sans Khmer"]
+    }
+  },
+  "tests": [
+    {
+      "test_id": "KHMER-LANG-001",
+      "category": "language_understanding",
+      "subcategory": "basic_comprehension",
+      "prompt": "តើអ្វីជាមូលដ្ឋានទិន្នន័យ?",
+      "expected_topics": ["database", "ទិន្នន័យ", "រក្សាទុក", "storage"],
+      "complexity": 1,
+      "language": "khmer"
+    },
+    {
+      "test_id": "KHMER-LANG-002",
+      "category": "language_understanding",
+      "subcategory": "technical_vocabulary",
+      "prompt": "ពន្យល់ពី API endpoint ជាភាសាខ្មែរ",
+      "expected_topics": ["ចំណុចតភ្ជាប់", "សេវា", "ទិន្នន័យ", "request"],
+      "complexity": 2,
+      "language": "khmer"
+    },
+    {
+      "test_id": "KHMER-LANG-003",
+      "category": "language_understanding",
+      "subcategory": "business_terminology",
+      "prompt": "របៀបចុះបញ្ជីពាណិជ្ជកម្មអនឡាញនៅកម្ពុជា",
+      "expected_topics": ["ក្រសួងពាណិជ្ជកម្ម", "អាជ្ញាប័ណ្ណ", "ពន្ធ", "registration"],
+      "complexity": 3,
+      "language": "khmer"
+    },
+    {
+      "test_id": "KHMER-LANG-004",
+      "category": "language_understanding",
+      "subcategory": "financial_terms",
+      "prompt": "គណនាការប្រាក់សម្រាប់កម្ចីធនាគារ",
+      "expected_topics": ["អត្រាការប្រាក់", "រយៈពេល", "ប្រាក់ដើម", "monthly payment"],
+      "complexity": 3,
+      "language": "khmer"
+    },
+    {
+      "test_id": "KHMER-LANG-005",
+      "category": "language_understanding",
+      "subcategory": "education_domain",
+      "prompt": "ប្រព័ន្ធអប់រំបច្ចេកវិទ្យានៅកម្ពុជា",
+      "expected_topics": ["សាកលវិទ្យាល័យ", "វិទ្យាស្ថាន", "កម្មវិធីសិក្សា", "STEM"],
+      "complexity": 2,
+      "language": "khmer"
+    },
+    {
+      "test_id": "KHMER-CODE-001",
+      "category": "code_switching",
+      "subcategory": "tech_mixed",
+      "prompt": "តើធ្វើ deploy Node.js app នៅលើ server យ៉ាងម៉េច?",
+      "expected_topics": ["deployment", "server configuration", "npm", "ដំឡើង"],
+      "complexity": 3,
+      "language": "mixed"
+    },
+    {
+      "test_id": "KHMER-CODE-002",
+      "category": "code_switching",
+      "subcategory": "database_mixed",
+      "prompt": "Connect PostgreSQL database ជាមួយ Python",
+      "expected_topics": ["psycopg2", "connection string", "ភ្ជាប់", "configuration"],
+      "complexity": 2,
+      "language": "mixed"
+    },
+    {
+      "test_id": "KHMER-CODE-003",
+      "category": "code_switching",
+      "subcategory": "frontend_mixed",
+      "prompt": "បង្កើត responsive design សម្រាប់ mobile",
+      "expected_topics": ["CSS", "media queries", "breakpoints", "ទូរស័ព្ទ"],
+      "complexity": 2,
+      "language": "mixed"
+    },
+    {
+      "test_id": "KHMER-CODE-004",
+      "category": "code_switching",
+      "subcategory": "api_mixed",
+      "prompt": "ការពារ REST API ពី attacks",
+      "expected_topics": ["authentication", "សុវត្ថិភាព", "rate limiting", "JWT"],
+      "complexity": 3,
+      "language": "mixed"
+    },
+    {
+      "test_id": "KHMER-CODE-005",
+      "category": "code_switching",
+      "subcategory": "cloud_mixed",
+      "prompt": "Setup AWS EC2 instance សម្រាប់ production",
+      "expected_topics": ["configuration", "security groups", "SSH", "ការដំឡើង"],
+      "complexity": 3,
+      "language": "mixed"
+    },
+    {
+      "test_id": "KHMER-CULT-001",
+      "category": "cultural_context",
+      "subcategory": "business_culture",
+      "prompt": "ការធ្វើអាជីវកម្ម B2B នៅកម្ពុជាខុសគ្នាយ៉ាងណាពីបរទេស?",
+      "expected_topics": ["relationships", "trust", "ទំនាក់ទំនង", "personal connections"],
+      "complexity": 3,
+      "language": "khmer"
+    },
+    {
+      "test_id": "KHMER-CULT-002",
+      "category": "cultural_context",
+      "subcategory": "payment_culture",
+      "prompt": "វិធីទូទាត់ពេញនិយមនៅកម្ពុជា",
+      "expected_topics": ["cash", "ABA", "Wing", "True Money", "សាច់ប្រាក់"],
+      "complexity": 2,
+      "language": "khmer"
+    },
+    {
+      "test_id": "KHMER-CULT-003",
+      "category": "cultural_context",
+      "subcategory": "digital_literacy",
+      "prompt": "កម្រិតចំណេះដឹងបច្ចេកវិទ្យារបស់អ្នកប្រើប្រាស់កម្ពុជា",
+      "expected_topics": ["smartphone usage", "social media", "digital divide", "Facebook"],
+      "complexity": 3,
+      "language": "khmer"
+    },
+    {
+      "test_id": "KHMER-CULT-004",
+      "category": "cultural_context",
+      "subcategory": "ecommerce_behavior",
+      "prompt": "ទម្លាប់ទិញទំនិញអនឡាញរបស់ជនជាតិខ្មែរ",
+      "expected_topics": ["Facebook shops", "COD", "trust issues", "ការជឿទុកចិត្ត"],
+      "complexity": 3,
+      "language": "khmer"
+    },
+    {
+      "test_id": "KHMER-CULT-005",
+      "category": "cultural_context",
+      "subcategory": "holiday_calendar",
+      "prompt": "បុណ្យសំខាន់ៗដែលប៉ះពាល់ដល់ธុរកិច្ចនៅកម្ពុជា",
+      "expected_topics": ["ចូលឆ្នាំខ្មែរ", "Pchum Ben", "Water Festival", "business closure"],
+      "complexity": 2,
+      "language": "khmer"
+    },
+    {
+      "test_id": "KHMER-TECH-001",
+      "category": "technical_translation",
+      "subcategory": "programming_terms",
+      "prompt": "បកប្រែ 'function' 'variable' 'loop' ជាភាសាខ្មែរ",
+      "expected_topics": ["មុខងារ", "អថេរ", "រង្វិលជុំ", "technical terms"],
+      "complexity": 2,
+      "language": "khmer"
+    },
+    {
+      "test_id": "KHMER-TECH-002",
+      "category": "technical_translation",
+      "subcategory": "database_terms",
+      "prompt": "ពាក្យបច្ចេកទេស database ជាភាសាខ្មែរ",
+      "expected_topics": ["តារាង", "ជួរដេក", "ជួរឈរ", "index", "query"],
+      "complexity": 3,
+      "language": "khmer"
+    },
+    {
+      "test_id": "KHMER-TECH-003",
+      "category": "technical_translation",
+      "subcategory": "network_terms",
+      "prompt": "បកប្រែពាក្យ network security ជាខ្មែរ",
+      "expected_topics": ["សុវត្ថិភាពបណ្តាញ", "firewall", "ការអ៊ិនគ្រីប", "encryption"],
+      "complexity": 3,
+      "language": "khmer"
+    },
+    {
+      "test_id": "KHMER-TECH-004",
+      "category": "technical_translation",
+      "subcategory": "ui_terms",
+      "prompt": "ពាក្យសម្រាប់ UI elements ជាភាសាខ្មែរ",
+      "expected_topics": ["ប៊ូតុង", "ប្រអប់អត្ថបទ", "ម៉ឺនុយ", "dropdown"],
+      "complexity": 2,
+      "language": "khmer"
+    },
+    {
+      "test_id": "KHMER-TECH-005",
+      "category": "technical_translation",
+      "subcategory": "error_messages",
+      "prompt": "បកប្រែ error messages ឱ្យងាយយល់ជាខ្មែរ",
+      "expected_topics": ["កំហុស", "ព័ត៌មាន", "សូមព្យាយាមម្តងទៀត", "user-friendly"],
+      "complexity": 3,
+      "language": "khmer"
+    },
+    {
+      "test_id": "KHMER-LANG-006",
+      "category": "language_understanding",
+      "subcategory": "agriculture_tech",
+      "prompt": "បច្ចេកវិទ្យាកសិកម្មទំនើបនៅកម្ពុជា",
+      "expected_topics": ["IoT", "ស្រោចស្រព", "drone", "precision farming"],
+      "complexity": 3,
+      "language": "khmer"
+    },
+    {
+      "test_id": "KHMER-LANG-007",
+      "category": "language_understanding",
+      "subcategory": "healthcare_it",
+      "prompt": "ប្រព័ន្ធគ្រប់គ្រងមន្ទីរពេទ្យឌីជីថល",
+      "expected_topics": ["កំណត់ត្រាអ្នកជំងឺ", "ការណាត់ជួប", "telemedicine", "records"],
+      "complexity": 3,
+      "language": "khmer"
+    },
+    {
+      "test_id": "KHMER-LANG-008",
+      "category": "language_understanding",
+      "subcategory": "tourism_tech",
+      "prompt": "កម្មវិធីទេសចរណ៍សម្រាប់ភ្ញៀវបរទេស",
+      "expected_topics": ["booking", "អង្គរវត្ត", "translation", "local guides"],
+      "complexity": 2,
+      "language": "khmer"
+    },
+    {
+      "test_id": "KHMER-LANG-009",
+      "category": "language_understanding",
+      "subcategory": "logistics",
+      "prompt": "ប្រព័ន្ធដឹកជញ្ជូនទំនិញក្នុងស្រុក",
+      "expected_topics": ["tracking", "ការដឹកជញ្ជូន", "warehouse", "last mile"],
+      "complexity": 3,
+      "language": "khmer"
+    },
+    {
+      "test_id": "KHMER-LANG-010",
+      "category": "language_understanding",
+      "subcategory": "government_services",
+      "prompt": "សេវាសាធារណៈឌីជីថលនៅកម្ពុជា",
+      "expected_topics": ["e-government", "ការចុះបញ្ជី", "online services", "digital ID"],
+      "complexity": 3,
+      "language": "khmer"
+    },
+    {
+      "test_id": "KHMER-CODE-006",
+      "category": "code_switching",
+      "subcategory": "mobile_dev",
+      "prompt": "Build mobile app សម្រាប់ Android និង iOS",
+      "expected_topics": ["React Native", "Flutter", "ការអភិវឌ្ឍ", "cross-platform"],
+      "complexity": 3,
+      "language": "mixed"
+    },
+    {
+      "test_id": "KHMER-CODE-007",
+      "category": "code_switching",
+      "subcategory": "data_science",
+      "prompt": "វិភាគទិន្នន័យលក់ដោយប្រើ Python",
+      "expected_topics": ["pandas", "matplotlib", "ការវិភាគ", "visualization"],
+      "complexity": 3,
+      "language": "mixed"
+    },
+    {
+      "test_id": "KHMER-CODE-008",
+      "category": "code_switching",
+      "subcategory": "devops",
+      "prompt": "Setup CI/CD pipeline សម្រាប់ team",
+      "expected_topics": ["GitHub Actions", "Docker", "ការដាក់ឱ្យដំណើរការ", "automation"],
+      "complexity": 4,
+      "language": "mixed"
+    },
+    {
+      "test_id": "KHMER-CODE-009",
+      "category": "code_switching",
+      "subcategory": "security_ops",
+      "prompt": "Implement សុវត្ថិភាព for web application",
+      "expected_topics": ["OWASP", "encryption", "ការការពារ", "vulnerabilities"],
+      "complexity": 4,
+      "language": "mixed"
+    },
+    {
+      "test_id": "KHMER-CODE-010",
+      "category": "code_switching",
+      "subcategory": "blockchain",
+      "prompt": "Smart contract development នៅលើ Ethereum",
+      "expected_topics": ["Solidity", "កិច្ចសន្យាឆ្លាតវៃ", "gas fees", "deployment"],
+      "complexity": 4,
+      "language": "mixed"
+    },
+    {
+      "test_id": "KHMER-CULT-006",
+      "category": "cultural_context",
+      "subcategory": "team_management",
+      "prompt": "គ្រប់គ្រងក្រុម developer ជនជាតិខ្មែរ",
+      "expected_topics": ["hierarchy", "respect", "communication style", "feedback"],
+      "complexity": 3,
+      "language": "khmer"
+    },
+    {
+      "test_id": "KHMER-CULT-007",
+      "category": "cultural_context",
+      "subcategory": "customer_service",
+      "prompt": "សេវាកម្មអតិថិជនល្អសម្រាប់ទីផ្សារកម្ពុជា",
+      "expected_topics": ["politeness", "ការគោរព", "response time", "language choice"],
+      "complexity": 2,
+      "language": "khmer"
+    },
+    {
+      "test_id": "KHMER-CULT-008",
+      "category": "cultural_context",
+      "subcategory": "marketing_local",
+      "prompt": "យុទ្ធសាស្ត្រទីផ្សារឌីជីថលនៅកម្ពុជា",
+      "expected_topics": ["Facebook", "Telegram", "influencers", "ការផ្សព្វផ្សាយ"],
+      "complexity": 3,
+      "language": "khmer"
+    },
+    {
+      "test_id": "KHMER-CULT-009",
+      "category": "cultural_context",
+      "subcategory": "rural_connectivity",
+      "prompt": "បញ្ហាអ៊ីនធឺណិតនៅតំបន់ជនបទ",
+      "expected_topics": ["infrastructure", "mobile data", "offline-first", "connectivity"],
+      "complexity": 3,
+      "language": "khmer"
+    },
+    {
+      "test_id": "KHMER-CULT-010",
+      "category": "cultural_context",
+      "subcategory": "education_tech",
+      "prompt": "ការប្រើបច្ចេកវិទ្យាក្នុងការអប់រំនៅកម្ពុជា",
+      "expected_topics": ["e-learning", "language barrier", "devices", "internet access"],
+      "complexity": 3,
+      "language": "khmer"
+    },
+    {
+      "test_id": "KHMER-TECH-006",
+      "category": "technical_translation",
+      "subcategory": "cloud_computing",
+      "prompt": "Cloud computing concepts ជាភាសាខ្មែរ",
+      "expected_topics": ["ការគណនាលើពពក", "storage", "virtual machines", "scalability"],
+      "complexity": 3,
+      "language": "khmer"
+    },
+    {
+      "test_id": "KHMER-TECH-007",
+      "category": "technical_translation",
+      "subcategory": "ai_ml_terms",
+      "prompt": "Machine learning terminology ជាខ្មែរ",
+      "expected_topics": ["ការរៀនដោយម៉ាស៊ីន", "neural network", "training", "model"],
+      "complexity": 4,
+      "language": "khmer"
+    },
+    {
+      "test_id": "KHMER-TECH-008",
+      "category": "technical_translation",
+      "subcategory": "mobile_terms",
+      "prompt": "Mobile development terms ជាភាសាខ្មែរ",
+      "expected_topics": ["កម្មវិធី", "screen", "notification", "permission"],
+      "complexity": 2,
+      "language": "khmer"
+    },
+    {
+      "test_id": "KHMER-TECH-009",
+      "category": "technical_translation",
+      "subcategory": "testing_terms",
+      "prompt": "Software testing vocabulary ជាខ្មែរ",
+      "expected_topics": ["ការធ្វើតេស្ត", "bug", "quality", "automation"],
+      "complexity": 3,
+      "language": "khmer"
+    },
+    {
+      "test_id": "KHMER-TECH-010",
+      "category": "technical_translation",
+      "subcategory": "project_management",
+      "prompt": "Project management terms ជាភាសាខ្មែរ",
+      "expected_topics": ["គម្រោង", "deadline", "milestone", "sprint"],
+      "complexity": 2,
+      "language": "khmer"
+    },
+    {
+      "test_id": "KHMER-LANG-011",
+      "category": "language_understanding",
+      "subcategory": "fintech",
+      "prompt": "បច្ចេកវិទ្យាហិរញ្ញវត្ថុនៅកម្ពុជា",
+      "expected_topics": ["Bakong", "digital wallet", "QR payment", "microfinance"],
+      "complexity": 3,
+      "language": "khmer"
+    },
+    {
+      "test_id": "KHMER-LANG-012",
+      "category": "language_understanding",
+      "subcategory": "legal_tech",
+      "prompt": "ច្បាប់បច្ចេកវិទ្យាព័ត៌មាននៅកម្ពុជា",
+      "expected_topics": ["data protection", "cybercrime", "ច្បាប់", "regulations"],
+      "complexity": 4,
+      "language": "khmer"
+    },
+    {
+      "test_id": "KHMER-LANG-013",
+      "category": "language_understanding",
+      "subcategory": "real_estate_tech",
+      "prompt": "កម្មវិធីអចលនទ្រព្យឌីជីថល",
+      "expected_topics": ["property listing", "ការជួល", "virtual tour", "documentation"],
+      "complexity": 3,
+      "language": "khmer"
+    },
+    {
+      "test_id": "KHMER-LANG-014",
+      "category": "language_understanding",
+      "subcategory": "entertainment_tech",
+      "prompt": "ប្រព័ន្ធកម្សាន្តឌីជីថលនៅកម្ពុជា",
+      "expected_topics": ["streaming", "gaming", "content creation", "monetization"],
+      "complexity": 2,
+      "language": "khmer"
+    },
+    {
+      "test_id": "KHMER-LANG-015",
+      "category": "language_understanding",
+      "subcategory": "manufacturing_it",
+      "prompt": "ឧស្សាហកម្ម 4.0 នៅកម្ពុជា",
+      "expected_topics": ["automation", "IoT", "ការផលិត", "supply chain"],
+      "complexity": 4,
+      "language": "khmer"
+    },
+    {
+      "test_id": "KHMER-CODE-011",
+      "category": "code_switching",
+      "subcategory": "ecommerce_platform",
+      "prompt": "បង្កើត online marketplace សម្រាប់ Cambodia",
+      "expected_topics": ["payment integration", "រូបិយប័ណ្ណ", "shipping", "tax"],
+      "complexity": 4,
+      "language": "mixed"
+    },
+    {
+      "test_id": "KHMER-CODE-012",
+      "category": "code_switching",
+      "subcategory": "social_media",
+      "prompt": "Social media API integration ជាមួយ Facebook",
+      "expected_topics": ["OAuth", "Graph API", "ការចែករំលែក", "privacy"],
+      "complexity": 3,
+      "language": "mixed"
+    },
+    {
+      "test_id": "KHMER-CODE-013",
+      "category": "code_switching",
+      "subcategory": "payment_gateway",
+      "prompt": "Integrate ABA PayWay នៅក្នុង website",
+      "expected_topics": ["API key", "transaction", "ការទូទាត់", "security"],
+      "complexity": 3,
+      "language": "mixed"
+    },
+    {
+      "test_id": "KHMER-CODE-014",
+      "category": "code_switching",
+      "subcategory": "chat_system",
+      "prompt": "Real-time chat សម្រាប់ customer support",
+      "expected_topics": ["WebSocket", "Socket.io", "ការឆ្លើយតប", "notification"],
+      "complexity": 3,
+      "language": "mixed"
+    },
+    {
+      "test_id": "KHMER-CODE-015",
+      "category": "code_switching",
+      "subcategory": "reporting_system",
+      "prompt": "Generate របាយការណ៍ from database",
+      "expected_topics": ["SQL queries", "PDF export", "ទិន្នន័យ", "charts"],
+      "complexity": 3,
+      "language": "mixed"
+    },
+    {
+      "test_id": "KHMER-CULT-011",
+      "category": "cultural_context",
+      "subcategory": "startup_ecosystem",
+      "prompt": "បរិស្ថាន startup នៅកម្ពុជា",
+      "expected_topics": ["funding", "incubators", "challenges", "opportunities"],
+      "complexity": 3,
+      "language": "khmer"
+    },
+    {
+      "test_id": "KHMER-CULT-012",
+      "category": "cultural_context",
+      "subcategory": "digital_divide",
+      "prompt": "គម្លាតឌីជីថលរវាងទីក្រុងនិងជនបទ",
+      "expected_topics": ["internet access", "digital literacy", "infrastructure", "education"],
+      "complexity": 3,
+      "language": "khmer"
+    },
+    {
+      "test_id": "KHMER-CULT-013",
+      "category": "cultural_context",
+      "subcategory": "gender_tech",
+      "prompt": "ស្ត្រីក្នុងវិស័យបច្ចេកវិទ្យានៅកម្ពុជា",
+      "expected_topics": ["participation", "education", "opportunities", "challenges"],
+      "complexity": 3,
+      "language": "khmer"
+    },
+    {
+      "test_id": "KHMER-CULT-014",
+      "category": "cultural_context",
+      "subcategory": "generational_tech",
+      "prompt": "ការប្រើប្រាស់បច្ចេកវិទ្យាតាមជំនាន់",
+      "expected_topics": ["youth adoption", "elderly challenges", "training needs", "support"],
+      "complexity": 3,
+      "language": "khmer"
+    },
+    {
+      "test_id": "KHMER-CULT-015",
+      "category": "cultural_context",
+      "subcategory": "trust_online",
+      "prompt": "ការជឿទុកចិត្តលើសេវាអនឡាញ",
+      "expected_topics": ["scam awareness", "verification", "reputation", "security"],
+      "complexity": 3,
+      "language": "khmer"
+    },
+    {
+      "test_id": "KHMER-TECH-011",
+      "category": "technical_translation",
+      "subcategory": "devops_terms",
+      "prompt": "DevOps concepts ជាភាសាខ្មែរ",
+      "expected_topics": ["continuous integration", "deployment", "ការដាក់ឱ្យដំណើរការ", "monitoring"],
+      "complexity": 4,
+      "language": "khmer"
+    },
+    {
+      "test_id": "KHMER-TECH-012",
+      "category": "technical_translation",
+      "subcategory": "cybersecurity",
+      "prompt": "Cybersecurity threats ជាខ្មែរ",
+      "expected_topics": ["malware", "phishing", "ការលួចទិន្នន័យ", "protection"],
+      "complexity": 3,
+      "language": "khmer"
+    },
+    {
+      "test_id": "KHMER-TECH-013",
+      "category": "technical_translation",
+      "subcategory": "data_analytics",
+      "prompt": "Data analytics terms ជាភាសាខ្មែរ",
+      "expected_topics": ["ការវិភាគទិន្នន័យ", "dashboard", "metrics", "insights"],
+      "complexity": 3,
+      "language": "khmer"
+    },
+    {
+      "test_id": "KHMER-TECH-014",
+      "category": "technical_translation",
+      "subcategory": "ux_design",
+      "prompt": "UX/UI design concepts ជាខ្មែរ",
+      "expected_topics": ["user experience", "រចនា", "interface", "usability"],
+      "complexity": 3,
+      "language": "khmer"
+    },
+    {
+      "test_id": "KHMER-TECH-015",
+      "category": "technical_translation",
+      "subcategory": "version_control",
+      "prompt": "Version control terms ជាភាសាខ្មែរ",
+      "expected_topics": ["commit", "branch", "merge", "ការគ្រប់គ្រងកំណែ"],
+      "complexity": 3,
+      "language": "khmer"
+    },
+    {
+      "test_id": "KHMER-LANG-016",
+      "category": "language_understanding",
+      "subcategory": "smart_city",
+      "prompt": "ទីក្រុងឆ្លាតវៃនៅកម្ពុជា",
+      "expected_topics": ["IoT sensors", "traffic management", "utilities", "digital services"],
+      "complexity": 4,
+      "language": "khmer"
+    },
+    {
+      "test_id": "KHMER-LANG-017",
+      "category": "language_understanding",
+      "subcategory": "renewable_energy",
+      "prompt": "បច្ចេកវិទ្យាថាមពលកកើតឡើងវិញ",
+      "expected_topics": ["solar", "monitoring systems", "grid management", "efficiency"],
+      "complexity": 3,
+      "language": "khmer"
+    },
+    {
+      "test_id": "KHMER-LANG-018",
+      "category": "language_understanding",
+      "subcategory": "food_tech",
+      "prompt": "កម្មវិធីដឹកជញ្ជូនអាហារនៅកម្ពុជា",
+      "expected_topics": ["delivery apps", "restaurant management", "ordering system", "payment"],
+      "complexity": 2,
+      "language": "khmer"
+    },
+    {
+      "test_id": "KHMER-LANG-019",
+      "category": "language_understanding",
+      "subcategory": "insurance_tech",
+      "prompt": "ធានារ៉ាប់រងឌីជីថលនៅកម្ពុជា",
+      "expected_topics": ["microinsurance", "claims processing", "mobile apps", "coverage"],
+      "complexity": 3,
+      "language": "khmer"
+    },
+    {
+      "test_id": "KHMER-LANG-020",
+      "category": "language_understanding",
+      "subcategory": "transportation_tech",
+      "prompt": "កម្មវិធីកក់តាក់ស៊ីនិងការដឹកជញ្ជូន",
+      "expected_topics": ["ride-hailing", "PassApp", "GPS tracking", "pricing"],
+      "complexity": 2,
+      "language": "khmer"
+    },
+    {
+      "test_id": "KHMER-CODE-016",
+      "category": "code_switching",
+      "subcategory": "microservices",
+      "prompt": "Design microservices architecture សម្រាប់ enterprise",
+      "expected_topics": ["Docker", "Kubernetes", "ការបែងចែកសេវា", "scalability"],
+      "complexity": 5,
+      "language": "mixed"
+    },
+    {
+      "test_id": "KHMER-CODE-017",
+      "category": "code_switching",
+      "subcategory": "data_pipeline",
+      "prompt": "ETL pipeline សម្រាប់ data warehouse",
+      "expected_topics": ["extraction", "transformation", "ការផ្ទុកទិន្នន័យ", "scheduling"],
+      "complexity": 4,
+      "language": "mixed"
+    },
+    {
+      "test_id": "KHMER-CODE-018",
+      "category": "code_switching",
+      "subcategory": "monitoring_system",
+      "prompt": "Setup monitoring និង alerting system",
+      "expected_topics": ["Grafana", "Prometheus", "ការត្រួតពិនិត្យ", "notifications"],
+      "complexity": 4,
+      "language": "mixed"
+    },
+    {
+      "test_id": "KHMER-CODE-019",
+      "category": "code_switching",
+      "subcategory": "search_engine",
+      "prompt": "Implement search function ជាភាសាខ្មែរ",
+      "expected_topics": ["Elasticsearch", "indexing", "ការស្វែងរក", "Unicode support"],
+      "complexity": 4,
+      "language": "mixed"
+    },
+    {
+      "test_id": "KHMER-CODE-020",
+      "category": "code_switching",
+      "subcategory": "caching_strategy",
+      "prompt": "Caching strategy សម្រាប់ high traffic",
+      "expected_topics": ["Redis", "CDN", "ការរក្សាទុកបណ្តោះអាសន្ន", "performance"],
+      "complexity": 3,
+      "language": "mixed"
+    },
+    {
+      "test_id": "KHMER-CULT-016",
+      "category": "cultural_context",
+      "subcategory": "remote_work",
+      "prompt": "ការងារពីចម្ងាយនៅកម្ពុជា",
+      "expected_topics": ["infrastructure", "work culture", "tools", "challenges"],
+      "complexity": 3,
+      "language": "khmer"
+    },
+    {
+      "test_id": "KHMER-CULT-017",
+      "category": "cultural_context",
+      "subcategory": "tech_education",
+      "prompt": "ការបណ្តុះបណ្តាលជំនាញ IT",
+      "expected_topics": ["bootcamps", "universities", "online learning", "skill gap"],
+      "complexity": 3,
+      "language": "khmer"
+    },
+    {
+      "test_id": "KHMER-CULT-018",
+      "category": "cultural_context",
+      "subcategory": "government_digitization",
+      "prompt": "កម្មវិធីឌីជីថលភាវូបនីយកម្មរបស់រដ្ឋាភិបាល",
+      "expected_topics": ["e-services", "digital ID", "online registration", "accessibility"],
+      "complexity": 3,
+      "language": "khmer"
+    },
+    {
+      "test_id": "KHMER-CULT-019",
+      "category": "cultural_context",
+      "subcategory": "sme_digitization",
+      "prompt": "ឌីជីថលភាវូបនីយកម្ម SME កម្ពុជា",
+      "expected_topics": ["digital adoption", "challenges", "support programs", "training"],
+      "complexity": 3,
+      "language": "khmer"
+    },
+    {
+      "test_id": "KHMER-CULT-020",
+      "category": "cultural_context",
+      "subcategory": "tech_investment",
+      "prompt": "ការវិនិយោគលើបច្ចេកវិទ្យានៅកម្ពុជា",
+      "expected_topics": ["foreign investment", "local VCs", "government support", "sectors"],
+      "complexity": 3,
+      "language": "khmer"
+    },
+    {
+      "test_id": "KHMER-TECH-016",
+      "category": "technical_translation",
+      "subcategory": "agile_terms",
+      "prompt": "Agile methodology terms ជាខ្មែរ",
+      "expected_topics": ["sprint", "scrum", "ការអភិវឌ្ឍន៍រហ័ស", "iteration"],
+      "complexity": 3,
+      "language": "khmer"
+    },
+    {
+      "test_id": "KHMER-TECH-017",
+      "category": "technical_translation",
+      "subcategory": "api_documentation",
+      "prompt": "API documentation ជាភាសាខ្មែរ",
+      "expected_topics": ["endpoints", "parameters", "ឯកសារ", "examples"],
+      "complexity": 3,
+      "language": "khmer"
+    },
+    {
+      "test_id": "KHMER-TECH-018",
+      "category": "technical_translation",
+      "subcategory": "performance_metrics",
+      "prompt": "Performance metrics ជាខ្មែរ",
+      "expected_topics": ["response time", "throughput", "ល្បឿន", "efficiency"],
+      "complexity": 3,
+      "language": "khmer"
+    },
+    {
+      "test_id": "KHMER-TECH-019",
+      "category": "technical_translation",
+      "subcategory": "accessibility",
+      "prompt": "Web accessibility terms ជាខ្មែរ",
+      "expected_topics": ["screen reader", "WCAG", "ភាពងាយស្រួល", "inclusion"],
+      "complexity": 3,
+      "language": "khmer"
+    },
+    {
+      "test_id": "KHMER-TECH-020",
+      "category": "technical_translation",
+      "subcategory": "blockchain_terms",
+      "prompt": "Blockchain terminology ជាភាសាខ្មែរ",
+      "expected_topics": ["distributed ledger", "consensus", "ខ្សែប្លុក", "cryptocurrency"],
+      "complexity": 4,
+      "language": "khmer"
+    },
+    {
+      "test_id": "KHMER-LANG-021",
+      "category": "language_understanding",
+      "subcategory": "social_impact",
+      "prompt": "បច្ចេកវិទ្យាសម្រាប់ផលប៉ះពាល់សង្គម",
+      "expected_topics": ["digital inclusion", "accessibility", "community development", "education"],
+      "complexity": 3,
+      "language": "khmer"
+    },
+    {
+      "test_id": "KHMER-LANG-022",
+      "category": "language_understanding",
+      "subcategory": "environmental_tech",
+      "prompt": "បច្ចេកវិទ្យាការពារបរិស្ថាន",
+      "expected_topics": ["monitoring", "waste management", "sustainability", "green tech"],
+      "complexity": 3,
+      "language": "khmer"
+    },
+    {
+      "test_id": "KHMER-LANG-023",
+      "category": "language_understanding",
+      "subcategory": "media_tech",
+      "prompt": "បច្ចេកវិទ្យាប្រព័ន្ធផ្សព្វផ្សាយ",
+      "expected_topics": ["digital media", "streaming", "content creation", "distribution"],
+      "complexity": 2,
+      "language": "khmer"
+    },
+    {
+      "test_id": "KHMER-LANG-024",
+      "category": "language_understanding",
+      "subcategory": "sports_tech",
+      "prompt": "បច្ចេកវិទ្យាក្នុងកីឡា",
+      "expected_topics": ["performance tracking", "analytics", "fan engagement", "broadcasting"],
+      "complexity": 2,
+      "language": "khmer"
+    },
+    {
+      "test_id": "KHMER-LANG-025",
+      "category": "language_understanding",
+      "subcategory": "cultural_preservation",
+      "prompt": "បច្ចេកវិទ្យាអភិរក្សវប្បធម៌ខ្មែរ",
+      "expected_topics": ["digitization", "VR/AR", "archives", "heritage sites"],
+      "complexity": 3,
+      "language": "khmer"
+    },
+    {
+      "test_id": "KHMER-CODE-021",
+      "category": "code_switching",
+      "subcategory": "voice_assistant",
+      "prompt": "Voice assistant ដែលយល់ភាសាខ្មែរ",
+      "expected_topics": ["speech recognition", "NLP", "ការស្តាប់", "Khmer language"],
+      "complexity": 5,
+      "language": "mixed"
+    },
+    {
+      "test_id": "KHMER-CODE-022",
+      "category": "code_switching",
+      "subcategory": "ocr_system",
+      "prompt": "OCR system សម្រាប់អក្សរខ្មែរ",
+      "expected_topics": ["image processing", "character recognition", "ការអាន", "accuracy"],
+      "complexity": 4,
+      "language": "mixed"
+    },
+    {
+      "test_id": "KHMER-CODE-023",
+      "category": "code_switching",
+      "subcategory": "translation_api",
+      "prompt": "Translation API ខ្មែរ-អង់គ្លេស",
+      "expected_topics": ["NMT", "API design", "ការបកប្រែ", "accuracy"],
+      "complexity": 4,
+      "language": "mixed"
+    },
+    {
+      "test_id": "KHMER-CODE-024",
+      "category": "code_switching",
+      "subcategory": "recommendation_engine",
+      "prompt": "Build recommendation system សម្រាប់ e-commerce",
+      "expected_topics": ["collaborative filtering", "ML", "ការណែនាំ", "personalization"],
+      "complexity": 4,
+      "language": "mixed"
+    },
+    {
+      "test_id": "KHMER-CODE-025",
+      "category": "code_switching",
+      "subcategory": "video_streaming",
+      "prompt": "Video streaming platform សម្រាប់ Cambodia",
+      "expected_topics": ["CDN", "adaptive streaming", "ការចាក់វីដេអូ", "bandwidth"],
+      "complexity": 4,
+      "language": "mixed"
+    },
+    {
+      "test_id": "KHMER-CULT-021",
+      "category": "cultural_context",
+      "subcategory": "digital_banking",
+      "prompt": "ការប្រើប្រាស់ធនាគារឌីជីថលនៅកម្ពុជា",
+      "expected_topics": ["adoption rate", "trust", "features", "accessibility"],
+      "complexity": 3,
+      "language": "khmer"
+    },
+    {
+      "test_id": "KHMER-CULT-022",
+      "category": "cultural_context",
+      "subcategory": "social_commerce",
+      "prompt": "លក់ទំនិញតាម social media",
+      "expected_topics": ["Facebook shops", "live selling", "payment methods", "trust"],
+      "complexity": 2,
+      "language": "khmer"
+    },
+    {
+      "test_id": "KHMER-CULT-023",
+      "category": "cultural_context",
+      "subcategory": "digital_identity",
+      "prompt": "អត្តសញ្ញាណឌីជីថលនៅកម្ពុជា",
+      "expected_topics": ["national ID", "verification", "privacy", "services"],
+      "complexity": 3,
+      "language": "khmer"
+    },
+    {
+      "test_id": "KHMER-CULT-024",
+      "category": "cultural_context",
+      "subcategory": "cyber_awareness",
+      "prompt": "ការយល់ដឹងអំពីសុវត្ថិភាពអនឡាញ",
+      "expected_topics": ["education", "scams", "password security", "awareness campaigns"],
+      "complexity": 2,
+      "language": "khmer"
+    },
+    {
+      "test_id": "KHMER-CULT-025",
+      "category": "cultural_context",
+      "subcategory": "tech_adoption_barriers",
+      "prompt": "ឧបសគ្គក្នុងការប្រើបច្ចេកវិទ្យា",
+      "expected_topics": ["language", "cost", "skills", "infrastructure"],
+      "complexity": 3,
+      "language": "khmer"
+    }
+  ],
+  "evaluation_metrics": {
+    "language_accuracy": {
+      "description": "Accuracy in understanding and generating Khmer language",
+      "weight": 0.3
+    },
+    "code_switching_fluency": {
+      "description": "Ability to seamlessly switch between Khmer and English in technical contexts",
+      "weight": 0.25
+    },
+    "cultural_appropriateness": {
+      "description": "Understanding of Cambodian cultural context and business practices",
+      "weight": 0.25
+    },
+    "technical_translation_quality": {
+      "description": "Quality of technical term translations and explanations",
+      "weight": 0.2
+    }
+  },
+  "scoring_guidelines": {
+    "excellent": {
+      "score_range": [90, 100],
+      "description": "Native-like Khmer understanding with deep cultural and technical knowledge"
+    },
+    "good": {
+      "score_range": [70, 89],
+      "description": "Strong Khmer capabilities with good cultural awareness"
+    },
+    "satisfactory": {
+      "score_range": [50, 69],
+      "description": "Basic Khmer understanding with some cultural context"
+    },
+    "needs_improvement": {
+      "score_range": [0, 49],
+      "description": "Limited Khmer capabilities requiring significant improvement"
+    }
+  }
+}

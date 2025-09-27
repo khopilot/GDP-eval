@@ -1,0 +1,984 @@
+{
+  "metadata": {
+    "version": "1.0.0",
+    "benchmark": "Finance Sector AI Evaluation",
+    "description": "Comprehensive benchmark for AI systems in Cambodia's financial sector",
+    "author": "Nicolas Delrieu",
+    "contact": "+855 92 332 554",
+    "created": "2025-01-26",
+    "scenario_count": 50,
+    "categories": {
+      "banking_operations": 10,
+      "microfinance": 10,
+      "digital_payments": 10,
+      "risk_assessment": 10,
+      "regulatory_compliance": 10
+    }
+  },
+  "scenarios": [
+    {
+      "scenario_id": "FIN-BANK-001",
+      "category": "banking_operations",
+      "title": "Loan Application Processing",
+      "context": "A small business owner applies for a $50,000 loan to expand their restaurant in Phnom Penh",
+      "tasks": [
+        "Assess creditworthiness based on provided financial statements",
+        "Calculate appropriate interest rate and repayment schedule",
+        "Identify potential risks and mitigation strategies",
+        "Generate loan approval documentation in Khmer and English"
+      ],
+      "evaluation_criteria": {
+        "accuracy": 0.3,
+        "completeness": 0.25,
+        "regulatory_compliance": 0.25,
+        "customer_service": 0.2
+      },
+      "complexity": 3
+    },
+    {
+      "scenario_id": "FIN-BANK-002",
+      "category": "banking_operations",
+      "title": "Fraud Detection System",
+      "context": "Unusual transaction patterns detected on corporate account",
+      "tasks": [
+        "Analyze transaction history for anomalies",
+        "Calculate fraud probability score",
+        "Recommend immediate actions",
+        "Generate compliance report"
+      ],
+      "evaluation_criteria": {
+        "detection_accuracy": 0.4,
+        "false_positive_rate": 0.3,
+        "response_time": 0.2,
+        "reporting_quality": 0.1
+      },
+      "complexity": 4
+    },
+    {
+      "scenario_id": "FIN-MICRO-001",
+      "category": "microfinance",
+      "title": "Village Savings Group Management",
+      "context": "Managing a village savings and loan association in Kampong Cham with 50 members",
+      "tasks": [
+        "Track member contributions and loans",
+        "Calculate interest distribution",
+        "Generate monthly reports in Khmer",
+        "Identify at-risk borrowers"
+      ],
+      "evaluation_criteria": {
+        "calculation_accuracy": 0.3,
+        "cultural_appropriateness": 0.3,
+        "accessibility": 0.2,
+        "reporting": 0.2
+      },
+      "complexity": 3
+    },
+    {
+      "scenario_id": "FIN-PAY-001",
+      "category": "digital_payments",
+      "title": "Mobile Payment Integration",
+      "context": "Integrating ABA PAY, Wing, and True Money for e-commerce platform",
+      "tasks": [
+        "Design payment flow architecture",
+        "Handle multi-currency transactions (USD/KHR)",
+        "Implement security measures",
+        "Create reconciliation system"
+      ],
+      "evaluation_criteria": {
+        "technical_design": 0.3,
+        "security": 0.3,
+        "user_experience": 0.2,
+        "integration_quality": 0.2
+      },
+      "complexity": 4
+    },
+    {
+      "scenario_id": "FIN-RISK-001",
+      "category": "risk_assessment",
+      "title": "Agricultural Loan Risk Analysis",
+      "context": "Assessing loan applications from rice farmers affected by climate change",
+      "tasks": [
+        "Evaluate climate risk factors",
+        "Assess crop yield projections",
+        "Calculate loan default probability",
+        "Recommend risk mitigation strategies"
+      ],
+      "evaluation_criteria": {
+        "risk_modeling": 0.35,
+        "local_context": 0.25,
+        "mitigation_strategies": 0.25,
+        "documentation": 0.15
+      },
+      "complexity": 4
+    },
+    {
+      "scenario_id": "FIN-REG-001",
+      "category": "regulatory_compliance",
+      "title": "NBC Reporting Requirements",
+      "context": "Preparing quarterly reports for National Bank of Cambodia",
+      "tasks": [
+        "Compile required financial metrics",
+        "Ensure data accuracy and completeness",
+        "Format reports per NBC guidelines",
+        "Identify compliance gaps"
+      ],
+      "evaluation_criteria": {
+        "regulatory_accuracy": 0.4,
+        "completeness": 0.3,
+        "timeliness": 0.2,
+        "documentation": 0.1
+      },
+      "complexity": 3
+    },
+    {
+      "scenario_id": "FIN-BANK-003",
+      "category": "banking_operations",
+      "title": "Cross-border Remittance Processing",
+      "context": "Processing remittances from Cambodian workers in South Korea",
+      "tasks": [
+        "Verify sender and recipient information",
+        "Calculate exchange rates and fees",
+        "Ensure AML/KYC compliance",
+        "Process transaction and notifications"
+      ],
+      "evaluation_criteria": {
+        "processing_accuracy": 0.3,
+        "compliance": 0.3,
+        "speed": 0.2,
+        "customer_communication": 0.2
+      },
+      "complexity": 3
+    },
+    {
+      "scenario_id": "FIN-BANK-004",
+      "category": "banking_operations",
+      "title": "Digital Onboarding System",
+      "context": "Remote customer onboarding for digital banking services",
+      "tasks": [
+        "Implement eKYC verification",
+        "Validate identity documents",
+        "Assess risk profile",
+        "Create customer account"
+      ],
+      "evaluation_criteria": {
+        "verification_accuracy": 0.35,
+        "user_experience": 0.25,
+        "security": 0.25,
+        "compliance": 0.15
+      },
+      "complexity": 4
+    },
+    {
+      "scenario_id": "FIN-MICRO-002",
+      "category": "microfinance",
+      "title": "Group Lending Risk Assessment",
+      "context": "Evaluating group loan application from women's cooperative",
+      "tasks": [
+        "Assess group cohesion and history",
+        "Evaluate business plan viability",
+        "Calculate appropriate loan terms",
+        "Design monitoring framework"
+      ],
+      "evaluation_criteria": {
+        "social_assessment": 0.3,
+        "financial_analysis": 0.3,
+        "terms_appropriateness": 0.2,
+        "monitoring_plan": 0.2
+      },
+      "complexity": 3
+    },
+    {
+      "scenario_id": "FIN-PAY-002",
+      "category": "digital_payments",
+      "title": "QR Code Payment System",
+      "context": "Implementing KHQR universal QR code payment system",
+      "tasks": [
+        "Generate merchant QR codes",
+        "Process multi-bank transactions",
+        "Handle offline payments",
+        "Reconcile transactions"
+      ],
+      "evaluation_criteria": {
+        "technical_implementation": 0.3,
+        "interoperability": 0.3,
+        "reliability": 0.2,
+        "merchant_support": 0.2
+      },
+      "complexity": 3
+    },
+    {
+      "scenario_id": "FIN-RISK-002",
+      "category": "risk_assessment",
+      "title": "SME Credit Scoring Model",
+      "context": "Developing credit scoring for SMEs with limited financial history",
+      "tasks": [
+        "Identify alternative data sources",
+        "Build predictive model",
+        "Validate scoring accuracy",
+        "Create explainable results"
+      ],
+      "evaluation_criteria": {
+        "model_accuracy": 0.35,
+        "data_utilization": 0.25,
+        "explainability": 0.25,
+        "fairness": 0.15
+      },
+      "complexity": 4
+    },
+    {
+      "scenario_id": "FIN-REG-002",
+      "category": "regulatory_compliance",
+      "title": "Anti-Money Laundering Monitoring",
+      "context": "Implementing AML monitoring system for digital transactions",
+      "tasks": [
+        "Define suspicious activity patterns",
+        "Monitor real-time transactions",
+        "Generate STR reports",
+        "Maintain audit trail"
+      ],
+      "evaluation_criteria": {
+        "detection_effectiveness": 0.35,
+        "false_positive_management": 0.25,
+        "reporting_quality": 0.25,
+        "audit_compliance": 0.15
+      },
+      "complexity": 4
+    },
+    {
+      "scenario_id": "FIN-BANK-005",
+      "category": "banking_operations",
+      "title": "Collateral Valuation System",
+      "context": "Valuing land and property collateral in provincial areas",
+      "tasks": [
+        "Assess property documentation",
+        "Estimate market value",
+        "Calculate loan-to-value ratio",
+        "Document valuation process"
+      ],
+      "evaluation_criteria": {
+        "valuation_accuracy": 0.35,
+        "documentation_quality": 0.25,
+        "risk_assessment": 0.25,
+        "regulatory_compliance": 0.15
+      },
+      "complexity": 3
+    },
+    {
+      "scenario_id": "FIN-MICRO-003",
+      "category": "microfinance",
+      "title": "Financial Literacy Training Program",
+      "context": "Designing financial education for rural communities",
+      "tasks": [
+        "Create training modules in Khmer",
+        "Develop practical exercises",
+        "Design assessment tools",
+        "Track learning outcomes"
+      ],
+      "evaluation_criteria": {
+        "content_appropriateness": 0.3,
+        "cultural_sensitivity": 0.3,
+        "engagement_methods": 0.2,
+        "outcome_measurement": 0.2
+      },
+      "complexity": 3
+    },
+    {
+      "scenario_id": "FIN-PAY-003",
+      "category": "digital_payments",
+      "title": "Cryptocurrency Exchange Integration",
+      "context": "Enabling crypto-to-fiat conversions for remittances",
+      "tasks": [
+        "Design secure exchange mechanism",
+        "Implement KYC/AML procedures",
+        "Handle volatility risks",
+        "Ensure regulatory compliance"
+      ],
+      "evaluation_criteria": {
+        "security_design": 0.35,
+        "risk_management": 0.25,
+        "compliance": 0.25,
+        "user_protection": 0.15
+      },
+      "complexity": 5
+    },
+    {
+      "scenario_id": "FIN-RISK-003",
+      "category": "risk_assessment",
+      "title": "Market Risk Analysis",
+      "context": "Assessing foreign exchange exposure for import/export businesses",
+      "tasks": [
+        "Analyze currency exposure",
+        "Calculate VaR metrics",
+        "Recommend hedging strategies",
+        "Create risk dashboard"
+      ],
+      "evaluation_criteria": {
+        "analysis_depth": 0.35,
+        "calculation_accuracy": 0.25,
+        "strategy_quality": 0.25,
+        "presentation": 0.15
+      },
+      "complexity": 4
+    },
+    {
+      "scenario_id": "FIN-REG-003",
+      "category": "regulatory_compliance",
+      "title": "Data Privacy Compliance",
+      "context": "Implementing data protection for financial services",
+      "tasks": [
+        "Map personal data flows",
+        "Implement consent management",
+        "Design data retention policies",
+        "Create breach response plan"
+      ],
+      "evaluation_criteria": {
+        "comprehensiveness": 0.3,
+        "technical_implementation": 0.3,
+        "policy_quality": 0.2,
+        "incident_preparedness": 0.2
+      },
+      "complexity": 3
+    },
+    {
+      "scenario_id": "FIN-BANK-006",
+      "category": "banking_operations",
+      "title": "Branch Performance Analytics",
+      "context": "Analyzing performance across 50 bank branches nationwide",
+      "tasks": [
+        "Define KPI metrics",
+        "Analyze branch efficiency",
+        "Identify improvement opportunities",
+        "Create executive dashboard"
+      ],
+      "evaluation_criteria": {
+        "metric_selection": 0.25,
+        "analysis_quality": 0.35,
+        "insights_value": 0.25,
+        "visualization": 0.15
+      },
+      "complexity": 3
+    },
+    {
+      "scenario_id": "FIN-MICRO-004",
+      "category": "microfinance",
+      "title": "Mobile Banking for Rural Areas",
+      "context": "Deploying mobile banking in areas with limited connectivity",
+      "tasks": [
+        "Design offline-capable system",
+        "Implement USSD interface",
+        "Create agent network model",
+        "Develop training materials"
+      ],
+      "evaluation_criteria": {
+        "technical_feasibility": 0.3,
+        "accessibility": 0.3,
+        "scalability": 0.2,
+        "sustainability": 0.2
+      },
+      "complexity": 4
+    },
+    {
+      "scenario_id": "FIN-PAY-004",
+      "category": "digital_payments",
+      "title": "B2B Payment Platform",
+      "context": "Building payment platform for supply chain transactions",
+      "tasks": [
+        "Design invoice financing features",
+        "Implement escrow services",
+        "Create dispute resolution system",
+        "Build reporting tools"
+      ],
+      "evaluation_criteria": {
+        "feature_completeness": 0.3,
+        "security": 0.3,
+        "usability": 0.2,
+        "scalability": 0.2
+      },
+      "complexity": 4
+    },
+    {
+      "scenario_id": "FIN-RISK-004",
+      "category": "risk_assessment",
+      "title": "Operational Risk Management",
+      "context": "Identifying operational risks in digital banking operations",
+      "tasks": [
+        "Map operational processes",
+        "Identify risk points",
+        "Quantify potential losses",
+        "Design control measures"
+      ],
+      "evaluation_criteria": {
+        "risk_identification": 0.3,
+        "quantification_accuracy": 0.3,
+        "control_effectiveness": 0.25,
+        "documentation": 0.15
+      },
+      "complexity": 3
+    },
+    {
+      "scenario_id": "FIN-REG-004",
+      "category": "regulatory_compliance",
+      "title": "Cross-border Compliance",
+      "context": "Ensuring compliance for international transactions",
+      "tasks": [
+        "Review FATF requirements",
+        "Implement sanctions screening",
+        "Design compliance workflows",
+        "Create training programs"
+      ],
+      "evaluation_criteria": {
+        "regulatory_knowledge": 0.35,
+        "implementation_quality": 0.25,
+        "workflow_efficiency": 0.25,
+        "training_effectiveness": 0.15
+      },
+      "complexity": 4
+    },
+    {
+      "scenario_id": "FIN-BANK-007",
+      "category": "banking_operations",
+      "title": "Customer Churn Prediction",
+      "context": "Predicting and preventing customer attrition",
+      "tasks": [
+        "Analyze customer behavior patterns",
+        "Build churn prediction model",
+        "Design retention strategies",
+        "Measure intervention effectiveness"
+      ],
+      "evaluation_criteria": {
+        "prediction_accuracy": 0.35,
+        "strategy_quality": 0.25,
+        "implementation_feasibility": 0.25,
+        "ROI_estimation": 0.15
+      },
+      "complexity": 4
+    },
+    {
+      "scenario_id": "FIN-MICRO-005",
+      "category": "microfinance",
+      "title": "Agricultural Value Chain Financing",
+      "context": "Financing rice value chain from farm to export",
+      "tasks": [
+        "Map value chain actors",
+        "Design financing products",
+        "Assess risks at each stage",
+        "Create monitoring system"
+      ],
+      "evaluation_criteria": {
+        "chain_understanding": 0.3,
+        "product_innovation": 0.3,
+        "risk_assessment": 0.25,
+        "monitoring_effectiveness": 0.15
+      },
+      "complexity": 4
+    },
+    {
+      "scenario_id": "FIN-PAY-005",
+      "category": "digital_payments",
+      "title": "Contactless Payment Implementation",
+      "context": "Rolling out NFC payment systems in urban areas",
+      "tasks": [
+        "Select technology stack",
+        "Design security protocols",
+        "Plan merchant adoption",
+        "Create user education campaign"
+      ],
+      "evaluation_criteria": {
+        "technology_choice": 0.25,
+        "security_design": 0.35,
+        "adoption_strategy": 0.25,
+        "education_quality": 0.15
+      },
+      "complexity": 3
+    },
+    {
+      "scenario_id": "FIN-RISK-005",
+      "category": "risk_assessment",
+      "title": "Climate Risk Assessment",
+      "context": "Evaluating climate change impact on loan portfolio",
+      "tasks": [
+        "Identify climate-vulnerable sectors",
+        "Quantify potential losses",
+        "Develop stress test scenarios",
+        "Create adaptation strategies"
+      ],
+      "evaluation_criteria": {
+        "risk_identification": 0.3,
+        "quantification_methods": 0.3,
+        "scenario_quality": 0.25,
+        "strategy_viability": 0.15
+      },
+      "complexity": 4
+    },
+    {
+      "scenario_id": "FIN-REG-005",
+      "category": "regulatory_compliance",
+      "title": "Regulatory Reporting Automation",
+      "context": "Automating regulatory report generation and submission",
+      "tasks": [
+        "Map reporting requirements",
+        "Design data pipeline",
+        "Implement validation rules",
+        "Create audit trail"
+      ],
+      "evaluation_criteria": {
+        "requirement_coverage": 0.3,
+        "automation_level": 0.3,
+        "accuracy_controls": 0.25,
+        "audit_capability": 0.15
+      },
+      "complexity": 3
+    },
+    {
+      "scenario_id": "FIN-BANK-008",
+      "category": "banking_operations",
+      "title": "Open Banking API Platform",
+      "context": "Building open banking ecosystem for third-party developers",
+      "tasks": [
+        "Design API architecture",
+        "Implement security standards",
+        "Create developer portal",
+        "Build partner management system"
+      ],
+      "evaluation_criteria": {
+        "architecture_quality": 0.3,
+        "security_robustness": 0.35,
+        "developer_experience": 0.2,
+        "scalability": 0.15
+      },
+      "complexity": 5
+    },
+    {
+      "scenario_id": "FIN-MICRO-006",
+      "category": "microfinance",
+      "title": "Impact Measurement System",
+      "context": "Measuring social impact of microfinance programs",
+      "tasks": [
+        "Define impact indicators",
+        "Design data collection methods",
+        "Analyze outcomes",
+        "Create stakeholder reports"
+      ],
+      "evaluation_criteria": {
+        "indicator_relevance": 0.3,
+        "methodology_rigor": 0.3,
+        "analysis_quality": 0.25,
+        "communication_effectiveness": 0.15
+      },
+      "complexity": 3
+    },
+    {
+      "scenario_id": "FIN-PAY-006",
+      "category": "digital_payments",
+      "title": "Instant Payment System",
+      "context": "Implementing 24/7 instant payment infrastructure",
+      "tasks": [
+        "Design system architecture",
+        "Ensure high availability",
+        "Implement fraud prevention",
+        "Create settlement mechanism"
+      ],
+      "evaluation_criteria": {
+        "architecture_robustness": 0.35,
+        "availability_guarantee": 0.25,
+        "security_measures": 0.25,
+        "settlement_efficiency": 0.15
+      },
+      "complexity": 5
+    },
+    {
+      "scenario_id": "FIN-RISK-006",
+      "category": "risk_assessment",
+      "title": "Concentration Risk Analysis",
+      "context": "Analyzing portfolio concentration in real estate sector",
+      "tasks": [
+        "Measure sector concentration",
+        "Assess correlation risks",
+        "Calculate capital requirements",
+        "Recommend diversification strategies"
+      ],
+      "evaluation_criteria": {
+        "measurement_accuracy": 0.3,
+        "risk_quantification": 0.3,
+        "capital_calculation": 0.25,
+        "strategy_quality": 0.15
+      },
+      "complexity": 4
+    },
+    {
+      "scenario_id": "FIN-REG-006",
+      "category": "regulatory_compliance",
+      "title": "Regulatory Change Management",
+      "context": "Adapting to new central bank digital currency regulations",
+      "tasks": [
+        "Analyze regulatory requirements",
+        "Assess system impacts",
+        "Create implementation plan",
+        "Design compliance monitoring"
+      ],
+      "evaluation_criteria": {
+        "requirement_analysis": 0.3,
+        "impact_assessment": 0.3,
+        "implementation_planning": 0.25,
+        "monitoring_design": 0.15
+      },
+      "complexity": 4
+    },
+    {
+      "scenario_id": "FIN-BANK-009",
+      "category": "banking_operations",
+      "title": "Wealth Management Platform",
+      "context": "Creating digital wealth management for affluent customers",
+      "tasks": [
+        "Design portfolio management tools",
+        "Implement robo-advisory features",
+        "Create risk profiling system",
+        "Build performance reporting"
+      ],
+      "evaluation_criteria": {
+        "feature_sophistication": 0.3,
+        "algorithm_quality": 0.3,
+        "risk_management": 0.25,
+        "user_experience": 0.15
+      },
+      "complexity": 4
+    },
+    {
+      "scenario_id": "FIN-MICRO-007",
+      "category": "microfinance",
+      "title": "Peer-to-Peer Lending Platform",
+      "context": "Building P2P lending for small businesses",
+      "tasks": [
+        "Design matching algorithm",
+        "Implement credit assessment",
+        "Create legal framework",
+        "Build payment processing"
+      ],
+      "evaluation_criteria": {
+        "algorithm_effectiveness": 0.3,
+        "risk_assessment": 0.3,
+        "legal_compliance": 0.25,
+        "platform_reliability": 0.15
+      },
+      "complexity": 4
+    },
+    {
+      "scenario_id": "FIN-PAY-007",
+      "category": "digital_payments",
+      "title": "Biometric Payment Authentication",
+      "context": "Implementing fingerprint and facial recognition for payments",
+      "tasks": [
+        "Select biometric technologies",
+        "Design security architecture",
+        "Handle privacy concerns",
+        "Create fallback mechanisms"
+      ],
+      "evaluation_criteria": {
+        "technology_selection": 0.25,
+        "security_strength": 0.35,
+        "privacy_protection": 0.25,
+        "reliability": 0.15
+      },
+      "complexity": 4
+    },
+    {
+      "scenario_id": "FIN-RISK-007",
+      "category": "risk_assessment",
+      "title": "Cyber Risk Quantification",
+      "context": "Quantifying potential losses from cyber attacks",
+      "tasks": [
+        "Identify attack vectors",
+        "Estimate loss scenarios",
+        "Calculate risk exposure",
+        "Design insurance strategy"
+      ],
+      "evaluation_criteria": {
+        "threat_assessment": 0.3,
+        "loss_modeling": 0.3,
+        "exposure_calculation": 0.25,
+        "mitigation_strategy": 0.15
+      },
+      "complexity": 4
+    },
+    {
+      "scenario_id": "FIN-REG-007",
+      "category": "regulatory_compliance",
+      "title": "Sustainable Finance Compliance",
+      "context": "Implementing ESG criteria in lending decisions",
+      "tasks": [
+        "Define ESG criteria",
+        "Assess portfolio alignment",
+        "Create reporting framework",
+        "Design monitoring system"
+      ],
+      "evaluation_criteria": {
+        "criteria_quality": 0.3,
+        "assessment_methodology": 0.3,
+        "reporting_completeness": 0.25,
+        "monitoring_effectiveness": 0.15
+      },
+      "complexity": 3
+    },
+    {
+      "scenario_id": "FIN-BANK-010",
+      "category": "banking_operations",
+      "title": "AI-Powered Credit Decisioning",
+      "context": "Implementing ML-based credit approval system",
+      "tasks": [
+        "Design ML model architecture",
+        "Ensure model explainability",
+        "Implement bias detection",
+        "Create override mechanisms"
+      ],
+      "evaluation_criteria": {
+        "model_performance": 0.35,
+        "explainability": 0.25,
+        "fairness": 0.25,
+        "governance": 0.15
+      },
+      "complexity": 5
+    },
+    {
+      "scenario_id": "FIN-MICRO-008",
+      "category": "microfinance",
+      "title": "Digital Field Assessment",
+      "context": "Remote assessment tools for loan officers",
+      "tasks": [
+        "Design mobile assessment app",
+        "Implement offline capability",
+        "Create verification mechanisms",
+        "Build data synchronization"
+      ],
+      "evaluation_criteria": {
+        "app_functionality": 0.3,
+        "offline_reliability": 0.3,
+        "verification_quality": 0.25,
+        "sync_efficiency": 0.15
+      },
+      "complexity": 3
+    },
+    {
+      "scenario_id": "FIN-PAY-008",
+      "category": "digital_payments",
+      "title": "Subscription Billing Platform",
+      "context": "Managing recurring payments for digital services",
+      "tasks": [
+        "Design billing engine",
+        "Handle payment failures",
+        "Implement dunning process",
+        "Create merchant dashboard"
+      ],
+      "evaluation_criteria": {
+        "engine_reliability": 0.35,
+        "failure_handling": 0.25,
+        "recovery_rate": 0.25,
+        "usability": 0.15
+      },
+      "complexity": 3
+    },
+    {
+      "scenario_id": "FIN-RISK-008",
+      "category": "risk_assessment",
+      "title": "Liquidity Risk Management",
+      "context": "Managing liquidity during economic stress",
+      "tasks": [
+        "Forecast cash flows",
+        "Stress test liquidity positions",
+        "Design contingency funding",
+        "Create early warning system"
+      ],
+      "evaluation_criteria": {
+        "forecast_accuracy": 0.3,
+        "stress_test_quality": 0.3,
+        "contingency_planning": 0.25,
+        "warning_effectiveness": 0.15
+      },
+      "complexity": 4
+    },
+    {
+      "scenario_id": "FIN-REG-008",
+      "category": "regulatory_compliance",
+      "title": "RegTech Implementation",
+      "context": "Deploying regulatory technology solutions",
+      "tasks": [
+        "Select RegTech vendors",
+        "Integrate compliance systems",
+        "Automate reporting workflows",
+        "Measure compliance effectiveness"
+      ],
+      "evaluation_criteria": {
+        "vendor_selection": 0.25,
+        "integration_quality": 0.3,
+        "automation_level": 0.3,
+        "effectiveness_metrics": 0.15
+      },
+      "complexity": 3
+    },
+    {
+      "scenario_id": "FIN-MICRO-009",
+      "category": "microfinance",
+      "title": "Women's Economic Empowerment",
+      "context": "Financial products for women entrepreneurs",
+      "tasks": [
+        "Design tailored products",
+        "Create support networks",
+        "Implement mentorship programs",
+        "Measure empowerment outcomes"
+      ],
+      "evaluation_criteria": {
+        "product_appropriateness": 0.3,
+        "network_effectiveness": 0.25,
+        "mentorship_quality": 0.25,
+        "impact_measurement": 0.2
+      },
+      "complexity": 3
+    },
+    {
+      "scenario_id": "FIN-PAY-009",
+      "category": "digital_payments",
+      "title": "Cross-Platform Payment SDK",
+      "context": "Building payment SDK for mobile app developers",
+      "tasks": [
+        "Design SDK architecture",
+        "Implement security features",
+        "Create documentation",
+        "Build testing tools"
+      ],
+      "evaluation_criteria": {
+        "architecture_quality": 0.3,
+        "security_implementation": 0.35,
+        "documentation_completeness": 0.2,
+        "developer_experience": 0.15
+      },
+      "complexity": 4
+    },
+    {
+      "scenario_id": "FIN-RISK-009",
+      "category": "risk_assessment",
+      "title": "Model Risk Management",
+      "context": "Managing risks from AI/ML models in production",
+      "tasks": [
+        "Inventory all models",
+        "Assess model risks",
+        "Design validation framework",
+        "Create governance structure"
+      ],
+      "evaluation_criteria": {
+        "inventory_completeness": 0.25,
+        "risk_assessment_quality": 0.3,
+        "validation_rigor": 0.3,
+        "governance_effectiveness": 0.15
+      },
+      "complexity": 4
+    },
+    {
+      "scenario_id": "FIN-REG-009",
+      "category": "regulatory_compliance",
+      "title": "Financial Crime Prevention",
+      "context": "Comprehensive financial crime prevention program",
+      "tasks": [
+        "Design detection systems",
+        "Implement investigation tools",
+        "Create training programs",
+        "Build reporting mechanisms"
+      ],
+      "evaluation_criteria": {
+        "detection_capability": 0.35,
+        "investigation_efficiency": 0.25,
+        "training_effectiveness": 0.25,
+        "reporting_quality": 0.15
+      },
+      "complexity": 4
+    },
+    {
+      "scenario_id": "FIN-MICRO-010",
+      "category": "microfinance",
+      "title": "Climate-Smart Agriculture Finance",
+      "context": "Financing climate adaptation for smallholder farmers",
+      "tasks": [
+        "Design green loan products",
+        "Assess climate risks",
+        "Create incentive structures",
+        "Monitor environmental impact"
+      ],
+      "evaluation_criteria": {
+        "product_innovation": 0.3,
+        "risk_assessment": 0.3,
+        "incentive_effectiveness": 0.25,
+        "impact_monitoring": 0.15
+      },
+      "complexity": 4
+    },
+    {
+      "scenario_id": "FIN-PAY-010",
+      "category": "digital_payments",
+      "title": "Central Bank Digital Currency Integration",
+      "context": "Preparing for potential CBDC implementation",
+      "tasks": [
+        "Analyze CBDC requirements",
+        "Design integration architecture",
+        "Address privacy concerns",
+        "Plan migration strategy"
+      ],
+      "evaluation_criteria": {
+        "requirement_understanding": 0.3,
+        "architecture_quality": 0.3,
+        "privacy_protection": 0.25,
+        "migration_planning": 0.15
+      },
+      "complexity": 5
+    },
+    {
+      "scenario_id": "FIN-RISK-010",
+      "category": "risk_assessment",
+      "title": "Systemic Risk Analysis",
+      "context": "Assessing interconnected risks in financial system",
+      "tasks": [
+        "Map system interconnections",
+        "Identify contagion channels",
+        "Quantify systemic impact",
+        "Design mitigation measures"
+      ],
+      "evaluation_criteria": {
+        "mapping_completeness": 0.3,
+        "channel_identification": 0.3,
+        "impact_quantification": 0.25,
+        "mitigation_quality": 0.15
+      },
+      "complexity": 5
+    },
+    {
+      "scenario_id": "FIN-REG-010",
+      "category": "regulatory_compliance",
+      "title": "Digital Identity Compliance",
+      "context": "Implementing digital identity standards",
+      "tasks": [
+        "Review identity standards",
+        "Design verification system",
+        "Ensure data protection",
+        "Create audit mechanisms"
+      ],
+      "evaluation_criteria": {
+        "standard_compliance": 0.3,
+        "system_security": 0.35,
+        "privacy_protection": 0.2,
+        "audit_capability": 0.15
+      },
+      "complexity": 3
+    }
+  ],
+  "scoring_methodology": {
+    "performance_levels": {
+      "expert": {"range": [90, 100], "description": "Exceeds industry standards"},
+      "proficient": {"range": [70, 89], "description": "Meets professional requirements"},
+      "developing": {"range": [50, 69], "description": "Requires improvement"},
+      "novice": {"range": [0, 49], "description": "Significant gaps identified"}
+    },
+    "evaluation_dimensions": {
+      "technical_competence": 0.35,
+      "regulatory_knowledge": 0.25,
+      "risk_management": 0.2,
+      "customer_focus": 0.2
+    }
+  }
+}

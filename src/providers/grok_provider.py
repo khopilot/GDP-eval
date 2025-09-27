@@ -45,6 +45,36 @@ class GrokProvider(BaseProvider):
             "Authorization": f"Bearer {api_key}"
         }
 
+    def _validate_and_sanitize_prompt(self, prompt: str) -> str:
+        """
+        Validate and sanitize prompt to prevent API errors
+
+        Args:
+            prompt: Raw prompt to validate
+
+        Returns:
+            Sanitized prompt safe for API
+        """
+        if not prompt or not isinstance(prompt, str):
+            return "Please provide a valid question."
+
+        # Remove control characters and non-printable characters
+        import re
+        sanitized = re.sub(r'[\x00-\x1f\x7f-\x9f]', '', prompt)
+
+        # Limit length to prevent timeouts (32k chars max)
+        if len(sanitized) > 32000:
+            sanitized = sanitized[:32000] + "... [truncated]"
+
+        # Replace problematic Unicode that might break JSON
+        sanitized = sanitized.encode('utf-8', errors='ignore').decode('utf-8')
+
+        # Ensure not empty after sanitization
+        if not sanitized.strip():
+            return "Please provide a valid question."
+
+        return sanitized.strip()
+
     async def generate(
         self,
         prompt: str,
@@ -66,10 +96,16 @@ class GrokProvider(BaseProvider):
         Returns:
             LLM response
         """
-        messages = []
+        # Validate and sanitize prompts to prevent API errors
+        sanitized_prompt = self._validate_and_sanitize_prompt(prompt)
+        sanitized_system_prompt = None
         if system_prompt:
-            messages.append({"role": "system", "content": system_prompt})
-        messages.append({"role": "user", "content": prompt})
+            sanitized_system_prompt = self._validate_and_sanitize_prompt(system_prompt)
+
+        messages = []
+        if sanitized_system_prompt:
+            messages.append({"role": "system", "content": sanitized_system_prompt})
+        messages.append({"role": "user", "content": sanitized_prompt})
 
         payload = {
             "messages": messages,

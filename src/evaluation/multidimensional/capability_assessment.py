@@ -13,6 +13,7 @@ from enum import Enum
 import numpy as np
 from datetime import datetime
 import logging
+from .base_evaluation import BaseEvaluationModule, TestMode
 
 logger = logging.getLogger(__name__)
 
@@ -38,19 +39,55 @@ class CapabilityScore:
     metadata: Dict[str, Any]
 
 
-class CapabilityAssessment:
+class CapabilityAssessment(BaseEvaluationModule):
     """
     Enterprise-grade capability assessment system
     Evaluates model capabilities across multiple dimensions
     """
 
-    def __init__(self):
-        self.test_suites = self._initialize_test_suites()
+    def __init__(self, test_mode: TestMode = TestMode.STANDARD):
+        # Initialize base module with capability tests dataset
+        super().__init__("capability_tests.json", test_mode)
+        self.test_suites = self._organize_test_suites()
         self.scoring_weights = self._initialize_weights()
         self.results_cache = {}
+        # Add compatibility for test scripts
+        self.capability_tests = self.get_test_suite(use_sampling=False)
+        logger.info(f"CapabilityAssessment initialized with {len(self.sampled_tests)} tests in {test_mode.value} mode")
 
-    def _initialize_test_suites(self) -> Dict[str, List[Dict]]:
-        """Initialize comprehensive test suites for each capability"""
+    def _organize_test_suites(self) -> Dict[str, List[Dict]]:
+        """Organize loaded tests by category"""
+        # Use tests from the base module's loaded dataset
+        tests = self.get_test_suite(use_sampling=True)
+
+        organized = {
+            "reasoning": [],
+            "knowledge": [],
+            "creativity": []
+        }
+
+        # Organize tests by category
+        for test in tests:
+            category = test.get('category', 'reasoning').lower()
+            if category in organized:
+                organized[category].append(test)
+            else:
+                # Default to reasoning if category unknown
+                organized["reasoning"].append(test)
+
+        # If we have no tests from the dataset, use minimal fallback
+        if not any(organized.values()):
+            logger.warning("No tests loaded from dataset, using minimal fallback")
+            return self._get_fallback_tests()
+
+        logger.info(f"Organized tests - Reasoning: {len(organized['reasoning'])}, "
+                   f"Knowledge: {len(organized['knowledge'])}, "
+                   f"Creativity: {len(organized['creativity'])}")
+
+        return organized
+
+    def _get_fallback_tests(self) -> Dict[str, List[Dict]]:
+        """Minimal fallback tests if dataset loading fails"""
         return {
             "reasoning": [
                 # Logical Reasoning Tests
@@ -194,17 +231,24 @@ class CapabilityAssessment:
         }
 
         # Check logical consistency
-        if test_case["type"] == "deductive_reasoning":
+        test_subcategory = test_case.get("subcategory", "")
+        if test_subcategory == "logical" or "logical" in test_subcategory:
             # Check for presence of expected reasoning patterns
-            for pattern in test_case.get("expected_reasoning", []):
+            expected_reasoning = test_case.get("expected_reasoning", "")
+            if isinstance(expected_reasoning, str):
+                expected_patterns = [expected_reasoning]
+            else:
+                expected_patterns = expected_reasoning or []
+
+            for pattern in expected_patterns:
                 if pattern.lower() in model_response.lower():
                     scores["logical_consistency"] += 50.0
 
         # Check mathematical accuracy for math problems
-        if test_case["type"] == "arithmetic_reasoning":
+        if test_subcategory == "mathematical" or "mathematical" in test_subcategory:
             # Extract numbers from response
             numbers = re.findall(r'\d+\.?\d*', model_response)
-            expected = str(test_case.get("expected_answer", ""))
+            expected = str(test_case.get("correct_answer", ""))
             if expected in numbers:
                 scores["conclusion_accuracy"] = 100.0
 
@@ -222,8 +266,8 @@ class CapabilityAssessment:
         return {
             "overall_score": overall_score,
             "sub_scores": scores,
-            "test_id": test_case["test_id"],
-            "difficulty": test_case["difficulty"],
+            "test_id": test_case.get("test_id", "unknown"),
+            "difficulty": test_case.get("complexity", 1),
             "response_length": len(model_response),
             "timestamp": datetime.now().isoformat()
         }
@@ -273,8 +317,8 @@ class CapabilityAssessment:
         return {
             "overall_score": overall_score,
             "sub_scores": scores,
-            "test_id": test_case["test_id"],
-            "difficulty": test_case["difficulty"],
+            "test_id": test_case.get("test_id", "unknown"),
+            "difficulty": test_case.get("complexity", 1),
             "facts_identified": scores["factual_accuracy"] > 50,
             "timestamp": datetime.now().isoformat()
         }
@@ -303,7 +347,8 @@ class CapabilityAssessment:
         scores["originality"] = min(100, (unique_words / max(total_words, 1)) * 150)
 
         # Evaluate fluency (idea generation)
-        if test_case["type"] == "alternative_uses":
+        test_subcategory = test_case.get("subcategory", "")
+        if test_subcategory == "generation" or "alternative" in test_case.get("prompt", "").lower():
             # Count number of distinct ideas (separated by newlines, numbers, or bullets)
             ideas = re.split(r'\n|\d+\.|\*|-', model_response)
             valid_ideas = [idea for idea in ideas if len(idea.strip()) > 10]
@@ -324,8 +369,8 @@ class CapabilityAssessment:
         return {
             "overall_score": overall_score,
             "sub_scores": scores,
-            "test_id": test_case["test_id"],
-            "difficulty": test_case["difficulty"],
+            "test_id": test_case.get("test_id", "unknown"),
+            "difficulty": test_case.get("complexity", 1),
             "unique_word_ratio": unique_words / max(total_words, 1),
             "timestamp": datetime.now().isoformat()
         }

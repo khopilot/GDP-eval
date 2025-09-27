@@ -14,6 +14,9 @@ import numpy as np
 from datetime import datetime, timedelta
 import logging
 from collections import defaultdict
+from pathlib import Path
+
+from .base_evaluation import BaseEvaluationModule, TestMode
 
 logger = logging.getLogger(__name__)
 
@@ -40,19 +43,68 @@ class ConsistencyScore:
     metadata: Dict[str, Any]
 
 
-class ConsistencyAnalysis:
+class ConsistencyAnalysis(BaseEvaluationModule):
     """
     Enterprise-grade consistency analysis system
     Evaluates model consistency across various dimensions
+    Uses ALL 90 tests from consistency_tests.json
     """
 
-    def __init__(self):
-        self.test_prompts = self._initialize_test_prompts()
+    def __init__(self, test_mode: TestMode = TestMode.FULL):
+        # Always use FULL mode for professional evaluation
+        super().__init__("consistency_tests.json", TestMode.FULL)
+
+        # Load and organize ALL tests from dataset
+        self.consistency_tests = self.get_test_suite(use_sampling=False)  # Get ALL 90 tests
+        self.test_prompts = self._organize_tests_from_dataset()
         self.consistency_thresholds = self._initialize_thresholds()
         self.response_cache = defaultdict(list)
 
-    def _initialize_test_prompts(self) -> Dict[str, List[Dict]]:
-        """Initialize consistency test prompts"""
+        logger.info(f"ConsistencyAnalysis initialized with {len(self.consistency_tests)} tests from dataset")
+
+    def _organize_tests_from_dataset(self) -> Dict[str, List[Dict]]:
+        """
+        Organize ALL 90 tests from consistency_tests.json into categories
+        """
+        organized_tests = {
+            "temporal": [],
+            "cross_prompt": [],
+            "semantic": [],
+            "factual": [],
+            "stylistic": [],
+            "behavioral": []
+        }
+
+        # Organize tests by category
+        for test in self.consistency_tests:
+            category = test.get('category', test.get('test_type', 'temporal')).lower()
+
+            # Map to our internal categories
+            if 'temporal' in category or 'time' in category:
+                organized_tests['temporal'].append(test)
+            elif 'cross' in category or 'multi' in category:
+                organized_tests['cross_prompt'].append(test)
+            elif 'semantic' in category or 'meaning' in category:
+                organized_tests['semantic'].append(test)
+            elif 'fact' in category or 'truth' in category:
+                organized_tests['factual'].append(test)
+            elif 'style' in category or 'format' in category:
+                organized_tests['stylistic'].append(test)
+            elif 'behav' in category:
+                organized_tests['behavioral'].append(test)
+            else:
+                # Default to temporal if category unknown
+                organized_tests['temporal'].append(test)
+
+        # Log distribution
+        logger.info("Consistency test distribution:")
+        for category, tests in organized_tests.items():
+            logger.info(f"  {category}: {len(tests)} tests")
+
+        return organized_tests
+
+    def _OLD_initialize_test_prompts(self) -> Dict[str, List[Dict]]:
+        """DEPRECATED - Now using dataset"""
         return {
             "temporal": [
                 {
@@ -164,20 +216,29 @@ class ConsistencyAnalysis:
             "temporal_stability": 0.0
         }
 
-        for test_case in self.test_prompts["temporal"]:
+        # Use dataset tests
+        test_prompts = self.test_prompts["temporal"]
+
+        for test_case in test_prompts:
             responses = []
             response_hashes = []
 
+            # Get prompt from dataset format (JSON uses "prompts" array)
+            prompts_array = test_case.get('prompts', [])
+            prompt = prompts_array[0] if prompts_array else test_case.get('prompt', test_case.get('input', 'Test prompt'))
+            repetitions = test_case.get("repetitions", 3)
+            delay_seconds = test_case.get("delay_seconds", 1)
+
             # Collect multiple responses over time
-            for i in range(test_case["repetitions"]):
+            for i in range(repetitions):
                 try:
-                    response = await model.generate(test_case["prompt"])
+                    response = await model.generate(prompt)
                     responses.append(response.text)
                     response_hashes.append(hashlib.md5(response.text.encode()).hexdigest())
 
                     # Add delay between requests
-                    if i < test_case["repetitions"] - 1:
-                        await asyncio.sleep(test_case["delay_seconds"])
+                    if i < repetitions - 1:
+                        await asyncio.sleep(delay_seconds)
                 except Exception as e:
                     logger.warning(f"Temporal test failed: {e}")
                     responses.append("")
@@ -206,7 +267,7 @@ class ConsistencyAnalysis:
                                    (1.0 if expected_present else 0.0) * 0.2)
 
                 results["consistency_scores"].append({
-                    "prompt": test_case["prompt"][:50] + "...",
+                    "prompt": test_case.get("prompts", [test_case.get("prompt", "")])[0][:50] + "...",
                     "score": consistency_score * 100,
                     "unique_responses": unique_responses,
                     "total_responses": len(responses)
@@ -246,7 +307,12 @@ class ConsistencyAnalysis:
             responses = []
 
             # Get responses for all prompt variations
-            for prompt in test_case["prompts"]:
+            prompts_array = test_case.get("prompts", [])
+            if not prompts_array:
+                # Skip test cases without prompts array
+                continue
+
+            for prompt in prompts_array:
                 try:
                     response = await model.generate(prompt)
                     responses.append(response.text)
@@ -290,14 +356,14 @@ class ConsistencyAnalysis:
                     consistency = self._calculate_semantic_consistency(responses)
 
                 results["consistency_scores"].append({
-                    "category": test_case["category"],
+                    "category": test_case.get("category", "unknown"),
                     "score": consistency * 100,
-                    "prompt_count": len(test_case["prompts"])
+                    "prompt_count": len(prompts_array)
                 })
 
                 if consistency < self.consistency_thresholds["cross_prompt_consistency"]:
                     results["inconsistent_answers"].append({
-                        "category": test_case["category"],
+                        "category": test_case.get("category", "unknown"),
                         "consistency": consistency,
                         "issue": "Low cross-prompt consistency"
                     })
@@ -328,58 +394,70 @@ class ConsistencyAnalysis:
         correct_count = 0
         total_count = 0
 
+        # Test factual consistency using JSON structure: conversation + expected_fact_retention
         for test_case in self.test_prompts["factual"]:
-            for fact, truth_value in zip(test_case["fact_checks"], test_case["truth_values"]):
-                total_count += 1
+            total_count += 1
 
-                # Test if model agrees with fact
-                prompt = f"Is the following statement true or false? Answer with just 'true' or 'false': {fact}"
+            try:
+                # Get conversation and expected facts from JSON structure
+                conversation = test_case.get("conversation", [])
+                expected_facts = test_case.get("expected_fact_retention", [])
 
-                try:
-                    response = await model.generate(prompt)
-                    response_lower = response.text.lower().strip()
+                if not conversation or not expected_facts:
+                    logger.warning(f"Skipping factual test - missing conversation or expected_fact_retention")
+                    continue
 
-                    # Extract boolean response
-                    is_true_response = "true" in response_lower and "false" not in response_lower
-                    is_false_response = "false" in response_lower and "true" not in response_lower
+                # Simulate the conversation
+                conversation_context = ""
+                for turn in conversation[:-1]:  # All except last turn
+                    role = turn.get("role", "user")
+                    content = turn.get("content", "")
+                    conversation_context += f"{role}: {content}\n"
 
-                    if is_true_response:
-                        model_verdict = True
-                    elif is_false_response:
-                        model_verdict = False
-                    else:
-                        model_verdict = None  # Unclear response
+                # Get the final question
+                final_question = conversation[-1].get("content", "What did we discuss?")
+                full_prompt = f"{conversation_context}\nuser: {final_question}"
 
-                    # Check if model is correct
-                    if model_verdict == truth_value:
-                        correct_count += 1
+                # Get model response
+                response = await model.generate(full_prompt)
+                response_text = response.text.lower()
+
+                # Check if expected facts are retained
+                facts_retained = 0
+                for expected_fact in expected_facts:
+                    if expected_fact.lower() in response_text:
+                        facts_retained += 1
                         results["correct_facts"].append({
-                            "fact": fact[:50] + "...",
-                            "category": test_case["category"]
+                            "fact": expected_fact,
+                            "category": test_case.get("subcategory", "factual_consistency")
                         })
                     else:
                         results["incorrect_facts"].append({
-                            "fact": fact[:50] + "...",
-                            "expected": truth_value,
-                            "model_said": model_verdict,
-                            "category": test_case["category"]
+                            "fact": expected_fact,
+                            "expected": "fact retained",
+                            "model_said": "fact not mentioned",
+                            "category": test_case.get("subcategory", "factual_consistency")
                         })
 
-                    # Test consistency by asking same fact differently
-                    rephrased = f"Please confirm whether this is accurate: {fact}"
-                    response2 = await model.generate(rephrased)
+                # Count as correct if all expected facts retained
+                if facts_retained == len(expected_facts):
+                    correct_count += 1
 
-                    # Check if responses are consistent
-                    is_true_response2 = "true" in response2.text.lower() or "accurate" in response2.text.lower() or "correct" in response2.text.lower()
+                # Test consistency by asking the same question differently
+                rephrased_prompt = f"{conversation_context}\nuser: What information did we just discuss?"
+                response2 = await model.generate(rephrased_prompt)
+                response2_text = response2.text.lower()
 
-                    if (is_true_response != is_true_response2) and model_verdict is not None:
-                        results["consistency_violations"].append({
-                            "fact": fact[:50] + "...",
-                            "issue": "Inconsistent factual response"
-                        })
+                # Check consistency - if different facts are mentioned, flag inconsistency
+                facts_in_second = sum(1 for fact in expected_facts if fact.lower() in response2_text)
+                if abs(facts_retained - facts_in_second) > 0:
+                    results["consistency_violations"].append({
+                        "fact": f"Expected facts: {expected_facts}",
+                        "issue": f"Inconsistent fact retention: {facts_retained} vs {facts_in_second}"
+                    })
 
-                except Exception as e:
-                    logger.warning(f"Factual consistency test failed: {e}")
+            except Exception as e:
+                logger.warning(f"Factual consistency test failed: {e}")
 
         results["factual_accuracy"] = (correct_count / max(total_count, 1)) * 100
 
@@ -505,8 +583,8 @@ class ConsistencyAnalysis:
         """
         all_results = {}
 
-        # Run temporal consistency tests
-        logger.info("Testing temporal consistency...")
+        # Run temporal consistency tests with ALL dataset tests
+        logger.info(f"Testing temporal consistency with {len(self.test_prompts['temporal'])} tests...")
         temporal_results = await self.test_temporal_consistency(model)
         all_results["temporal"] = temporal_results
 

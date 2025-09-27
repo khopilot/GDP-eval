@@ -1,0 +1,1275 @@
+{
+  "metadata": {
+    "version": "1.0.0",
+    "test_suite": "GDP-eval Consistency Tests",
+    "description": "Temporal and cross-prompt consistency evaluation for AI systems",
+    "author": "Nicolas Delrieu",
+    "contact": "+855 92 332 554",
+    "created": "2025-01-26",
+    "test_count": 100,
+    "test_categories": {
+      "temporal_consistency": 40,
+      "cross_prompt_consistency": 30,
+      "factual_consistency": 30
+    },
+    "language_distribution": {
+      "english": 40,
+      "khmer": 30,
+      "mixed": 30
+    }
+  },
+  "tests": [
+    {
+      "test_id": "CONS-TEMP-001",
+      "category": "temporal_consistency",
+      "subcategory": "basic_facts",
+      "description": "Same factual question asked at different times",
+      "prompts": [
+        "What is the capital of Cambodia?",
+        "Tell me the capital city of Cambodia",
+        "Cambodia's capital is which city?"
+      ],
+      "expected_consistency": ["Phnom Penh"],
+      "consistency_threshold": 1.0,
+      "language": "english"
+    },
+    {
+      "test_id": "CONS-TEMP-002",
+      "category": "temporal_consistency",
+      "subcategory": "technical_facts",
+      "description": "Technical information consistency",
+      "prompts": [
+        "What is the default port for PostgreSQL?",
+        "PostgreSQL runs on which default port?",
+        "Tell me the standard PostgreSQL port number"
+      ],
+      "expected_consistency": ["5432"],
+      "consistency_threshold": 1.0,
+      "language": "english"
+    },
+    {
+      "test_id": "CONS-TEMP-003",
+      "category": "temporal_consistency",
+      "subcategory": "khmer_facts",
+      "description": "Khmer language temporal consistency",
+      "prompts": [
+        "តើអង្គរវត្តស្ថិតនៅខេត្តណា?",
+        "ប្រាសាទអង្គរវត្តនៅក្នុងខេត្តអ្វី?",
+        "ខេត្តណាដែលមានអង្គរវត្ត?"
+      ],
+      "expected_consistency": ["សៀមរាប", "Siem Reap"],
+      "consistency_threshold": 0.95,
+      "language": "khmer"
+    },
+    {
+      "test_id": "CONS-TEMP-004",
+      "category": "temporal_consistency",
+      "subcategory": "numerical_facts",
+      "description": "Numerical data consistency",
+      "prompts": [
+        "How many provinces does Cambodia have?",
+        "Cambodia consists of how many provinces?",
+        "What's the total number of provinces in Cambodia?"
+      ],
+      "expected_consistency": ["25", "twenty-five"],
+      "consistency_threshold": 1.0,
+      "language": "english"
+    },
+    {
+      "test_id": "CONS-TEMP-005",
+      "category": "temporal_consistency",
+      "subcategory": "business_hours",
+      "description": "Business information consistency",
+      "prompts": [
+        "What time do banks typically open in Phnom Penh?",
+        "Banking hours in Phnom Penh usually start at?",
+        "When do Phnom Penh banks open?"
+      ],
+      "expected_consistency": ["8:00 AM", "8:30 AM", "8am", "8:30am"],
+      "consistency_threshold": 0.9,
+      "language": "english"
+    },
+    {
+      "test_id": "CONS-CROSS-001",
+      "category": "cross_prompt_consistency",
+      "subcategory": "rephrased_questions",
+      "description": "Same question in different words",
+      "prompt_pairs": [
+        {
+          "prompt_a": "How do I implement authentication in Next.js?",
+          "prompt_b": "What's the process for adding auth to a Next.js app?"
+        }
+      ],
+      "expected_similarity": 0.85,
+      "language": "english"
+    },
+    {
+      "test_id": "CONS-CROSS-002",
+      "category": "cross_prompt_consistency",
+      "subcategory": "technical_explanation",
+      "description": "Technical concept explained differently",
+      "prompt_pairs": [
+        {
+          "prompt_a": "Explain REST API principles",
+          "prompt_b": "What are the core concepts of RESTful APIs?"
+        }
+      ],
+      "expected_similarity": 0.8,
+      "language": "english"
+    },
+    {
+      "test_id": "CONS-CROSS-003",
+      "category": "cross_prompt_consistency",
+      "subcategory": "khmer_rephrasing",
+      "description": "Khmer question rephrasing",
+      "prompt_pairs": [
+        {
+          "prompt_a": "តើធនាគារជាតិនៃកម្ពុជាមានតួនាទីអ្វី?",
+          "prompt_b": "អ្វីជាការងាររបស់ធនាគារជាតិកម្ពុជា?"
+        }
+      ],
+      "expected_similarity": 0.85,
+      "language": "khmer"
+    },
+    {
+      "test_id": "CONS-CROSS-004",
+      "category": "cross_prompt_consistency",
+      "subcategory": "code_generation",
+      "description": "Code request phrased differently",
+      "prompt_pairs": [
+        {
+          "prompt_a": "Write a Python function to calculate factorial",
+          "prompt_b": "Create a factorial calculator function in Python"
+        }
+      ],
+      "expected_similarity": 0.9,
+      "language": "english"
+    },
+    {
+      "test_id": "CONS-CROSS-005",
+      "category": "cross_prompt_consistency",
+      "subcategory": "mixed_language",
+      "description": "Mixed language consistency",
+      "prompt_pairs": [
+        {
+          "prompt_a": "How to setup PostgreSQL នៅលើ Ubuntu?",
+          "prompt_b": "តើត្រូវ install PostgreSQL យ៉ាងម៉េចនៅលើ Ubuntu?"
+        }
+      ],
+      "expected_similarity": 0.85,
+      "language": "mixed"
+    },
+    {
+      "test_id": "CONS-FACT-001",
+      "category": "factual_consistency",
+      "subcategory": "maintained_facts",
+      "description": "Facts maintained across conversation",
+      "conversation": [
+        {"role": "user", "content": "The Mekong River flows through Cambodia"},
+        {"role": "assistant", "content": "Yes, the Mekong River is vital for Cambodia"},
+        {"role": "user", "content": "Which river did we just discuss?"}
+      ],
+      "expected_fact_retention": ["Mekong", "Mekong River"],
+      "language": "english"
+    },
+    {
+      "test_id": "CONS-FACT-002",
+      "category": "factual_consistency",
+      "subcategory": "technical_context",
+      "description": "Technical facts across discussion",
+      "conversation": [
+        {"role": "user", "content": "I'm using React 18 with TypeScript"},
+        {"role": "assistant", "content": "React 18 with TypeScript is a great choice"},
+        {"role": "user", "content": "What version did I mention?"}
+      ],
+      "expected_fact_retention": ["React 18", "18"],
+      "language": "english"
+    },
+    {
+      "test_id": "CONS-FACT-003",
+      "category": "factual_consistency",
+      "subcategory": "khmer_context",
+      "description": "Khmer factual consistency",
+      "conversation": [
+        {"role": "user", "content": "ខ្ញុំកំពុងធ្វើការនៅធនាគារ ABA"},
+        {"role": "assistant", "content": "ការងារនៅ ABA ល្អណាស់"},
+        {"role": "user", "content": "តើខ្ញុំធ្វើការនៅធនាគារណា?"}
+      ],
+      "expected_fact_retention": ["ABA", "ធនាគារ ABA"],
+      "language": "khmer"
+    },
+    {
+      "test_id": "CONS-FACT-004",
+      "category": "factual_consistency",
+      "subcategory": "project_context",
+      "description": "Project details consistency",
+      "conversation": [
+        {"role": "user", "content": "My e-commerce site uses Stripe for payments"},
+        {"role": "assistant", "content": "Stripe is excellent for e-commerce payments"},
+        {"role": "user", "content": "What payment processor am I using?"}
+      ],
+      "expected_fact_retention": ["Stripe"],
+      "language": "english"
+    },
+    {
+      "test_id": "CONS-FACT-005",
+      "category": "factual_consistency",
+      "subcategory": "numerical_memory",
+      "description": "Number retention across conversation",
+      "conversation": [
+        {"role": "user", "content": "Our budget is $50,000 for this project"},
+        {"role": "assistant", "content": "With $50,000, we can build a robust solution"},
+        {"role": "user", "content": "What's our budget again?"}
+      ],
+      "expected_fact_retention": ["$50,000", "50,000", "fifty thousand"],
+      "language": "english"
+    },
+    {
+      "test_id": "CONS-TEMP-006",
+      "category": "temporal_consistency",
+      "subcategory": "currency_info",
+      "description": "Currency information consistency",
+      "prompts": [
+        "What's the currency of Cambodia?",
+        "Cambodia uses which currency?",
+        "Tell me about Cambodian money"
+      ],
+      "expected_consistency": ["Riel", "KHR", "Cambodian Riel"],
+      "consistency_threshold": 0.95,
+      "language": "english"
+    },
+    {
+      "test_id": "CONS-TEMP-007",
+      "category": "temporal_consistency",
+      "subcategory": "programming_concepts",
+      "description": "Programming concept consistency",
+      "prompts": [
+        "What is a closure in JavaScript?",
+        "Explain JavaScript closures",
+        "How do closures work in JS?"
+      ],
+      "expected_consistency": ["function", "scope", "variables"],
+      "consistency_threshold": 0.8,
+      "language": "english"
+    },
+    {
+      "test_id": "CONS-TEMP-008",
+      "category": "temporal_consistency",
+      "subcategory": "khmer_technical",
+      "description": "Technical terms in Khmer",
+      "prompts": [
+        "តើ database ជាអ្វី?",
+        "មូលដ្ឋានទិន្នន័យគឺជាអ្វី?",
+        "database មានន័យថាម៉េច?"
+      ],
+      "expected_consistency": ["ទិន្នន័យ", "data", "រក្សាទុក"],
+      "consistency_threshold": 0.85,
+      "language": "khmer"
+    },
+    {
+      "test_id": "CONS-TEMP-009",
+      "category": "temporal_consistency",
+      "subcategory": "historical_facts",
+      "description": "Historical information consistency",
+      "prompts": [
+        "When did Cambodia gain independence?",
+        "What year did Cambodia become independent?",
+        "Cambodia's independence date?"
+      ],
+      "expected_consistency": ["1953", "November 9, 1953"],
+      "consistency_threshold": 1.0,
+      "language": "english"
+    },
+    {
+      "test_id": "CONS-TEMP-010",
+      "category": "temporal_consistency",
+      "subcategory": "api_endpoints",
+      "description": "API information consistency",
+      "prompts": [
+        "What HTTP method is used to update resources in REST?",
+        "REST API update method?",
+        "Which HTTP verb for updating in RESTful APIs?"
+      ],
+      "expected_consistency": ["PUT", "PATCH"],
+      "consistency_threshold": 0.9,
+      "language": "english"
+    },
+    {
+      "test_id": "CONS-CROSS-006",
+      "category": "cross_prompt_consistency",
+      "subcategory": "business_logic",
+      "description": "Business rule explanations",
+      "prompt_pairs": [
+        {
+          "prompt_a": "How to calculate VAT in Cambodia?",
+          "prompt_b": "What's the VAT calculation method for Cambodia?"
+        }
+      ],
+      "expected_similarity": 0.9,
+      "language": "english"
+    },
+    {
+      "test_id": "CONS-CROSS-007",
+      "category": "cross_prompt_consistency",
+      "subcategory": "database_queries",
+      "description": "Database query variations",
+      "prompt_pairs": [
+        {
+          "prompt_a": "SQL query to find duplicate records",
+          "prompt_b": "How to detect duplicates using SQL?"
+        }
+      ],
+      "expected_similarity": 0.85,
+      "language": "english"
+    },
+    {
+      "test_id": "CONS-CROSS-008",
+      "category": "cross_prompt_consistency",
+      "subcategory": "khmer_business",
+      "description": "Khmer business terminology",
+      "prompt_pairs": [
+        {
+          "prompt_a": "របៀបចុះបញ្ជីក្រុមហ៊ុននៅកម្ពុជា",
+          "prompt_b": "តើត្រូវចុះបញ្ជីធុរកិច្ចយ៉ាងដូចម្តេច?"
+        }
+      ],
+      "expected_similarity": 0.85,
+      "language": "khmer"
+    },
+    {
+      "test_id": "CONS-CROSS-009",
+      "category": "cross_prompt_consistency",
+      "subcategory": "error_handling",
+      "description": "Error handling approaches",
+      "prompt_pairs": [
+        {
+          "prompt_a": "Best practices for error handling in Node.js",
+          "prompt_b": "How should I handle errors in a Node application?"
+        }
+      ],
+      "expected_similarity": 0.85,
+      "language": "english"
+    },
+    {
+      "test_id": "CONS-CROSS-010",
+      "category": "cross_prompt_consistency",
+      "subcategory": "mixed_technical",
+      "description": "Mixed language technical queries",
+      "prompt_pairs": [
+        {
+          "prompt_a": "Setup Docker container សម្រាប់ Node.js",
+          "prompt_b": "តើត្រូវរៀបចំ Docker for Node.js យ៉ាងម៉េច?"
+        }
+      ],
+      "expected_similarity": 0.85,
+      "language": "mixed"
+    },
+    {
+      "test_id": "CONS-FACT-006",
+      "category": "factual_consistency",
+      "subcategory": "user_preferences",
+      "description": "User preference retention",
+      "conversation": [
+        {"role": "user", "content": "I prefer using PostgreSQL over MySQL"},
+        {"role": "assistant", "content": "PostgreSQL is indeed a powerful choice"},
+        {"role": "user", "content": "Which database did I say I prefer?"}
+      ],
+      "expected_fact_retention": ["PostgreSQL"],
+      "language": "english"
+    },
+    {
+      "test_id": "CONS-FACT-007",
+      "category": "factual_consistency",
+      "subcategory": "location_context",
+      "description": "Location information consistency",
+      "conversation": [
+        {"role": "user", "content": "Our office is in BKK1, Phnom Penh"},
+        {"role": "assistant", "content": "BKK1 is a prime business location"},
+        {"role": "user", "content": "Where did I say our office is?"}
+      ],
+      "expected_fact_retention": ["BKK1", "Phnom Penh"],
+      "language": "english"
+    },
+    {
+      "test_id": "CONS-FACT-008",
+      "category": "factual_consistency",
+      "subcategory": "khmer_details",
+      "description": "Khmer conversation details",
+      "conversation": [
+        {"role": "user", "content": "ខ្ញុំមានបុគ្គលិក ៥០ នាក់"},
+        {"role": "assistant", "content": "៥០ នាក់គឺល្អសម្រាប់ SME"},
+        {"role": "user", "content": "តើខ្ញុំមានបុគ្គលិកប៉ុន្មាននាក់?"}
+      ],
+      "expected_fact_retention": ["៥០", "50"],
+      "language": "khmer"
+    },
+    {
+      "test_id": "CONS-FACT-009",
+      "category": "factual_consistency",
+      "subcategory": "technology_stack",
+      "description": "Tech stack consistency",
+      "conversation": [
+        {"role": "user", "content": "We're migrating from Vue 2 to React"},
+        {"role": "assistant", "content": "Migration from Vue 2 to React requires planning"},
+        {"role": "user", "content": "What are we migrating from and to?"}
+      ],
+      "expected_fact_retention": ["Vue 2", "React"],
+      "language": "english"
+    },
+    {
+      "test_id": "CONS-FACT-010",
+      "category": "factual_consistency",
+      "subcategory": "timeline_memory",
+      "description": "Timeline information retention",
+      "conversation": [
+        {"role": "user", "content": "The project deadline is March 15th"},
+        {"role": "assistant", "content": "March 15th gives us 6 weeks"},
+        {"role": "user", "content": "When is our deadline?"}
+      ],
+      "expected_fact_retention": ["March 15", "March 15th"],
+      "language": "english"
+    },
+    {
+      "test_id": "CONS-TEMP-011",
+      "category": "temporal_consistency",
+      "subcategory": "framework_versions",
+      "description": "Framework version consistency",
+      "prompts": [
+        "What's the latest LTS version of Node.js?",
+        "Current Node.js LTS version?",
+        "Which Node LTS should I use?"
+      ],
+      "expected_consistency": ["LTS", "Long Term Support"],
+      "consistency_threshold": 0.8,
+      "language": "english"
+    },
+    {
+      "test_id": "CONS-TEMP-012",
+      "category": "temporal_consistency",
+      "subcategory": "security_practices",
+      "description": "Security best practices consistency",
+      "prompts": [
+        "How to secure API endpoints?",
+        "Best practices for API security?",
+        "Securing REST API endpoints?"
+      ],
+      "expected_consistency": ["authentication", "authorization", "HTTPS"],
+      "consistency_threshold": 0.85,
+      "language": "english"
+    },
+    {
+      "test_id": "CONS-TEMP-013",
+      "category": "temporal_consistency",
+      "subcategory": "khmer_banking",
+      "description": "Khmer banking terminology",
+      "prompts": [
+        "តើអត្រាការប្រាក់នៅកម្ពុជាប៉ុន្មាន?",
+        "ការប្រាក់កម្ចីនៅកម្ពុជា?",
+        "Interest rate នៅ Cambodia?"
+      ],
+      "expected_consistency": ["ការប្រាក់", "interest", "rate"],
+      "consistency_threshold": 0.8,
+      "language": "mixed"
+    },
+    {
+      "test_id": "CONS-TEMP-014",
+      "category": "temporal_consistency",
+      "subcategory": "deployment_methods",
+      "description": "Deployment strategy consistency",
+      "prompts": [
+        "How to deploy Next.js to Vercel?",
+        "Deploying a Next.js app on Vercel?",
+        "Vercel deployment for Next.js?"
+      ],
+      "expected_consistency": ["vercel", "deploy", "build"],
+      "consistency_threshold": 0.85,
+      "language": "english"
+    },
+    {
+      "test_id": "CONS-TEMP-015",
+      "category": "temporal_consistency",
+      "subcategory": "data_formats",
+      "description": "Data format consistency",
+      "prompts": [
+        "What's the structure of JWT tokens?",
+        "JWT token format?",
+        "Explain JWT structure"
+      ],
+      "expected_consistency": ["header", "payload", "signature"],
+      "consistency_threshold": 0.9,
+      "language": "english"
+    },
+    {
+      "test_id": "CONS-CROSS-011",
+      "category": "cross_prompt_consistency",
+      "subcategory": "optimization_techniques",
+      "description": "Performance optimization queries",
+      "prompt_pairs": [
+        {
+          "prompt_a": "How to optimize React component rendering?",
+          "prompt_b": "Improving React render performance?"
+        }
+      ],
+      "expected_similarity": 0.85,
+      "language": "english"
+    },
+    {
+      "test_id": "CONS-CROSS-012",
+      "category": "cross_prompt_consistency",
+      "subcategory": "testing_strategies",
+      "description": "Testing approach variations",
+      "prompt_pairs": [
+        {
+          "prompt_a": "Unit testing best practices in Python",
+          "prompt_b": "How to write good Python unit tests?"
+        }
+      ],
+      "expected_similarity": 0.85,
+      "language": "english"
+    },
+    {
+      "test_id": "CONS-CROSS-013",
+      "category": "cross_prompt_consistency",
+      "subcategory": "khmer_education",
+      "description": "Educational queries in Khmer",
+      "prompt_pairs": [
+        {
+          "prompt_a": "របៀបរៀន programming សម្រាប់អ្នកចាប់ផ្តើម",
+          "prompt_b": "តើគួរចាប់ផ្តើមរៀន coding យ៉ាងម៉េច?"
+        }
+      ],
+      "expected_similarity": 0.85,
+      "language": "khmer"
+    },
+    {
+      "test_id": "CONS-CROSS-014",
+      "category": "cross_prompt_consistency",
+      "subcategory": "architecture_patterns",
+      "description": "System architecture queries",
+      "prompt_pairs": [
+        {
+          "prompt_a": "Microservices vs Monolith architecture",
+          "prompt_b": "Should I use microservices or monolithic design?"
+        }
+      ],
+      "expected_similarity": 0.85,
+      "language": "english"
+    },
+    {
+      "test_id": "CONS-CROSS-015",
+      "category": "cross_prompt_consistency",
+      "subcategory": "mixed_deployment",
+      "description": "Deployment questions in mixed language",
+      "prompt_pairs": [
+        {
+          "prompt_a": "Deploy Node.js app នៅលើ AWS",
+          "prompt_b": "តើ deploy Node.js ទៅ AWS យ៉ាងម៉េច?"
+        }
+      ],
+      "expected_similarity": 0.85,
+      "language": "mixed"
+    },
+    {
+      "test_id": "CONS-FACT-011",
+      "category": "factual_consistency",
+      "subcategory": "requirement_tracking",
+      "description": "Project requirement consistency",
+      "conversation": [
+        {"role": "user", "content": "We need support for 10,000 concurrent users"},
+        {"role": "assistant", "content": "10,000 concurrent users requires scaling strategy"},
+        {"role": "user", "content": "How many concurrent users did I mention?"}
+      ],
+      "expected_fact_retention": ["10,000", "10000", "ten thousand"],
+      "language": "english"
+    },
+    {
+      "test_id": "CONS-FACT-012",
+      "category": "factual_consistency",
+      "subcategory": "version_tracking",
+      "description": "Software version consistency",
+      "conversation": [
+        {"role": "user", "content": "We're using Python 3.11"},
+        {"role": "assistant", "content": "Python 3.11 has great performance improvements"},
+        {"role": "user", "content": "Which Python version are we using?"}
+      ],
+      "expected_fact_retention": ["3.11", "Python 3.11"],
+      "language": "english"
+    },
+    {
+      "test_id": "CONS-FACT-013",
+      "category": "factual_consistency",
+      "subcategory": "khmer_requirements",
+      "description": "Khmer business requirements",
+      "conversation": [
+        {"role": "user", "content": "យើងត្រូវការ website ជាភាសាខ្មែរ និង អង់គ្លេស"},
+        {"role": "assistant", "content": "Website ពីរភាសាល្អសម្រាប់ Cambodia"},
+        {"role": "user", "content": "តើយើងត្រូវការភាសាអ្វីខ្លះ?"}
+      ],
+      "expected_fact_retention": ["ខ្មែរ", "អង់គ្លេស", "Khmer", "English"],
+      "language": "khmer"
+    },
+    {
+      "test_id": "CONS-FACT-014",
+      "category": "factual_consistency",
+      "subcategory": "configuration_memory",
+      "description": "Configuration details retention",
+      "conversation": [
+        {"role": "user", "content": "Set the cache TTL to 3600 seconds"},
+        {"role": "assistant", "content": "Cache TTL of 3600 seconds (1 hour) configured"},
+        {"role": "user", "content": "What TTL did I specify?"}
+      ],
+      "expected_fact_retention": ["3600", "3600 seconds"],
+      "language": "english"
+    },
+    {
+      "test_id": "CONS-FACT-015",
+      "category": "factual_consistency",
+      "subcategory": "api_details",
+      "description": "API endpoint consistency",
+      "conversation": [
+        {"role": "user", "content": "Our API endpoint is https://api.example.com/v2"},
+        {"role": "assistant", "content": "I'll use the v2 endpoint at api.example.com"},
+        {"role": "user", "content": "What's our API endpoint?"}
+      ],
+      "expected_fact_retention": ["https://api.example.com/v2", "api.example.com/v2"],
+      "language": "english"
+    },
+    {
+      "test_id": "CONS-TEMP-016",
+      "category": "temporal_consistency",
+      "subcategory": "cloud_providers",
+      "description": "Cloud service information",
+      "prompts": [
+        "What services does AWS offer for serverless?",
+        "AWS serverless options?",
+        "Serverless computing on AWS?"
+      ],
+      "expected_consistency": ["Lambda", "API Gateway", "DynamoDB"],
+      "consistency_threshold": 0.8,
+      "language": "english"
+    },
+    {
+      "test_id": "CONS-TEMP-017",
+      "category": "temporal_consistency",
+      "subcategory": "payment_systems",
+      "description": "Payment integration consistency",
+      "prompts": [
+        "How to integrate Stripe payments?",
+        "Stripe payment integration steps?",
+        "Setting up Stripe for payments?"
+      ],
+      "expected_consistency": ["API key", "webhook", "checkout"],
+      "consistency_threshold": 0.85,
+      "language": "english"
+    },
+    {
+      "test_id": "CONS-TEMP-018",
+      "category": "temporal_consistency",
+      "subcategory": "khmer_legal",
+      "description": "Khmer legal terminology",
+      "prompts": [
+        "តើពន្ធលើប្រាក់ចំណេញនៅកម្ពុជាប៉ុន្មាន?",
+        "អត្រាពន្ធលើប្រាក់ចំណូលក្រុមហ៊ុន?",
+        "Corporate tax rate in Cambodia?"
+      ],
+      "expected_consistency": ["20%", "២០%", "ពន្ធ"],
+      "consistency_threshold": 0.85,
+      "language": "mixed"
+    },
+    {
+      "test_id": "CONS-TEMP-019",
+      "category": "temporal_consistency",
+      "subcategory": "mobile_development",
+      "description": "Mobile development consistency",
+      "prompts": [
+        "Best framework for cross-platform mobile apps?",
+        "Cross-platform mobile development options?",
+        "Which framework for iOS and Android?"
+      ],
+      "expected_consistency": ["React Native", "Flutter", "cross-platform"],
+      "consistency_threshold": 0.8,
+      "language": "english"
+    },
+    {
+      "test_id": "CONS-TEMP-020",
+      "category": "temporal_consistency",
+      "subcategory": "database_design",
+      "description": "Database design principles",
+      "prompts": [
+        "What is database normalization?",
+        "Explain normalization in databases",
+        "Database normalization concepts?"
+      ],
+      "expected_consistency": ["redundancy", "tables", "relationships"],
+      "consistency_threshold": 0.85,
+      "language": "english"
+    },
+    {
+      "test_id": "CONS-CROSS-016",
+      "category": "cross_prompt_consistency",
+      "subcategory": "state_management",
+      "description": "State management approaches",
+      "prompt_pairs": [
+        {
+          "prompt_a": "Redux vs Context API for state management",
+          "prompt_b": "Should I use Redux or React Context?"
+        }
+      ],
+      "expected_similarity": 0.85,
+      "language": "english"
+    },
+    {
+      "test_id": "CONS-CROSS-017",
+      "category": "cross_prompt_consistency",
+      "subcategory": "ci_cd_pipelines",
+      "description": "CI/CD setup variations",
+      "prompt_pairs": [
+        {
+          "prompt_a": "Setting up GitHub Actions for CI/CD",
+          "prompt_b": "How to configure GitHub Actions pipeline?"
+        }
+      ],
+      "expected_similarity": 0.85,
+      "language": "english"
+    },
+    {
+      "test_id": "CONS-CROSS-018",
+      "category": "cross_prompt_consistency",
+      "subcategory": "khmer_finance",
+      "description": "Financial queries in Khmer",
+      "prompt_pairs": [
+        {
+          "prompt_a": "របៀបគណនាការប្រាក់សម្រាប់កម្ចី",
+          "prompt_b": "តើគណនា interest សម្រាប់ loan យ៉ាងម៉េច?"
+        }
+      ],
+      "expected_similarity": 0.85,
+      "language": "khmer"
+    },
+    {
+      "test_id": "CONS-CROSS-019",
+      "category": "cross_prompt_consistency",
+      "subcategory": "logging_monitoring",
+      "description": "Logging and monitoring queries",
+      "prompt_pairs": [
+        {
+          "prompt_a": "Best practices for application logging",
+          "prompt_b": "How to implement proper logging in apps?"
+        }
+      ],
+      "expected_similarity": 0.85,
+      "language": "english"
+    },
+    {
+      "test_id": "CONS-CROSS-020",
+      "category": "cross_prompt_consistency",
+      "subcategory": "mixed_security",
+      "description": "Security questions in mixed language",
+      "prompt_pairs": [
+        {
+          "prompt_a": "Implement JWT authentication នៅក្នុង Node.js",
+          "prompt_b": "តើប្រើ JWT auth ជាមួយ Node.js យ៉ាងម៉េច?"
+        }
+      ],
+      "expected_similarity": 0.85,
+      "language": "mixed"
+    },
+    {
+      "test_id": "CONS-FACT-016",
+      "category": "factual_consistency",
+      "subcategory": "infrastructure_specs",
+      "description": "Infrastructure specification retention",
+      "conversation": [
+        {"role": "user", "content": "We need 16GB RAM and 4 CPU cores"},
+        {"role": "assistant", "content": "16GB RAM with 4 cores is good for medium workloads"},
+        {"role": "user", "content": "What specs did I request?"}
+      ],
+      "expected_fact_retention": ["16GB", "4 CPU", "4 cores"],
+      "language": "english"
+    },
+    {
+      "test_id": "CONS-FACT-017",
+      "category": "factual_consistency",
+      "subcategory": "team_structure",
+      "description": "Team information consistency",
+      "conversation": [
+        {"role": "user", "content": "Our dev team has 3 frontend and 2 backend developers"},
+        {"role": "assistant", "content": "5 developers total with frontend majority"},
+        {"role": "user", "content": "How many frontend and backend devs?"}
+      ],
+      "expected_fact_retention": ["3 frontend", "2 backend"],
+      "language": "english"
+    },
+    {
+      "test_id": "CONS-FACT-018",
+      "category": "factual_consistency",
+      "subcategory": "khmer_pricing",
+      "description": "Khmer pricing information",
+      "conversation": [
+        {"role": "user", "content": "តម្លៃ service របស់យើង $៥០ ក្នុងមួយខែ"},
+        {"role": "assistant", "content": "$៥០ គឺល្អសម្រាប់ SME market"},
+        {"role": "user", "content": "តើ service យើងតម្លៃប៉ុន្មាន?"}
+      ],
+      "expected_fact_retention": ["$50", "$៥០", "៥០ ដុល្លារ"],
+      "language": "khmer"
+    },
+    {
+      "test_id": "CONS-FACT-019",
+      "category": "factual_consistency",
+      "subcategory": "feature_requirements",
+      "description": "Feature requirement tracking",
+      "conversation": [
+        {"role": "user", "content": "We need real-time chat and video calls"},
+        {"role": "assistant", "content": "Real-time communication features noted"},
+        {"role": "user", "content": "What communication features did I mention?"}
+      ],
+      "expected_fact_retention": ["chat", "video calls", "real-time"],
+      "language": "english"
+    },
+    {
+      "test_id": "CONS-FACT-020",
+      "category": "factual_consistency",
+      "subcategory": "deployment_target",
+      "description": "Deployment target consistency",
+      "conversation": [
+        {"role": "user", "content": "Deploy to production every Friday at 6 PM"},
+        {"role": "assistant", "content": "Friday 6 PM deployments scheduled"},
+        {"role": "user", "content": "When do we deploy to production?"}
+      ],
+      "expected_fact_retention": ["Friday", "6 PM", "Friday at 6"],
+      "language": "english"
+    },
+    {
+      "test_id": "CONS-TEMP-021",
+      "category": "temporal_consistency",
+      "subcategory": "caching_strategies",
+      "description": "Caching approach consistency",
+      "prompts": [
+        "Redis caching best practices?",
+        "How to use Redis for caching?",
+        "Implementing Redis cache?"
+      ],
+      "expected_consistency": ["TTL", "key", "expire", "invalidation"],
+      "consistency_threshold": 0.8,
+      "language": "english"
+    },
+    {
+      "test_id": "CONS-TEMP-022",
+      "category": "temporal_consistency",
+      "subcategory": "docker_commands",
+      "description": "Docker usage consistency",
+      "prompts": [
+        "How to build a Docker image?",
+        "Docker image build command?",
+        "Creating Docker images?"
+      ],
+      "expected_consistency": ["docker build", "Dockerfile", "-t"],
+      "consistency_threshold": 0.9,
+      "language": "english"
+    },
+    {
+      "test_id": "CONS-TEMP-023",
+      "category": "temporal_consistency",
+      "subcategory": "khmer_tourism",
+      "description": "Tourism information in Khmer",
+      "prompts": [
+        "ដំណាក់កាលទេសចរណ៍នៅកម្ពុជា",
+        "រដូវទេសចរណ៍ល្អបំផុត?",
+        "Best tourist season in Cambodia?"
+      ],
+      "expected_consistency": ["November", "វិច្ឆិកា", "ត្រជាក់", "cool"],
+      "consistency_threshold": 0.8,
+      "language": "mixed"
+    },
+    {
+      "test_id": "CONS-TEMP-024",
+      "category": "temporal_consistency",
+      "subcategory": "git_workflows",
+      "description": "Git workflow consistency",
+      "prompts": [
+        "Git flow branching strategy?",
+        "Explain Git flow workflow",
+        "How does Git flow work?"
+      ],
+      "expected_consistency": ["feature", "develop", "release", "master"],
+      "consistency_threshold": 0.85,
+      "language": "english"
+    },
+    {
+      "test_id": "CONS-TEMP-025",
+      "category": "temporal_consistency",
+      "subcategory": "queue_systems",
+      "description": "Message queue information",
+      "prompts": [
+        "RabbitMQ vs Kafka comparison?",
+        "Difference between RabbitMQ and Kafka?",
+        "Should I use RabbitMQ or Kafka?"
+      ],
+      "expected_consistency": ["message", "queue", "throughput", "streaming"],
+      "consistency_threshold": 0.8,
+      "language": "english"
+    },
+    {
+      "test_id": "CONS-CROSS-021",
+      "category": "cross_prompt_consistency",
+      "subcategory": "data_validation",
+      "description": "Input validation approaches",
+      "prompt_pairs": [
+        {
+          "prompt_a": "Form validation in React",
+          "prompt_b": "How to validate React forms?"
+        }
+      ],
+      "expected_similarity": 0.85,
+      "language": "english"
+    },
+    {
+      "test_id": "CONS-CROSS-022",
+      "category": "cross_prompt_consistency",
+      "subcategory": "email_services",
+      "description": "Email service queries",
+      "prompt_pairs": [
+        {
+          "prompt_a": "Sending emails with SendGrid API",
+          "prompt_b": "How to use SendGrid for email?"
+        }
+      ],
+      "expected_similarity": 0.85,
+      "language": "english"
+    },
+    {
+      "test_id": "CONS-CROSS-023",
+      "category": "cross_prompt_consistency",
+      "subcategory": "khmer_healthcare",
+      "description": "Healthcare queries in Khmer",
+      "prompt_pairs": [
+        {
+          "prompt_a": "ប្រព័ន្ធគ្រប់គ្រងមន្ទីរពេទ្យ",
+          "prompt_b": "Hospital management system យ៉ាងម៉េច?"
+        }
+      ],
+      "expected_similarity": 0.85,
+      "language": "mixed"
+    },
+    {
+      "test_id": "CONS-CROSS-024",
+      "category": "cross_prompt_consistency",
+      "subcategory": "websocket_implementation",
+      "description": "WebSocket setup variations",
+      "prompt_pairs": [
+        {
+          "prompt_a": "Implementing WebSocket with Socket.io",
+          "prompt_b": "How to set up Socket.io WebSockets?"
+        }
+      ],
+      "expected_similarity": 0.85,
+      "language": "english"
+    },
+    {
+      "test_id": "CONS-CROSS-025",
+      "category": "cross_prompt_consistency",
+      "subcategory": "mixed_ecommerce",
+      "description": "E-commerce in mixed language",
+      "prompt_pairs": [
+        {
+          "prompt_a": "Create shopping cart សម្រាប់ online store",
+          "prompt_b": "តើធ្វើ cart functionality យ៉ាងម៉េច?"
+        }
+      ],
+      "expected_similarity": 0.85,
+      "language": "mixed"
+    },
+    {
+      "test_id": "CONS-FACT-021",
+      "category": "factual_consistency",
+      "subcategory": "api_rate_limits",
+      "description": "API rate limit retention",
+      "conversation": [
+        {"role": "user", "content": "Set API rate limit to 1000 requests per hour"},
+        {"role": "assistant", "content": "Rate limit of 1000 req/hour configured"},
+        {"role": "user", "content": "What's the rate limit?"}
+      ],
+      "expected_fact_retention": ["1000", "per hour", "1000 requests"],
+      "language": "english"
+    },
+    {
+      "test_id": "CONS-FACT-022",
+      "category": "factual_consistency",
+      "subcategory": "domain_information",
+      "description": "Domain name consistency",
+      "conversation": [
+        {"role": "user", "content": "Our domain is example.com.kh"},
+        {"role": "assistant", "content": "The .kh domain is perfect for Cambodia"},
+        {"role": "user", "content": "What domain did I mention?"}
+      ],
+      "expected_fact_retention": ["example.com.kh", ".kh"],
+      "language": "english"
+    },
+    {
+      "test_id": "CONS-FACT-023",
+      "category": "factual_consistency",
+      "subcategory": "khmer_schedule",
+      "description": "Schedule information in Khmer",
+      "conversation": [
+        {"role": "user", "content": "ប្រជុំរៀងរាល់ថ្ងៃច័ន្ទ ម៉ោង ៩ ព្រឹក"},
+        {"role": "assistant", "content": "ប្រជុំថ្ងៃច័ន្ទ ម៉ោង ៩ បានកត់ត្រា"},
+        {"role": "user", "content": "តើប្រជុំថ្ងៃណា ម៉ោងប៉ុន្មាន?"}
+      ],
+      "expected_fact_retention": ["ច័ន្ទ", "៩", "Monday", "9"],
+      "language": "khmer"
+    },
+    {
+      "test_id": "CONS-FACT-024",
+      "category": "factual_consistency",
+      "subcategory": "backup_policy",
+      "description": "Backup configuration retention",
+      "conversation": [
+        {"role": "user", "content": "Daily backups at 2 AM, keep for 30 days"},
+        {"role": "assistant", "content": "Daily 2 AM backups with 30-day retention"},
+        {"role": "user", "content": "What's our backup schedule?"}
+      ],
+      "expected_fact_retention": ["Daily", "2 AM", "30 days"],
+      "language": "english"
+    },
+    {
+      "test_id": "CONS-FACT-025",
+      "category": "factual_consistency",
+      "subcategory": "support_hours",
+      "description": "Support availability consistency",
+      "conversation": [
+        {"role": "user", "content": "Customer support available 24/7 except Sunday"},
+        {"role": "assistant", "content": "24/7 support with Sunday off noted"},
+        {"role": "user", "content": "When is support available?"}
+      ],
+      "expected_fact_retention": ["24/7", "except Sunday", "Sunday off"],
+      "language": "english"
+    },
+    {
+      "test_id": "CONS-TEMP-026",
+      "category": "temporal_consistency",
+      "subcategory": "graphql_concepts",
+      "description": "GraphQL information consistency",
+      "prompts": [
+        "GraphQL vs REST API?",
+        "Differences between GraphQL and REST?",
+        "Should I use GraphQL or REST?"
+      ],
+      "expected_consistency": ["query", "schema", "resolver", "endpoint"],
+      "consistency_threshold": 0.8,
+      "language": "english"
+    },
+    {
+      "test_id": "CONS-TEMP-027",
+      "category": "temporal_consistency",
+      "subcategory": "monitoring_tools",
+      "description": "Monitoring solution consistency",
+      "prompts": [
+        "Application monitoring with Datadog?",
+        "How to use Datadog for monitoring?",
+        "Setting up Datadog monitoring?"
+      ],
+      "expected_consistency": ["metrics", "logs", "traces", "dashboard"],
+      "consistency_threshold": 0.85,
+      "language": "english"
+    },
+    {
+      "test_id": "CONS-TEMP-028",
+      "category": "temporal_consistency",
+      "subcategory": "khmer_agriculture",
+      "description": "Agriculture terms in Khmer",
+      "prompts": [
+        "ប្រព័ន្ធធារាសាស្ត្រទំនើបនៅកម្ពុជា",
+        "Modern irrigation in Cambodia?",
+        "តើធ្វើ irrigation system យ៉ាងម៉េច?"
+      ],
+      "expected_consistency": ["ទឹក", "water", "ស្រែ", "field"],
+      "consistency_threshold": 0.8,
+      "language": "mixed"
+    },
+    {
+      "test_id": "CONS-TEMP-029",
+      "category": "temporal_consistency",
+      "subcategory": "load_balancing",
+      "description": "Load balancing concepts",
+      "prompts": [
+        "Nginx load balancing configuration?",
+        "How to set up Nginx load balancer?",
+        "Configuring load balancing with Nginx?"
+      ],
+      "expected_consistency": ["upstream", "proxy", "round-robin", "server"],
+      "consistency_threshold": 0.85,
+      "language": "english"
+    },
+    {
+      "test_id": "CONS-TEMP-030",
+      "category": "temporal_consistency",
+      "subcategory": "authentication_methods",
+      "description": "Authentication approaches",
+      "prompts": [
+        "OAuth 2.0 implementation?",
+        "How does OAuth 2.0 work?",
+        "Implementing OAuth authentication?"
+      ],
+      "expected_consistency": ["token", "client", "authorization", "scope"],
+      "consistency_threshold": 0.85,
+      "language": "english"
+    },
+    {
+      "test_id": "CONS-CROSS-026",
+      "category": "cross_prompt_consistency",
+      "subcategory": "file_upload",
+      "description": "File upload implementations",
+      "prompt_pairs": [
+        {
+          "prompt_a": "Handling file uploads in Express.js",
+          "prompt_b": "Express file upload implementation?"
+        }
+      ],
+      "expected_similarity": 0.85,
+      "language": "english"
+    },
+    {
+      "test_id": "CONS-CROSS-027",
+      "category": "cross_prompt_consistency",
+      "subcategory": "search_implementation",
+      "description": "Search functionality queries",
+      "prompt_pairs": [
+        {
+          "prompt_a": "Elasticsearch full-text search",
+          "prompt_b": "Implementing search with Elasticsearch?"
+        }
+      ],
+      "expected_similarity": 0.85,
+      "language": "english"
+    },
+    {
+      "test_id": "CONS-CROSS-028",
+      "category": "cross_prompt_consistency",
+      "subcategory": "khmer_retail",
+      "description": "Retail system in Khmer",
+      "prompt_pairs": [
+        {
+          "prompt_a": "ប្រព័ន្ធគ្រប់គ្រងស្តុកទំនិញ",
+          "prompt_b": "Inventory management system តើធ្វើម៉េច?"
+        }
+      ],
+      "expected_similarity": 0.85,
+      "language": "mixed"
+    },
+    {
+      "test_id": "CONS-CROSS-029",
+      "category": "cross_prompt_consistency",
+      "subcategory": "pdf_generation",
+      "description": "PDF creation approaches",
+      "prompt_pairs": [
+        {
+          "prompt_a": "Generate PDFs with Node.js",
+          "prompt_b": "Creating PDF files in Node?"
+        }
+      ],
+      "expected_similarity": 0.85,
+      "language": "english"
+    },
+    {
+      "test_id": "CONS-CROSS-030",
+      "category": "cross_prompt_consistency",
+      "subcategory": "mixed_analytics",
+      "description": "Analytics in mixed language",
+      "prompt_pairs": [
+        {
+          "prompt_a": "Implement Google Analytics នៅ website",
+          "prompt_b": "តើដាក់ GA tracking code យ៉ាងម៉េច?"
+        }
+      ],
+      "expected_similarity": 0.85,
+      "language": "mixed"
+    },
+    {
+      "test_id": "CONS-FACT-026",
+      "category": "factual_consistency",
+      "subcategory": "ssl_configuration",
+      "description": "SSL certificate details",
+      "conversation": [
+        {"role": "user", "content": "Using Let's Encrypt SSL with auto-renewal"},
+        {"role": "assistant", "content": "Let's Encrypt with auto-renewal is cost-effective"},
+        {"role": "user", "content": "Which SSL provider did I mention?"}
+      ],
+      "expected_fact_retention": ["Let's Encrypt", "auto-renewal"],
+      "language": "english"
+    },
+    {
+      "test_id": "CONS-FACT-027",
+      "category": "factual_consistency",
+      "subcategory": "database_size",
+      "description": "Database capacity retention",
+      "conversation": [
+        {"role": "user", "content": "Database is currently 500GB and growing 10GB monthly"},
+        {"role": "assistant", "content": "500GB with 10GB/month growth needs planning"},
+        {"role": "user", "content": "What's our database size and growth?"}
+      ],
+      "expected_fact_retention": ["500GB", "10GB", "monthly"],
+      "language": "english"
+    },
+    {
+      "test_id": "CONS-FACT-028",
+      "category": "factual_consistency",
+      "subcategory": "khmer_location",
+      "description": "Location details in Khmer",
+      "conversation": [
+        {"role": "user", "content": "សាខាថ្មីនៅ សែនសុខ និង ទួលគោក"},
+        {"role": "assistant", "content": "សាខាពីរនៅតំបន់សំខាន់ៗ"},
+        {"role": "user", "content": "សាខានៅទីណាខ្លះ?"}
+      ],
+      "expected_fact_retention": ["សែនសុខ", "ទួលគោក", "Sen Sok", "Toul Kork"],
+      "language": "khmer"
+    },
+    {
+      "test_id": "CONS-FACT-029",
+      "category": "factual_consistency",
+      "subcategory": "email_provider",
+      "description": "Email service retention",
+      "conversation": [
+        {"role": "user", "content": "Using AWS SES for transactional emails"},
+        {"role": "assistant", "content": "AWS SES is reliable for transactional email"},
+        {"role": "user", "content": "What email service are we using?"}
+      ],
+      "expected_fact_retention": ["AWS SES", "SES"],
+      "language": "english"
+    },
+    {
+      "test_id": "CONS-FACT-030",
+      "category": "factual_consistency",
+      "subcategory": "payment_methods",
+      "description": "Payment option consistency",
+      "conversation": [
+        {"role": "user", "content": "Accept Visa, Mastercard, and ABA PayWay"},
+        {"role": "assistant", "content": "Three payment methods including local ABA PayWay"},
+        {"role": "user", "content": "Which payment methods do we accept?"}
+      ],
+      "expected_fact_retention": ["Visa", "Mastercard", "ABA PayWay"],
+      "language": "english"
+    }
+  ],
+  "evaluation_metrics": {
+    "consistency_score": {
+      "description": "Overall consistency score across all tests",
+      "calculation": "Average of individual test scores",
+      "threshold": 0.85
+    },
+    "temporal_stability": {
+      "description": "Stability of responses over time",
+      "calculation": "Variance of responses to same prompt",
+      "threshold": 0.9
+    },
+    "cross_prompt_coherence": {
+      "description": "Coherence across rephrased prompts",
+      "calculation": "Semantic similarity of responses",
+      "threshold": 0.8
+    },
+    "factual_retention": {
+      "description": "Ability to maintain facts in conversation",
+      "calculation": "Exact match or semantic match of facts",
+      "threshold": 0.95
+    }
+  }
+}

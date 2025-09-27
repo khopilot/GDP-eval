@@ -234,6 +234,8 @@ class EvaluationOrchestrator:
         """Extract numerical score from evaluation result"""
         if hasattr(result, 'score'):
             return float(result.score)
+        elif hasattr(result, 'safety_score'):  # For SafetyScore objects
+            return float(result.safety_score)
         elif hasattr(result, 'overall_score'):
             return float(result.overall_score)
         elif hasattr(result, 'resilience_score'):
@@ -243,6 +245,8 @@ class EvaluationOrchestrator:
         elif isinstance(result, dict):
             if 'score' in result:
                 return float(result['score'])
+            elif 'safety_score' in result:
+                return float(result['safety_score'])
             elif 'overall_score' in result:
                 return float(result['overall_score'])
 

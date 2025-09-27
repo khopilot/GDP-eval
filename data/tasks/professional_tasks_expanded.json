@@ -1,0 +1,1388 @@
+{
+  "metadata": {
+    "version": "2.0.0",
+    "dataset": "gdpval-professional-expanded",
+    "creation_date": "2025-09-26",
+    "author": "Nicolas Delrieu",
+    "contact": "+855 92 332 554",
+    "task_count": 50,
+    "description": "Comprehensive professional task dataset for Cambodia digital economy evaluation"
+  },
+  "tasks": [
+    {
+      "task_id": "PROF-FIN-001",
+      "title": "SME Loan Risk Assessment",
+      "description": "Evaluate loan application for a family-owned restaurant in Phnom Penh BKK1 area",
+      "occupation": "Loan Officer / មន្ត្រីឥណទាន",
+      "sector": "finance",
+      "complexity": 3,
+      "frequency": "daily",
+      "real_world_context": "Family restaurant operating 3 years, seeking expansion loan for second location. Monthly revenue $12,000, expenses $8,000",
+      "business_scenario": "Requesting $50,000 loan. Collateral: restaurant equipment ($30,000) and property ($40,000). NBC regulations require 15% CAR",
+      "expected_output": {
+        "format": "risk_assessment_report",
+        "deliverables": [
+          "Risk level classification",
+          "Interest rate recommendation",
+          "Repayment period suggestion",
+          "Collateral evaluation",
+          "Final approval decision"
+        ],
+        "language": "bilingual"
+      },
+      "evaluation_criteria": [
+        {"criterion": "accuracy", "weight": 0.3, "max_score": 10},
+        {"criterion": "regulatory_compliance", "weight": 0.25, "max_score": 10},
+        {"criterion": "completeness", "weight": 0.25, "max_score": 10},
+        {"criterion": "language_quality", "weight": 0.2, "max_score": 10}
+      ],
+      "quality_indicators": ["NBC compliance", "risk accuracy", "clear recommendations"],
+      "tags": ["bilingual", "finance", "sme", "critical"],
+      "estimated_time_minutes": 45,
+      "hourly_wage_usd": 8.5,
+      "economic_value_usd": 500
+    },
+    {
+      "task_id": "PROF-FIN-002",
+      "title": "Wing Money Reconciliation",
+      "description": "ផ្ទៀងផ្ទាត់ប្រតិបត្តិការ Wing Money សម្រាប់ហាងលក់ទំនិញ",
+      "occupation": "Mobile Money Agent / ភ្នាក់ងារប្រាក់ចល័ត",
+      "sector": "finance",
+      "complexity": 2,
+      "frequency": "daily",
+      "real_world_context": "Retail shop in Kampong Cham processes 50+ Wing transactions daily. Need daily reconciliation",
+      "business_scenario": "Today's transactions: 47 successful, 3 pending. Total in: $1,250, Total out: $980. Commission: $15.50",
+      "expected_output": {
+        "format": "reconciliation_report",
+        "deliverables": [
+          "Transaction summary",
+          "Pending resolution",
+          "Commission calculation",
+          "Balance verification"
+        ],
+        "language": "khmer"
+      },
+      "evaluation_criteria": [
+        {"criterion": "accuracy", "weight": 0.4, "max_score": 10},
+        {"criterion": "completeness", "weight": 0.3, "max_score": 10},
+        {"criterion": "timeliness", "weight": 0.3, "max_score": 10}
+      ],
+      "quality_indicators": ["zero discrepancy", "clear documentation"],
+      "tags": ["khmer", "fintech", "daily_task"],
+      "estimated_time_minutes": 30,
+      "hourly_wage_usd": 5.0,
+      "economic_value_usd": 50
+    },
+    {
+      "task_id": "PROF-FIN-003",
+      "title": "MFI Portfolio Analysis",
+      "description": "Analyze microfinance institution portfolio performance and risk",
+      "occupation": "MFI Analyst",
+      "sector": "finance",
+      "complexity": 4,
+      "frequency": "monthly",
+      "real_world_context": "Rural MFI with 5,000 borrowers, average loan $800, PAR30 at 3.5%",
+      "business_scenario": "Q3 portfolio review: disbursed $2M, collected $1.8M, NPL increased to 4.2%",
+      "expected_output": {
+        "format": "portfolio_analysis",
+        "deliverables": [
+          "Portfolio quality metrics",
+          "Risk concentration analysis",
+          "Provision requirements",
+          "Action recommendations"
+        ],
+        "language": "english"
+      },
+      "evaluation_criteria": [
+        {"criterion": "analytical_depth", "weight": 0.35, "max_score": 10},
+        {"criterion": "accuracy", "weight": 0.35, "max_score": 10},
+        {"criterion": "actionability", "weight": 0.3, "max_score": 10}
+      ],
+      "quality_indicators": ["comprehensive analysis", "clear insights"],
+      "tags": ["english", "microfinance", "analytical"],
+      "estimated_time_minutes": 60,
+      "hourly_wage_usd": 12.0,
+      "economic_value_usd": 800
+    },
+    {
+      "task_id": "PROF-AGRI-001",
+      "title": "Rice Yield Optimization Plan",
+      "description": "ផ្តល់ផែនការបង្កើនទិន្នផលស្រូវសម្រាប់កសិករខេត្តបាត់ដំបង",
+      "occupation": "Agricultural Advisor / ទីប្រឹក្សាកសិកម្ម",
+      "sector": "agriculture",
+      "complexity": 3,
+      "frequency": "seasonal",
+      "real_world_context": "3 hectares rice farm, clay loam soil, small irrigation canal access, family labor",
+      "business_scenario": "Previous yield: 2.5 tons/hectare. Target: 3.5 tons. Budget: $500 for inputs",
+      "expected_output": {
+        "format": "advisory_report",
+        "deliverables": [
+          "Variety recommendations",
+          "Fertilizer schedule",
+          "Water management plan",
+          "Pest control strategy",
+          "Cost-benefit analysis"
+        ],
+        "language": "khmer"
+      },
+      "evaluation_criteria": [
+        {"criterion": "technical_accuracy", "weight": 0.3, "max_score": 10},
+        {"criterion": "local_suitability", "weight": 0.3, "max_score": 10},
+        {"criterion": "practicality", "weight": 0.4, "max_score": 10}
+      ],
+      "quality_indicators": ["achievable targets", "cost-effective solutions"],
+      "tags": ["khmer", "agriculture", "technical"],
+      "estimated_time_minutes": 40,
+      "hourly_wage_usd": 7.0,
+      "economic_value_usd": 300
+    },
+    {
+      "task_id": "PROF-AGRI-002",
+      "title": "Cashew Export Documentation",
+      "description": "Prepare export documentation for cashew shipment to Vietnam",
+      "occupation": "Export Coordinator",
+      "sector": "agriculture",
+      "complexity": 3,
+      "frequency": "weekly",
+      "real_world_context": "Kampong Thom cooperative exporting 20 tons raw cashews to Vietnam processor",
+      "business_scenario": "Container ready, need phytosanitary certificate, C/O, packing list, invoice",
+      "expected_output": {
+        "format": "export_documentation",
+        "deliverables": [
+          "Commercial invoice",
+          "Packing list",
+          "Certificate of origin",
+          "Phytosanitary requirements",
+          "Shipping instructions"
+        ],
+        "language": "english"
+      },
+      "evaluation_criteria": [
+        {"criterion": "compliance", "weight": 0.4, "max_score": 10},
+        {"criterion": "completeness", "weight": 0.3, "max_score": 10},
+        {"criterion": "accuracy", "weight": 0.3, "max_score": 10}
+      ],
+      "quality_indicators": ["regulatory compliance", "complete documentation"],
+      "tags": ["english", "export", "agriculture"],
+      "estimated_time_minutes": 50,
+      "hourly_wage_usd": 8.0,
+      "economic_value_usd": 400
+    },
+    {
+      "task_id": "PROF-AGRI-003",
+      "title": "Fish Farm Disease Management",
+      "description": "ការគ្រប់គ្រងជំងឺត្រីនៅកសិដ្ឋានចិញ្ចឹមត្រី",
+      "occupation": "Aquaculture Specialist / អ្នកជំនាញវារីវប្បកម្ម",
+      "sector": "agriculture",
+      "complexity": 4,
+      "frequency": "ad_hoc",
+      "real_world_context": "500m² tilapia pond in Takeo, fish showing white spots, 20% mortality",
+      "business_scenario": "Water temp 31°C, pH 7.2, dissolved oxygen 4mg/L, 5000 fish stocked",
+      "expected_output": {
+        "format": "treatment_plan",
+        "deliverables": [
+          "Disease diagnosis",
+          "Treatment protocol",
+          "Water quality management",
+          "Prevention measures",
+          "Economic impact assessment"
+        ],
+        "language": "khmer"
+      },
+      "evaluation_criteria": [
+        {"criterion": "diagnostic_accuracy", "weight": 0.35, "max_score": 10},
+        {"criterion": "treatment_effectiveness", "weight": 0.35, "max_score": 10},
+        {"criterion": "practicality", "weight": 0.3, "max_score": 10}
+      ],
+      "quality_indicators": ["correct diagnosis", "practical solutions"],
+      "tags": ["khmer", "aquaculture", "emergency"],
+      "estimated_time_minutes": 35,
+      "hourly_wage_usd": 10.0,
+      "economic_value_usd": 600
+    },
+    {
+      "task_id": "PROF-TOUR-001",
+      "title": "Angkor Temple Tour Design",
+      "description": "Design 3-day premium tour package for Japanese family",
+      "occupation": "Tour Coordinator",
+      "sector": "tourism",
+      "complexity": 3,
+      "frequency": "daily",
+      "real_world_context": "Japanese family of 4, first Cambodia visit, interested in history and photography",
+      "business_scenario": "5-star hotel, $1000 budget for tours, prefer Japanese guide, December visit",
+      "expected_output": {
+        "format": "tour_itinerary",
+        "deliverables": [
+          "Day-by-day itinerary",
+          "Temple pass arrangements",
+          "Transportation schedule",
+          "Guide assignments",
+          "Cost breakdown"
+        ],
+        "language": "english"
+      },
+      "evaluation_criteria": [
+        {"criterion": "cultural_appropriateness", "weight": 0.3, "max_score": 10},
+        {"criterion": "logistical_feasibility", "weight": 0.35, "max_score": 10},
+        {"criterion": "value_optimization", "weight": 0.35, "max_score": 10}
+      ],
+      "quality_indicators": ["guest satisfaction potential", "smooth logistics"],
+      "tags": ["english", "tourism", "premium"],
+      "estimated_time_minutes": 45,
+      "hourly_wage_usd": 7.0,
+      "economic_value_usd": 150
+    },
+    {
+      "task_id": "PROF-TOUR-002",
+      "title": "Eco-Tourism Community Proposal",
+      "description": "សំណើគម្រោងទេសចរណ៍ធម្មជាតិសហគមន៍នៅមណ្ឌលគិរី",
+      "occupation": "Community Tourism Developer",
+      "sector": "tourism",
+      "complexity": 4,
+      "frequency": "quarterly",
+      "real_world_context": "Mondulkiri indigenous community, elephant sanctuary, waterfall nearby",
+      "business_scenario": "20 families involved, need sustainable income, preserve culture",
+      "expected_output": {
+        "format": "project_proposal",
+        "deliverables": [
+          "Community benefits analysis",
+          "Tourism activities plan",
+          "Revenue sharing model",
+          "Environmental impact",
+          "Implementation timeline"
+        ],
+        "language": "bilingual"
+      },
+      "evaluation_criteria": [
+        {"criterion": "sustainability", "weight": 0.35, "max_score": 10},
+        {"criterion": "community_benefit", "weight": 0.35, "max_score": 10},
+        {"criterion": "feasibility", "weight": 0.3, "max_score": 10}
+      ],
+      "quality_indicators": ["community-centered", "environmentally sound"],
+      "tags": ["bilingual", "eco-tourism", "community"],
+      "estimated_time_minutes": 90,
+      "hourly_wage_usd": 15.0,
+      "economic_value_usd": 2000
+    },
+    {
+      "task_id": "PROF-MFG-001",
+      "title": "Garment Quality Inspection Report",
+      "description": "Inspect export batch of polo shirts for US buyer",
+      "occupation": "Quality Controller",
+      "sector": "manufacturing",
+      "complexity": 2,
+      "frequency": "daily",
+      "real_world_context": "500 units polo shirts, Ralph Lauren standards, shipping deadline tomorrow",
+      "business_scenario": "AQL 2.5, previous batch had 3% defects, mainly stitching issues",
+      "expected_output": {
+        "format": "inspection_report",
+        "deliverables": [
+          "Sampling plan",
+          "Defect classification",
+          "Inspection results",
+          "Pass/fail decision",
+          "Corrective actions"
+        ],
+        "language": "english"
+      },
+      "evaluation_criteria": [
+        {"criterion": "inspection_thoroughness", "weight": 0.35, "max_score": 10},
+        {"criterion": "standard_compliance", "weight": 0.35, "max_score": 10},
+        {"criterion": "documentation_quality", "weight": 0.3, "max_score": 10}
+      ],
+      "quality_indicators": ["AQL compliance", "accurate defect identification"],
+      "tags": ["english", "manufacturing", "quality"],
+      "estimated_time_minutes": 60,
+      "hourly_wage_usd": 5.0,
+      "economic_value_usd": 200
+    },
+    {
+      "task_id": "PROF-MFG-002",
+      "title": "Production Line Efficiency Analysis",
+      "description": "វិភាគប្រសិទ្ធភាពខ្សែស្រឡាយផលិតកម្ម",
+      "occupation": "Production Manager / អ្នកគ្រប់គ្រងផលិតកម្ម",
+      "sector": "manufacturing",
+      "complexity": 3,
+      "frequency": "weekly",
+      "real_world_context": "Garment factory, 50 workers, target 1000 units/day, achieving 850",
+      "business_scenario": "Bottleneck at sewing station, 15% rework rate, overtime costs increasing",
+      "expected_output": {
+        "format": "efficiency_report",
+        "deliverables": [
+          "Bottleneck analysis",
+          "Efficiency metrics",
+          "Root cause analysis",
+          "Improvement plan",
+          "Cost-benefit analysis"
+        ],
+        "language": "bilingual"
+      },
+      "evaluation_criteria": [
+        {"criterion": "analytical_accuracy", "weight": 0.35, "max_score": 10},
+        {"criterion": "solution_effectiveness", "weight": 0.35, "max_score": 10},
+        {"criterion": "implementation_feasibility", "weight": 0.3, "max_score": 10}
+      ],
+      "quality_indicators": ["data-driven insights", "practical solutions"],
+      "tags": ["bilingual", "manufacturing", "efficiency"],
+      "estimated_time_minutes": 75,
+      "hourly_wage_usd": 10.0,
+      "economic_value_usd": 500
+    },
+    {
+      "task_id": "PROF-HEALTH-001",
+      "title": "Rural Clinic Patient Triage",
+      "description": "ការកំណត់អាទិភាពអ្នកជំងឺនៅគ្លីនិកជនបទ",
+      "occupation": "Medical Assistant / ជំនួយការពេទ្យ",
+      "sector": "healthcare",
+      "complexity": 3,
+      "frequency": "daily",
+      "real_world_context": "Rural health center, 1 doctor, 2 nurses, 20 patients waiting",
+      "business_scenario": "Mix of emergency and routine cases, limited resources",
+      "expected_output": {
+        "format": "triage_assessment",
+        "deliverables": [
+          "Priority classification",
+          "Resource allocation",
+          "Wait time estimates",
+          "Emergency protocols",
+          "Referral decisions"
+        ],
+        "language": "khmer"
+      },
+      "evaluation_criteria": [
+        {"criterion": "medical_accuracy", "weight": 0.4, "max_score": 10},
+        {"criterion": "resource_optimization", "weight": 0.3, "max_score": 10},
+        {"criterion": "communication_clarity", "weight": 0.3, "max_score": 10}
+      ],
+      "quality_indicators": ["correct prioritization", "efficient resource use"],
+      "tags": ["khmer", "healthcare", "critical"],
+      "estimated_time_minutes": 20,
+      "hourly_wage_usd": 6.0,
+      "economic_value_usd": 100
+    },
+    {
+      "task_id": "PROF-HEALTH-002",
+      "title": "Pharmacy Inventory Management",
+      "description": "Manage medicine inventory for district hospital pharmacy",
+      "occupation": "Pharmacy Manager",
+      "sector": "healthcare",
+      "complexity": 3,
+      "frequency": "weekly",
+      "real_world_context": "District hospital serving 50,000 people, 200+ medicine types",
+      "business_scenario": "Monthly budget $10,000, essential drugs list, cold chain requirements",
+      "expected_output": {
+        "format": "inventory_report",
+        "deliverables": [
+          "Stock status analysis",
+          "Reorder recommendations",
+          "Expiry management",
+          "Budget allocation",
+          "Supply chain issues"
+        ],
+        "language": "english"
+      },
+      "evaluation_criteria": [
+        {"criterion": "inventory_accuracy", "weight": 0.35, "max_score": 10},
+        {"criterion": "cost_effectiveness", "weight": 0.35, "max_score": 10},
+        {"criterion": "compliance", "weight": 0.3, "max_score": 10}
+      ],
+      "quality_indicators": ["no stockouts", "optimal inventory levels"],
+      "tags": ["english", "healthcare", "logistics"],
+      "estimated_time_minutes": 45,
+      "hourly_wage_usd": 8.0,
+      "economic_value_usd": 300
+    },
+    {
+      "task_id": "PROF-EDU-001",
+      "title": "English Curriculum Development",
+      "description": "អភិវឌ្ឍកម្មវិធីសិក្សាភាសាអង់គ្លេសសម្រាប់ថ្នាក់ទី១០",
+      "occupation": "Curriculum Developer / អ្នកអភិវឌ្ឍកម្មវិធីសិក្សា",
+      "sector": "education",
+      "complexity": 4,
+      "frequency": "quarterly",
+      "real_world_context": "Public high school, Grade 10, mixed ability levels, 40 students/class",
+      "business_scenario": "4 hours/week, textbook + digital resources, prepare for national exam",
+      "expected_output": {
+        "format": "curriculum_plan",
+        "deliverables": [
+          "Learning objectives",
+          "Weekly lesson plans",
+          "Assessment methods",
+          "Resource requirements",
+          "Student activities"
+        ],
+        "language": "bilingual"
+      },
+      "evaluation_criteria": [
+        {"criterion": "pedagogical_soundness", "weight": 0.35, "max_score": 10},
+        {"criterion": "alignment_standards", "weight": 0.35, "max_score": 10},
+        {"criterion": "practicality", "weight": 0.3, "max_score": 10}
+      ],
+      "quality_indicators": ["age-appropriate", "engaging content"],
+      "tags": ["bilingual", "education", "curriculum"],
+      "estimated_time_minutes": 120,
+      "hourly_wage_usd": 12.0,
+      "economic_value_usd": 800
+    },
+    {
+      "task_id": "PROF-EDU-002",
+      "title": "E-Learning Module Design",
+      "description": "Design online learning module for vocational training",
+      "occupation": "E-Learning Developer",
+      "sector": "education",
+      "complexity": 3,
+      "frequency": "weekly",
+      "real_world_context": "TVET center, hospitality program, smartphone-based learning",
+      "business_scenario": "Create module on hotel front desk operations, 2-hour content",
+      "expected_output": {
+        "format": "elearning_design",
+        "deliverables": [
+          "Module structure",
+          "Interactive elements",
+          "Video scripts",
+          "Quiz questions",
+          "Mobile optimization"
+        ],
+        "language": "english"
+      },
+      "evaluation_criteria": [
+        {"criterion": "instructional_design", "weight": 0.35, "max_score": 10},
+        {"criterion": "engagement_level", "weight": 0.35, "max_score": 10},
+        {"criterion": "technical_feasibility", "weight": 0.3, "max_score": 10}
+      ],
+      "quality_indicators": ["interactive content", "mobile-friendly"],
+      "tags": ["english", "education", "digital"],
+      "estimated_time_minutes": 90,
+      "hourly_wage_usd": 15.0,
+      "economic_value_usd": 500
+    },
+    {
+      "task_id": "PROF-TECH-001",
+      "title": "E-Commerce API Design",
+      "description": "Design REST API for Cambodian marketplace platform",
+      "occupation": "Software Developer",
+      "sector": "technology",
+      "complexity": 4,
+      "frequency": "weekly",
+      "real_world_context": "Local marketplace connecting farmers to restaurants, 500+ vendors",
+      "business_scenario": "Need product listing, ordering, payment (KHQR), delivery tracking",
+      "expected_output": {
+        "format": "technical_specification",
+        "deliverables": [
+          "API endpoints design",
+          "Database schema",
+          "Authentication flow",
+          "Payment integration",
+          "Documentation"
+        ],
+        "language": "english"
+      },
+      "evaluation_criteria": [
+        {"criterion": "technical_correctness", "weight": 0.4, "max_score": 10},
+        {"criterion": "scalability", "weight": 0.3, "max_score": 10},
+        {"criterion": "documentation_quality", "weight": 0.3, "max_score": 10}
+      ],
+      "quality_indicators": ["RESTful design", "comprehensive docs"],
+      "tags": ["english", "technology", "api"],
+      "estimated_time_minutes": 120,
+      "hourly_wage_usd": 20.0,
+      "economic_value_usd": 1500
+    },
+    {
+      "task_id": "PROF-TECH-002",
+      "title": "IT Support Documentation",
+      "description": "ឯកសារជំនួយបច្ចេកទេសព័ត៌មានវិទ្យា",
+      "occupation": "IT Support Specialist / អ្នកជំនួយបច្ចេកទេស",
+      "sector": "technology",
+      "complexity": 2,
+      "frequency": "daily",
+      "real_world_context": "Government office, 50 users, Windows/Office environment",
+      "business_scenario": "Common issues: password resets, printer problems, email setup",
+      "expected_output": {
+        "format": "support_guide",
+        "deliverables": [
+          "Troubleshooting steps",
+          "FAQ section",
+          "Quick fixes",
+          "Escalation procedures",
+          "User guides"
+        ],
+        "language": "khmer"
+      },
+      "evaluation_criteria": [
+        {"criterion": "clarity", "weight": 0.4, "max_score": 10},
+        {"criterion": "completeness", "weight": 0.3, "max_score": 10},
+        {"criterion": "accuracy", "weight": 0.3, "max_score": 10}
+      ],
+      "quality_indicators": ["easy to follow", "covers common issues"],
+      "tags": ["khmer", "technology", "support"],
+      "estimated_time_minutes": 60,
+      "hourly_wage_usd": 8.0,
+      "economic_value_usd": 200
+    },
+    {
+      "task_id": "PROF-RETAIL-001",
+      "title": "Store Inventory Optimization",
+      "description": "Optimize inventory for convenience store chain",
+      "occupation": "Store Manager",
+      "sector": "retail",
+      "complexity": 3,
+      "frequency": "weekly",
+      "real_world_context": "3 convenience stores in Phnom Penh, 500+ SKUs",
+      "business_scenario": "Monthly sales $50,000, 20% stockouts, 15% expired goods",
+      "expected_output": {
+        "format": "optimization_report",
+        "deliverables": [
+          "ABC analysis",
+          "Reorder points",
+          "Safety stock levels",
+          "Supplier recommendations",
+          "Cost savings projection"
+        ],
+        "language": "english"
+      },
+      "evaluation_criteria": [
+        {"criterion": "analytical_rigor", "weight": 0.35, "max_score": 10},
+        {"criterion": "practical_solutions", "weight": 0.35, "max_score": 10},
+        {"criterion": "cost_effectiveness", "weight": 0.3, "max_score": 10}
+      ],
+      "quality_indicators": ["data-driven", "implementable"],
+      "tags": ["english", "retail", "inventory"],
+      "estimated_time_minutes": 60,
+      "hourly_wage_usd": 10.0,
+      "economic_value_usd": 400
+    },
+    {
+      "task_id": "PROF-RETAIL-002",
+      "title": "Customer Service Script",
+      "description": "ស្គ្រីបសេវាកម្មអតិថិជនសម្រាប់ហាងលក់រាយ",
+      "occupation": "Customer Service Manager / អ្នកគ្រប់គ្រងសេវាអតិថិជន",
+      "sector": "retail",
+      "complexity": 2,
+      "frequency": "monthly",
+      "real_world_context": "Electronics retail store, high-value items, warranty issues common",
+      "business_scenario": "Handle complaints, returns, warranty claims, product inquiries",
+      "expected_output": {
+        "format": "service_scripts",
+        "deliverables": [
+          "Greeting protocols",
+          "Common scenarios",
+          "Complaint handling",
+          "Upselling techniques",
+          "Closing procedures"
+        ],
+        "language": "bilingual"
+      },
+      "evaluation_criteria": [
+        {"criterion": "cultural_appropriateness", "weight": 0.35, "max_score": 10},
+        {"criterion": "effectiveness", "weight": 0.35, "max_score": 10},
+        {"criterion": "clarity", "weight": 0.3, "max_score": 10}
+      ],
+      "quality_indicators": ["polite tone", "problem resolution"],
+      "tags": ["bilingual", "retail", "customer_service"],
+      "estimated_time_minutes": 45,
+      "hourly_wage_usd": 7.0,
+      "economic_value_usd": 150
+    },
+    {
+      "task_id": "PROF-CONST-001",
+      "title": "Building Permit Application",
+      "description": "ពាក្យសុំអនុញ្ញាតសាងសង់អគារពាណិជ្ជកម្ម",
+      "occupation": "Construction Permit Officer / មន្ត្រីលិខិតអនុញ្ញាត",
+      "sector": "construction",
+      "complexity": 3,
+      "frequency": "weekly",
+      "real_world_context": "5-story commercial building in Phnom Penh, mixed use",
+      "business_scenario": "Submit to One Window Service, meet building codes, fire safety",
+      "expected_output": {
+        "format": "permit_application",
+        "deliverables": [
+          "Application forms",
+          "Site plan",
+          "Building specifications",
+          "Safety compliance",
+          "Environmental impact"
+        ],
+        "language": "khmer"
+      },
+      "evaluation_criteria": [
+        {"criterion": "regulatory_compliance", "weight": 0.4, "max_score": 10},
+        {"criterion": "completeness", "weight": 0.3, "max_score": 10},
+        {"criterion": "accuracy", "weight": 0.3, "max_score": 10}
+      ],
+      "quality_indicators": ["meets regulations", "complete documentation"],
+      "tags": ["khmer", "construction", "regulatory"],
+      "estimated_time_minutes": 90,
+      "hourly_wage_usd": 12.0,
+      "economic_value_usd": 600
+    },
+    {
+      "task_id": "PROF-CONST-002",
+      "title": "Construction Cost Estimation",
+      "description": "Estimate costs for residential development project",
+      "occupation": "Cost Estimator",
+      "sector": "construction",
+      "complexity": 4,
+      "frequency": "weekly",
+      "real_world_context": "20-unit apartment complex, Sihanoukville, 6 months timeline",
+      "business_scenario": "Land cleared, need detailed cost breakdown for bank loan",
+      "expected_output": {
+        "format": "cost_estimate",
+        "deliverables": [
+          "Material quantities",
+          "Labor costs",
+          "Equipment rental",
+          "Timeline breakdown",
+          "Contingency planning"
+        ],
+        "language": "english"
+      },
+      "evaluation_criteria": [
+        {"criterion": "accuracy", "weight": 0.4, "max_score": 10},
+        {"criterion": "detail_level", "weight": 0.3, "max_score": 10},
+        {"criterion": "market_alignment", "weight": 0.3, "max_score": 10}
+      ],
+      "quality_indicators": ["realistic pricing", "comprehensive breakdown"],
+      "tags": ["english", "construction", "financial"],
+      "estimated_time_minutes": 120,
+      "hourly_wage_usd": 15.0,
+      "economic_value_usd": 1000
+    },
+    {
+      "task_id": "PROF-TRANS-001",
+      "title": "Logistics Route Optimization",
+      "description": "Optimize delivery routes for distribution company",
+      "occupation": "Logistics Coordinator",
+      "sector": "transportation",
+      "complexity": 3,
+      "frequency": "daily",
+      "real_world_context": "Food distributor, 20 trucks, 100+ delivery points in Phnom Penh",
+      "business_scenario": "Morning deliveries, traffic constraints, fuel costs rising",
+      "expected_output": {
+        "format": "route_plan",
+        "deliverables": [
+          "Optimized routes",
+          "Delivery schedules",
+          "Fuel projections",
+          "Driver assignments",
+          "Contingency plans"
+        ],
+        "language": "english"
+      },
+      "evaluation_criteria": [
+        {"criterion": "efficiency_gain", "weight": 0.35, "max_score": 10},
+        {"criterion": "feasibility", "weight": 0.35, "max_score": 10},
+        {"criterion": "cost_reduction", "weight": 0.3, "max_score": 10}
+      ],
+      "quality_indicators": ["reduced distance", "on-time delivery"],
+      "tags": ["english", "transportation", "optimization"],
+      "estimated_time_minutes": 60,
+      "hourly_wage_usd": 10.0,
+      "economic_value_usd": 400
+    },
+    {
+      "task_id": "PROF-TRANS-002",
+      "title": "Customs Clearance Documentation",
+      "description": "ឯកសារបោះបង់ទំនិញតាមគយ",
+      "occupation": "Customs Officer / មន្ត្រីគយ",
+      "sector": "transportation",
+      "complexity": 3,
+      "frequency": "daily",
+      "real_world_context": "Import clearance at Sihanoukville port, electronics shipment",
+      "business_scenario": "Container from China, value $50,000, needs expedited clearance",
+      "expected_output": {
+        "format": "customs_documentation",
+        "deliverables": [
+          "Import declaration",
+          "Duty calculation",
+          "Certificate verification",
+          "Release order",
+          "ASYCUDA processing"
+        ],
+        "language": "bilingual"
+      },
+      "evaluation_criteria": [
+        {"criterion": "regulatory_compliance", "weight": 0.4, "max_score": 10},
+        {"criterion": "accuracy", "weight": 0.3, "max_score": 10},
+        {"criterion": "processing_speed", "weight": 0.3, "max_score": 10}
+      ],
+      "quality_indicators": ["compliant documentation", "efficient processing"],
+      "tags": ["bilingual", "transportation", "customs"],
+      "estimated_time_minutes": 45,
+      "hourly_wage_usd": 8.0,
+      "economic_value_usd": 300
+    },
+    {
+      "task_id": "PROF-FIN-004",
+      "title": "Cryptocurrency Exchange Compliance",
+      "description": "Develop compliance framework for crypto exchange",
+      "occupation": "Compliance Officer",
+      "sector": "finance",
+      "complexity": 5,
+      "frequency": "quarterly",
+      "real_world_context": "New crypto exchange seeking NBC approval, $10M daily volume target",
+      "business_scenario": "Need KYC/AML procedures, risk assessment, regulatory framework",
+      "expected_output": {
+        "format": "compliance_framework",
+        "deliverables": [
+          "Regulatory analysis",
+          "KYC procedures",
+          "AML protocols",
+          "Risk assessment matrix",
+          "Reporting requirements"
+        ],
+        "language": "english"
+      },
+      "evaluation_criteria": [
+        {"criterion": "regulatory_alignment", "weight": 0.4, "max_score": 10},
+        {"criterion": "comprehensiveness", "weight": 0.35, "max_score": 10},
+        {"criterion": "practicality", "weight": 0.25, "max_score": 10}
+      ],
+      "quality_indicators": ["NBC compliant", "comprehensive coverage"],
+      "tags": ["english", "finance", "crypto", "regulatory"],
+      "estimated_time_minutes": 180,
+      "hourly_wage_usd": 25.0,
+      "economic_value_usd": 3000
+    },
+    {
+      "task_id": "PROF-FIN-005",
+      "title": "Insurance Claim Assessment",
+      "description": "វាយតម្លៃសំណើទាមទារធានារ៉ាប់រងរថយន្ត",
+      "occupation": "Insurance Assessor / អ្នកវាយតម្លៃធានារ៉ាប់រង",
+      "sector": "finance",
+      "complexity": 3,
+      "frequency": "daily",
+      "real_world_context": "Motor vehicle accident claim, Toyota Camry 2019, Phnom Penh collision",
+      "business_scenario": "Front-end damage, repair estimate $3,000, policy limit $5,000",
+      "expected_output": {
+        "format": "claim_assessment",
+        "deliverables": [
+          "Damage assessment",
+          "Liability determination",
+          "Repair cost verification",
+          "Settlement calculation",
+          "Approval recommendation"
+        ],
+        "language": "khmer"
+      },
+      "evaluation_criteria": [
+        {"criterion": "assessment_accuracy", "weight": 0.35, "max_score": 10},
+        {"criterion": "policy_compliance", "weight": 0.35, "max_score": 10},
+        {"criterion": "documentation", "weight": 0.3, "max_score": 10}
+      ],
+      "quality_indicators": ["fair assessment", "policy adherence"],
+      "tags": ["khmer", "insurance", "claims"],
+      "estimated_time_minutes": 40,
+      "hourly_wage_usd": 9.0,
+      "economic_value_usd": 250
+    },
+    {
+      "task_id": "PROF-AGRI-004",
+      "title": "Organic Certification Process",
+      "description": "Guide pepper farm through organic certification",
+      "occupation": "Agricultural Certification Specialist",
+      "sector": "agriculture",
+      "complexity": 4,
+      "frequency": "monthly",
+      "real_world_context": "Kampot pepper farm, 5 hectares, seeking EU organic certification",
+      "business_scenario": "3-year conversion period, need documentation and compliance plan",
+      "expected_output": {
+        "format": "certification_guide",
+        "deliverables": [
+          "Requirement checklist",
+          "Conversion timeline",
+          "Record-keeping system",
+          "Inspection preparation",
+          "Cost-benefit analysis"
+        ],
+        "language": "english"
+      },
+      "evaluation_criteria": [
+        {"criterion": "standard_compliance", "weight": 0.4, "max_score": 10},
+        {"criterion": "completeness", "weight": 0.3, "max_score": 10},
+        {"criterion": "clarity", "weight": 0.3, "max_score": 10}
+      ],
+      "quality_indicators": ["meets EU standards", "clear guidance"],
+      "tags": ["english", "agriculture", "certification"],
+      "estimated_time_minutes": 90,
+      "hourly_wage_usd": 12.0,
+      "economic_value_usd": 800
+    },
+    {
+      "task_id": "PROF-AGRI-005",
+      "title": "Drought Mitigation Strategy",
+      "description": "យុទ្ធសាស្ត្រកាត់បន្ថយផលប៉ះពាល់គ្រោះរាំងស្ងួត",
+      "occupation": "Water Resource Manager / អ្នកគ្រប់គ្រងធនធានទឹក",
+      "sector": "agriculture",
+      "complexity": 4,
+      "frequency": "seasonal",
+      "real_world_context": "Prey Veng province, 500 hectares rice cultivation, El Niño year",
+      "business_scenario": "Rainfall 30% below average, 200 farming families affected",
+      "expected_output": {
+        "format": "mitigation_plan",
+        "deliverables": [
+          "Risk assessment",
+          "Water conservation measures",
+          "Crop selection advice",
+          "Irrigation scheduling",
+          "Community coordination"
+        ],
+        "language": "khmer"
+      },
+      "evaluation_criteria": [
+        {"criterion": "technical_soundness", "weight": 0.35, "max_score": 10},
+        {"criterion": "community_feasibility", "weight": 0.35, "max_score": 10},
+        {"criterion": "resource_efficiency", "weight": 0.3, "max_score": 10}
+      ],
+      "quality_indicators": ["practical solutions", "community buy-in"],
+      "tags": ["khmer", "agriculture", "climate"],
+      "estimated_time_minutes": 80,
+      "hourly_wage_usd": 11.0,
+      "economic_value_usd": 600
+    },
+    {
+      "task_id": "PROF-TOUR-003",
+      "title": "Hotel Revenue Management",
+      "description": "Optimize pricing strategy for boutique hotel",
+      "occupation": "Revenue Manager",
+      "sector": "tourism",
+      "complexity": 4,
+      "frequency": "weekly",
+      "real_world_context": "30-room boutique hotel, Siem Reap, 65% occupancy",
+      "business_scenario": "High season approaching, competition from new hotels, need dynamic pricing",
+      "expected_output": {
+        "format": "revenue_strategy",
+        "deliverables": [
+          "Demand forecast",
+          "Pricing recommendations",
+          "Channel optimization",
+          "Promotion calendar",
+          "Revenue projections"
+        ],
+        "language": "english"
+      },
+      "evaluation_criteria": [
+        {"criterion": "revenue_optimization", "weight": 0.4, "max_score": 10},
+        {"criterion": "market_analysis", "weight": 0.3, "max_score": 10},
+        {"criterion": "implementation_clarity", "weight": 0.3, "max_score": 10}
+      ],
+      "quality_indicators": ["revenue increase potential", "competitive positioning"],
+      "tags": ["english", "tourism", "revenue"],
+      "estimated_time_minutes": 75,
+      "hourly_wage_usd": 15.0,
+      "economic_value_usd": 1000
+    },
+    {
+      "task_id": "PROF-TOUR-004",
+      "title": "Cultural Tourism Program",
+      "description": "កម្មវិធីទេសចរណ៍វប្បធម៌សម្រាប់ខេត្តក្រចេះ",
+      "occupation": "Cultural Tourism Developer / អ្នកអភិវឌ្ឍទេសចរណ៍វប្បធម៌",
+      "sector": "tourism",
+      "complexity": 4,
+      "frequency": "quarterly",
+      "real_world_context": "Kratie province, Mekong dolphins, French colonial heritage",
+      "business_scenario": "Develop sustainable tourism preserving culture and environment",
+      "expected_output": {
+        "format": "program_proposal",
+        "deliverables": [
+          "Tourism assets inventory",
+          "Experience design",
+          "Community engagement plan",
+          "Marketing strategy",
+          "Sustainability measures"
+        ],
+        "language": "bilingual"
+      },
+      "evaluation_criteria": [
+        {"criterion": "cultural_preservation", "weight": 0.35, "max_score": 10},
+        {"criterion": "economic_viability", "weight": 0.35, "max_score": 10},
+        {"criterion": "sustainability", "weight": 0.3, "max_score": 10}
+      ],
+      "quality_indicators": ["authentic experiences", "community benefits"],
+      "tags": ["bilingual", "tourism", "cultural"],
+      "estimated_time_minutes": 120,
+      "hourly_wage_usd": 18.0,
+      "economic_value_usd": 1500
+    },
+    {
+      "task_id": "PROF-MFG-003",
+      "title": "Supply Chain Risk Assessment",
+      "description": "Assess supply chain vulnerabilities for electronics assembly",
+      "occupation": "Supply Chain Manager",
+      "sector": "manufacturing",
+      "complexity": 4,
+      "frequency": "quarterly",
+      "real_world_context": "Electronics assembly plant, components from 5 countries",
+      "business_scenario": "Recent port delays, chip shortages, need contingency planning",
+      "expected_output": {
+        "format": "risk_assessment",
+        "deliverables": [
+          "Risk mapping",
+          "Vulnerability analysis",
+          "Mitigation strategies",
+          "Alternative suppliers",
+          "Cost impact analysis"
+        ],
+        "language": "english"
+      },
+      "evaluation_criteria": [
+        {"criterion": "risk_identification", "weight": 0.35, "max_score": 10},
+        {"criterion": "mitigation_quality", "weight": 0.35, "max_score": 10},
+        {"criterion": "practicality", "weight": 0.3, "max_score": 10}
+      ],
+      "quality_indicators": ["comprehensive risks", "actionable strategies"],
+      "tags": ["english", "manufacturing", "supply_chain"],
+      "estimated_time_minutes": 90,
+      "hourly_wage_usd": 14.0,
+      "economic_value_usd": 1000
+    },
+    {
+      "task_id": "PROF-MFG-004",
+      "title": "Lean Manufacturing Implementation",
+      "description": "ការអនុវត្តផលិតកម្មគ្មានកាកសំណល់",
+      "occupation": "Production Engineer / វិស្វករផលិតកម្ម",
+      "sector": "manufacturing",
+      "complexity": 4,
+      "frequency": "monthly",
+      "real_world_context": "Footwear factory, 200 workers, high defect rate",
+      "business_scenario": "15% defects, excessive inventory, need efficiency improvement",
+      "expected_output": {
+        "format": "implementation_plan",
+        "deliverables": [
+          "Current state analysis",
+          "Waste identification",
+          "Improvement roadmap",
+          "Training requirements",
+          "KPI framework"
+        ],
+        "language": "bilingual"
+      },
+      "evaluation_criteria": [
+        {"criterion": "methodology_correctness", "weight": 0.35, "max_score": 10},
+        {"criterion": "implementation_feasibility", "weight": 0.35, "max_score": 10},
+        {"criterion": "expected_impact", "weight": 0.3, "max_score": 10}
+      ],
+      "quality_indicators": ["lean principles", "measurable improvements"],
+      "tags": ["bilingual", "manufacturing", "lean"],
+      "estimated_time_minutes": 100,
+      "hourly_wage_usd": 13.0,
+      "economic_value_usd": 800
+    },
+    {
+      "task_id": "PROF-HEALTH-003",
+      "title": "Vaccination Campaign Planning",
+      "description": "Plan COVID-19 booster campaign for rural district",
+      "occupation": "Public Health Coordinator",
+      "sector": "healthcare",
+      "complexity": 4,
+      "frequency": "quarterly",
+      "real_world_context": "Kampong Speu district, 50,000 population, 60% vaccination rate",
+      "business_scenario": "Target 80% coverage, limited cold chain, mobile teams available",
+      "expected_output": {
+        "format": "campaign_plan",
+        "deliverables": [
+          "Target population analysis",
+          "Logistics planning",
+          "Team deployment",
+          "Communication strategy",
+          "Monitoring framework"
+        ],
+        "language": "english"
+      },
+      "evaluation_criteria": [
+        {"criterion": "coverage_strategy", "weight": 0.35, "max_score": 10},
+        {"criterion": "logistical_feasibility", "weight": 0.35, "max_score": 10},
+        {"criterion": "community_engagement", "weight": 0.3, "max_score": 10}
+      ],
+      "quality_indicators": ["achievable targets", "efficient resource use"],
+      "tags": ["english", "healthcare", "public_health"],
+      "estimated_time_minutes": 90,
+      "hourly_wage_usd": 14.0,
+      "economic_value_usd": 700
+    },
+    {
+      "task_id": "PROF-HEALTH-004",
+      "title": "Traditional Medicine Integration",
+      "description": "គ្រោងសមាហរណកម្មឱសថបុរាណក្នុងគ្លីនិក",
+      "occupation": "Healthcare Integration Specialist / អ្នកជំនាញសមាហរណកម្មសុខាភិបាល",
+      "sector": "healthcare",
+      "complexity": 3,
+      "frequency": "monthly",
+      "real_world_context": "District referral hospital, high demand for traditional medicine",
+      "business_scenario": "Integrate safe traditional practices with modern healthcare",
+      "expected_output": {
+        "format": "integration_protocol",
+        "deliverables": [
+          "Practice guidelines",
+          "Safety protocols",
+          "Referral pathways",
+          "Training materials",
+          "Quality standards"
+        ],
+        "language": "khmer"
+      },
+      "evaluation_criteria": [
+        {"criterion": "safety_standards", "weight": 0.4, "max_score": 10},
+        {"criterion": "cultural_sensitivity", "weight": 0.3, "max_score": 10},
+        {"criterion": "practicality", "weight": 0.3, "max_score": 10}
+      ],
+      "quality_indicators": ["evidence-based", "culturally appropriate"],
+      "tags": ["khmer", "healthcare", "traditional"],
+      "estimated_time_minutes": 75,
+      "hourly_wage_usd": 11.0,
+      "economic_value_usd": 400
+    },
+    {
+      "task_id": "PROF-EDU-003",
+      "title": "STEM Lab Setup Proposal",
+      "description": "Design STEM laboratory for provincial high school",
+      "occupation": "Education Technology Specialist",
+      "sector": "education",
+      "complexity": 4,
+      "frequency": "quarterly",
+      "real_world_context": "Kampong Cham high school, 1000 students, limited budget",
+      "business_scenario": "$20,000 budget, need basic science and computer facilities",
+      "expected_output": {
+        "format": "lab_proposal",
+        "deliverables": [
+          "Equipment specifications",
+          "Layout design",
+          "Budget breakdown",
+          "Curriculum integration",
+          "Training requirements"
+        ],
+        "language": "english"
+      },
+      "evaluation_criteria": [
+        {"criterion": "educational_value", "weight": 0.35, "max_score": 10},
+        {"criterion": "budget_optimization", "weight": 0.35, "max_score": 10},
+        {"criterion": "sustainability", "weight": 0.3, "max_score": 10}
+      ],
+      "quality_indicators": ["cost-effective", "curriculum-aligned"],
+      "tags": ["english", "education", "stem"],
+      "estimated_time_minutes": 120,
+      "hourly_wage_usd": 16.0,
+      "economic_value_usd": 1000
+    },
+    {
+      "task_id": "PROF-EDU-004",
+      "title": "Adult Literacy Program Design",
+      "description": "កម្មវិធីអក្ខរកម្មមនុស្សពេញវ័យ",
+      "occupation": "Literacy Program Coordinator / អ្នកសម្របសម្រួលកម្មវិធីអក្ខរកម្ម",
+      "sector": "education",
+      "complexity": 3,
+      "frequency": "quarterly",
+      "real_world_context": "Rural commune, 200 adults need basic literacy, evening classes",
+      "business_scenario": "6-month program, volunteer teachers, community center venue",
+      "expected_output": {
+        "format": "program_design",
+        "deliverables": [
+          "Curriculum outline",
+          "Teaching materials",
+          "Schedule planning",
+          "Assessment methods",
+          "Community engagement"
+        ],
+        "language": "khmer"
+      },
+      "evaluation_criteria": [
+        {"criterion": "pedagogical_approach", "weight": 0.35, "max_score": 10},
+        {"criterion": "cultural_relevance", "weight": 0.35, "max_score": 10},
+        {"criterion": "feasibility", "weight": 0.3, "max_score": 10}
+      ],
+      "quality_indicators": ["adult-appropriate", "community-based"],
+      "tags": ["khmer", "education", "literacy"],
+      "estimated_time_minutes": 90,
+      "hourly_wage_usd": 10.0,
+      "economic_value_usd": 500
+    },
+    {
+      "task_id": "PROF-TECH-003",
+      "title": "Cybersecurity Audit Report",
+      "description": "Security audit for government ministry website",
+      "occupation": "Cybersecurity Analyst",
+      "sector": "technology",
+      "complexity": 5,
+      "frequency": "quarterly",
+      "real_world_context": "Ministry website, citizen services, personal data handling",
+      "business_scenario": "Recent phishing attempts, need comprehensive security review",
+      "expected_output": {
+        "format": "security_audit",
+        "deliverables": [
+          "Vulnerability assessment",
+          "Penetration test results",
+          "Risk matrix",
+          "Remediation plan",
+          "Security policies"
+        ],
+        "language": "english"
+      },
+      "evaluation_criteria": [
+        {"criterion": "thoroughness", "weight": 0.35, "max_score": 10},
+        {"criterion": "technical_accuracy", "weight": 0.35, "max_score": 10},
+        {"criterion": "actionability", "weight": 0.3, "max_score": 10}
+      ],
+      "quality_indicators": ["comprehensive coverage", "prioritized fixes"],
+      "tags": ["english", "technology", "security"],
+      "estimated_time_minutes": 180,
+      "hourly_wage_usd": 25.0,
+      "economic_value_usd": 2000
+    },
+    {
+      "task_id": "PROF-TECH-004",
+      "title": "Mobile App Localization",
+      "description": "បកប្រែកម្មវិធីទូរស័ព្ទជាភាសាខ្មែរ",
+      "occupation": "Localization Specialist / អ្នកជំនាញបកប្រែកម្មវិធី",
+      "sector": "technology",
+      "complexity": 3,
+      "frequency": "weekly",
+      "real_world_context": "Banking app localization, 50 screens, technical terminology",
+      "business_scenario": "Need Khmer translation, cultural adaptation, UI adjustments",
+      "expected_output": {
+        "format": "localization_package",
+        "deliverables": [
+          "Translation glossary",
+          "Screen translations",
+          "UI adaptations",
+          "Testing checklist",
+          "Cultural notes"
+        ],
+        "language": "bilingual"
+      },
+      "evaluation_criteria": [
+        {"criterion": "translation_accuracy", "weight": 0.35, "max_score": 10},
+        {"criterion": "cultural_adaptation", "weight": 0.35, "max_score": 10},
+        {"criterion": "consistency", "weight": 0.3, "max_score": 10}
+      ],
+      "quality_indicators": ["natural language", "culturally appropriate"],
+      "tags": ["bilingual", "technology", "localization"],
+      "estimated_time_minutes": 120,
+      "hourly_wage_usd": 15.0,
+      "economic_value_usd": 800
+    },
+    {
+      "task_id": "PROF-RETAIL-003",
+      "title": "E-commerce Platform Selection",
+      "description": "Select e-commerce platform for SME expansion",
+      "occupation": "E-commerce Manager",
+      "sector": "retail",
+      "complexity": 3,
+      "frequency": "quarterly",
+      "real_world_context": "Fashion retailer, 3 physical stores, expanding online",
+      "business_scenario": "Budget $5,000/year, need Khmer language, KHQR payment",
+      "expected_output": {
+        "format": "platform_comparison",
+        "deliverables": [
+          "Platform analysis",
+          "Feature comparison",
+          "Cost breakdown",
+          "Integration requirements",
+          "Recommendation"
+        ],
+        "language": "english"
+      },
+      "evaluation_criteria": [
+        {"criterion": "analysis_depth", "weight": 0.35, "max_score": 10},
+        {"criterion": "local_suitability", "weight": 0.35, "max_score": 10},
+        {"criterion": "cost_effectiveness", "weight": 0.3, "max_score": 10}
+      ],
+      "quality_indicators": ["thorough comparison", "clear recommendation"],
+      "tags": ["english", "retail", "ecommerce"],
+      "estimated_time_minutes": 75,
+      "hourly_wage_usd": 12.0,
+      "economic_value_usd": 500
+    },
+    {
+      "task_id": "PROF-RETAIL-004",
+      "title": "Visual Merchandising Plan",
+      "description": "គម្រោងតាំងពិព័រណ៍ទំនិញក្នុងហាង",
+      "occupation": "Visual Merchandiser / អ្នករៀបចំការតាំងពិព័រណ៍",
+      "sector": "retail",
+      "complexity": 2,
+      "frequency": "monthly",
+      "real_world_context": "Electronics store, Aeon Mall, high foot traffic",
+      "business_scenario": "New product launch, premium placement, maximize sales",
+      "expected_output": {
+        "format": "merchandising_plan",
+        "deliverables": [
+          "Floor layout",
+          "Product placement",
+          "Signage design",
+          "Lighting plan",
+          "Sales projections"
+        ],
+        "language": "bilingual"
+      },
+      "evaluation_criteria": [
+        {"criterion": "visual_appeal", "weight": 0.35, "max_score": 10},
+        {"criterion": "sales_optimization", "weight": 0.35, "max_score": 10},
+        {"criterion": "practicality", "weight": 0.3, "max_score": 10}
+      ],
+      "quality_indicators": ["attractive display", "sales potential"],
+      "tags": ["bilingual", "retail", "visual"],
+      "estimated_time_minutes": 60,
+      "hourly_wage_usd": 8.0,
+      "economic_value_usd": 300
+    },
+    {
+      "task_id": "PROF-CONST-003",
+      "title": "Green Building Certification",
+      "description": "LEED certification preparation for office building",
+      "occupation": "Sustainability Consultant",
+      "sector": "construction",
+      "complexity": 5,
+      "frequency": "quarterly",
+      "real_world_context": "10-story office building, Phnom Penh, seeking LEED Silver",
+      "business_scenario": "Energy efficiency, water conservation, local materials focus",
+      "expected_output": {
+        "format": "certification_prep",
+        "deliverables": [
+          "Credit analysis",
+          "Documentation checklist",
+          "Improvement recommendations",
+          "Cost estimates",
+          "Submission timeline"
+        ],
+        "language": "english"
+      },
+      "evaluation_criteria": [
+        {"criterion": "standard_knowledge", "weight": 0.35, "max_score": 10},
+        {"criterion": "documentation_quality", "weight": 0.35, "max_score": 10},
+        {"criterion": "achievability", "weight": 0.3, "max_score": 10}
+      ],
+      "quality_indicators": ["LEED compliance", "realistic targets"],
+      "tags": ["english", "construction", "sustainability"],
+      "estimated_time_minutes": 150,
+      "hourly_wage_usd": 20.0,
+      "economic_value_usd": 1500
+    },
+    {
+      "task_id": "PROF-CONST-004",
+      "title": "Construction Safety Plan",
+      "description": "ផែនការសុវត្ថិភាពការដ្ឋានសំណង់",
+      "occupation": "Safety Officer / មន្ត្រីសុវត្ថិភាព",
+      "sector": "construction",
+      "complexity": 3,
+      "frequency": "weekly",
+      "real_world_context": "High-rise construction site, 200 workers, monsoon season",
+      "business_scenario": "Recent accidents, need comprehensive safety overhaul",
+      "expected_output": {
+        "format": "safety_plan",
+        "deliverables": [
+          "Hazard assessment",
+          "Safety protocols",
+          "Training schedule",
+          "Emergency procedures",
+          "PPE requirements"
+        ],
+        "language": "khmer"
+      },
+      "evaluation_criteria": [
+        {"criterion": "comprehensiveness", "weight": 0.35, "max_score": 10},
+        {"criterion": "regulatory_compliance", "weight": 0.35, "max_score": 10},
+        {"criterion": "practicality", "weight": 0.3, "max_score": 10}
+      ],
+      "quality_indicators": ["thorough coverage", "worker safety"],
+      "tags": ["khmer", "construction", "safety"],
+      "estimated_time_minutes": 90,
+      "hourly_wage_usd": 10.0,
+      "economic_value_usd": 500
+    },
+    {
+      "task_id": "PROF-TRANS-003",
+      "title": "Fleet Maintenance Schedule",
+      "description": "Optimize maintenance for bus company fleet",
+      "occupation": "Fleet Manager",
+      "sector": "transportation",
+      "complexity": 3,
+      "frequency": "monthly",
+      "real_world_context": "30 buses, Phnom Penh-provinces routes, aging fleet",
+      "business_scenario": "Reduce breakdowns, optimize maintenance costs, ensure safety",
+      "expected_output": {
+        "format": "maintenance_schedule",
+        "deliverables": [
+          "Vehicle assessment",
+          "Maintenance calendar",
+          "Cost projections",
+          "Parts inventory",
+          "Downtime minimization"
+        ],
+        "language": "english"
+      },
+      "evaluation_criteria": [
+        {"criterion": "optimization_quality", "weight": 0.35, "max_score": 10},
+        {"criterion": "cost_effectiveness", "weight": 0.35, "max_score": 10},
+        {"criterion": "safety_focus", "weight": 0.3, "max_score": 10}
+      ],
+      "quality_indicators": ["reduced downtime", "cost savings"],
+      "tags": ["english", "transportation", "maintenance"],
+      "estimated_time_minutes": 75,
+      "hourly_wage_usd": 11.0,
+      "economic_value_usd": 600
+    },
+    {
+      "task_id": "PROF-TRANS-004",
+      "title": "Last-Mile Delivery Solution",
+      "description": "ដំណោះស្រាយដឹកជញ្ជូនគីឡូម៉ែត្រចុងក្រោយ",
+      "occupation": "Delivery Operations Manager / អ្នកគ្រប់គ្រងប្រតិបត្តិការដឹកជញ្ជូន",
+      "sector": "transportation",
+      "complexity": 3,
+      "frequency": "weekly",
+      "real_world_context": "E-commerce deliveries, Phnom Penh urban area, 500 parcels/day",
+      "business_scenario": "Traffic congestion, customer expectations, cost pressures",
+      "expected_output": {
+        "format": "delivery_solution",
+        "deliverables": [
+          "Delivery zones mapping",
+          "Vehicle mix optimization",
+          "Route planning",
+          "Technology integration",
+          "Performance metrics"
+        ],
+        "language": "bilingual"
+      },
+      "evaluation_criteria": [
+        {"criterion": "efficiency_improvement", "weight": 0.35, "max_score": 10},
+        {"criterion": "cost_optimization", "weight": 0.35, "max_score": 10},
+        {"criterion": "scalability", "weight": 0.3, "max_score": 10}
+      ],
+      "quality_indicators": ["faster delivery", "lower costs"],
+      "tags": ["bilingual", "transportation", "logistics"],
+      "estimated_time_minutes": 80,
+      "hourly_wage_usd": 12.0,
+      "economic_value_usd": 700
+    },
+    {
+      "task_id": "PROF-FIN-006",
+      "title": "Remittance Service Optimization",
+      "description": "Improve international money transfer service",
+      "occupation": "Remittance Services Manager",
+      "sector": "finance",
+      "complexity": 3,
+      "frequency": "monthly",
+      "real_world_context": "Money transfer operator, Korea-Cambodia corridor, $5M monthly volume",
+      "business_scenario": "High competition, need faster service, lower fees",
+      "expected_output": {
+        "format": "service_improvement",
+        "deliverables": [
+          "Market analysis",
+          "Process optimization",
+          "Technology upgrades",
+          "Pricing strategy",
+          "Compliance updates"
+        ],
+        "language": "english"
+      },
+      "evaluation_criteria": [
+        {"criterion": "market_insight", "weight": 0.35, "max_score": 10},
+        {"criterion": "improvement_potential", "weight": 0.35, "max_score": 10},
+        {"criterion": "compliance_adherence", "weight": 0.3, "max_score": 10}
+      ],
+      "quality_indicators": ["competitive advantage", "compliance maintained"],
+      "tags": ["english", "finance", "remittance"],
+      "estimated_time_minutes": 90,
+      "hourly_wage_usd": 14.0,
+      "economic_value_usd": 800
+    }
+  ]
+}

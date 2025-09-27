@@ -9,6 +9,11 @@ import asyncio
 import os
 import sys
 from datetime import datetime
+from pathlib import Path
+
+# Load environment variables from .env file
+from dotenv import load_dotenv
+load_dotenv()
 
 # Add src to path
 sys.path.insert(0, os.path.join(os.path.dirname(__file__), 'src'))
@@ -88,7 +93,7 @@ async def run_complete_workflow():
             suite_type=EvaluationSuite.COMPREHENSIVE,
             modules=["capability", "safety", "robustness", "consistency", "behavioral"],
             parallel_execution=True,
-            timeout_seconds=1800,  # 30 minutes
+            timeout_seconds=5400,  # 90 minutes
             save_intermediate=True
         )
 
